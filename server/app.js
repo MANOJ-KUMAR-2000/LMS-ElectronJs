@@ -22,3 +22,7 @@ app.listen(8888);
 app.use("/authentication", AuthRoutes);
 app.use("/add-view", AddViewRoutes);
 app.use("/upload", UploadRoutes);
+
+app.get("/home", (req, res) => {
+    res.render("home");
+});

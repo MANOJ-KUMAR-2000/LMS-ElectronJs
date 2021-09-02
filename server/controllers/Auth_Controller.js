@@ -18,7 +18,7 @@ const RegisterGet = (req, res) => {
 };
 
 const ForgotPassGet = (req, res) => {
-    //res.render("forgot_pass", { error: null });
+    res.render("forgotpass", { error: null });
 };
 
 const LoginPost = (req, res) => {
@@ -88,7 +88,7 @@ const ForgotPassPost = (req, res) => {
 
 const Logout = (req, res) => {
     res.clearCookie("nscet");
-    res.redirect("/");
+    res.redirect("/authentication/login");
 };
 
 module.exports = {
