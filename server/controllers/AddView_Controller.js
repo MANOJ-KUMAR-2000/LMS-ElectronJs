@@ -10,7 +10,6 @@ const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
 
 const ViewStudents = (req, res) => {
   query = `SELECT * FROM Student_DB;`;
-
   db.all(query, (err, result) => {
     if (err) {
       res.send("<h1>Error on Fetch</h1>");
@@ -19,6 +18,7 @@ const ViewStudents = (req, res) => {
     }
   });
 };
+
 const ViewFacultys = (req, res) => {
   query = `SELECT * FROM Faculty_DB;`;
   db.all(query, (err, result) => {
@@ -29,8 +29,9 @@ const ViewFacultys = (req, res) => {
     }
   });
 };
+
 const ViewBooks = (req, res) => {
-  query = `SELECT * FROM [Library_Books];`;
+  query = `SELECT * FROM Library_Books;`;
   db.all(query, (err, result) => {
     if (err) {
       res.send("<h1>Error on Fetch</h1>");
@@ -68,21 +69,27 @@ const AddFacultys = (req, res) => {
     }
   });
 };
+
 const AddBooks = (req, res) => {
-  query = `INSERT INTO Library_Books (book_id,title,author_type,author,publisher) VALUES (?,?,?,?,?);`;
-  values = [
-    req.body["book_id"],
-    req.body["title"],
-    req.body["author_type"],
-    req.body["author"],
-    req.body["publisher"],
-  ];
-  db.run(query, values, (err) => {
-    if (err) {
-      res.send("<h1>Error Unique</h1>");
-    } else {
-      res.send("<h1>All Clear</h1>");
-    }
+  db.all(`SELECT * FROM Library_Books`, async (err, result) => {
+    book_id = req.cookies.nscet.department + (result.length + 1);
+
+    query = `INSERT INTO Library_Books (book_id,title,author_type,author,publisher) VALUES (?,?,?,?,?);`;
+    values = [
+      book_id,
+      req.body["title"],
+      req.body["author_type"],
+      req.body["author"],
+      req.body["publisher"],
+    ];
+    db.run(query, values, (err) => {
+      if (err) {
+        console.log(err);
+        res.send("<h1>Error Unique</h1>");
+      } else {
+        res.send("<h1>All Clear</h1>");
+      }
+    });
   });
 };
 
