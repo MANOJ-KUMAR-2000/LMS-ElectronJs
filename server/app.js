@@ -14,10 +14,11 @@ app.use(express.json());
 app.use(fileUpload());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
-app.set("views", path.join("./views"));
-app.use(express.static(path.join("./public")));
+app.set("views", path.join("views"));
+app.use(express.static(path.join("public")));
 
 app.listen(8888);
-app.use("/add-view", AddViewRoutes);
+
 app.use("/authentication", AuthRoutes);
+app.use("/add-view", AddViewRoutes);
 app.use("/upload", UploadRoutes);

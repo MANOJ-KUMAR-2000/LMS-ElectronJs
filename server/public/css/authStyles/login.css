@@ -1,0 +1,142 @@
+body {
+    background: url("/img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header {
+    padding: 0px 64px;
+    display: flex;
+}
+
+.header .clg-logo {
+    padding: 12px 0;
+    width: 18%;
+}
+
+.header .clg-logo img {
+    width: 100%;
+}
+
+.header .clg-name {
+    padding: 0 42px;
+    width: 82%;
+    text-align: center;
+}
+
+.header .clg-name h1 {
+    text-transform: uppercase;
+    font-size: 42px;
+    font-weight: bold;
+    padding: 0;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.main {
+    margin-top: 64px;
+    padding: 0 64px;
+    display: flex;
+}
+
+.main .logos {
+    width: 50%;
+}
+
+.main .logos .main-logos {
+    margin-top: 36px;
+    width: 100%;
+    display: flex;
+}
+
+.main .logos div {
+    text-align: center;
+}
+
+.main .logos img {
+    width: 70%;
+}
+
+.main .login-loc {
+    width: 50%;
+}
+
+.main .title {
+    width: 100%;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-size: 48px;
+}
+
+.main .login-loc {
+    display: flex;
+    justify-content: center;
+}
+
+.main .login-loc .heading {
+    margin-top: 12px;
+    margin-bottom: 36px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.main .login-loc .content {
+    background-color: rgba(27, 27, 27, 0.75);
+    border-radius: 4px;
+    width: 50%;
+    text-align: center;
+    box-shadow: 6px 6px 6px 2px rgba(27, 27, 27, 0.3);
+}
+
+.main .login-loc .content form div {
+    display: flex;
+}
+
+.main .login-loc .content form div span {
+    opacity: 0.5;
+    position: absolute;
+}
+
+.content form span {
+    transition: 0.5s linear;
+}
+
+.main .login-loc .content .main-content {
+    display: flex;
+    justify-content: center;
+}
+
+.main .login-loc .content form {
+    width: 80%;
+}
+
+.main .login-loc .content form input {
+    height: 25px;
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+.main .login-loc .content form div:focus-within span,
+.main .login-loc .content form div input:valid~span {
+    opacity: 1;
+    transform: translateX(-6px) translateY(-26px);
+}
+
+.main .login-loc .content form button {
+    width: 50%;
+    padding: 4px 0;
+    font-weight: 400;
+}
+
+.main .login-loc .content .links {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+footer {
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
