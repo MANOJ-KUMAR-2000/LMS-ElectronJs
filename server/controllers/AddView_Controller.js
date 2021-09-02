@@ -10,7 +10,6 @@ const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
 
 const ViewStudents = (req, res) => {
   query = `SELECT * FROM Student_DB;`;
-
   db.all(query, (err, result) => {
     if (err) {
       res.send("<h1>Error on Fetch</h1>");
@@ -19,6 +18,7 @@ const ViewStudents = (req, res) => {
     }
   });
 };
+
 const ViewFacultys = (req, res) => {
   query = `SELECT * FROM Faculty_DB;`;
   db.all(query, (err, result) => {
@@ -29,8 +29,9 @@ const ViewFacultys = (req, res) => {
     }
   });
 };
+
 const ViewBooks = (req, res) => {
-  query = `SELECT * FROM [Library_Books];`;
+  query = `SELECT * FROM Library_Books;`;
   db.all(query, (err, result) => {
     if (err) {
       res.send("<h1>Error on Fetch</h1>");
@@ -68,6 +69,7 @@ const AddFacultys = (req, res) => {
     }
   });
 };
+
 const AddBooks = (req, res) => {
   db.all(`SELECT * FROM Library_Books`, async (err, result) => {
     book_id = req.cookies.nscet.department + (result.length + 1);

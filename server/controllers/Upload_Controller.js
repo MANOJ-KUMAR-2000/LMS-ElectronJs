@@ -37,10 +37,13 @@ const UploadStudents = (req, res) => {
         data[i].batch,
         data[i].department,
       ];
-      db.run(query, values);
+      db.run(query, values, (err) => {
+        console.log(err);
+        res.send("<h1>Check Your xlsx file</h1>");
+      });
     }
   });
-  //res.redirect("/");
+  res.send("<h1>All Clear</h1>");
 };
 
 const UploadFacultys = (req, res) => {
@@ -50,10 +53,13 @@ const UploadFacultys = (req, res) => {
     for (let i = 0; i < data.length; i++) {
       query = `INSERT INTO Faculty_DB (roll_number,name,department) VALUES (?,?,?);`;
       values = [data[i].rollno, data[i].name, data[i].department];
-      db.run(query, values);
+      db.run(query, values, (err) => {
+        console.log(err);
+        res.send("<h1>Check Your xlsx file</h1>");
+      });
     }
   });
-  //res.redirect("/");
+  res.send("<h1>All Clear</h1>");
 };
 
 const UploadBooks = (req, res) => {
@@ -74,13 +80,16 @@ const UploadBooks = (req, res) => {
           data[i].publisher,
         ];
         data[i].book_id = book_id;
-        db.run(query, values);
+        db.run(query, values, (err) => {
+          console.log(err);
+          res.send("<h1>Check Your xlsx file</h1>");
+        });
       }
       var xls = json2xls(data);
       fs.writeFileSync("data.xlsx", xls, "binary");
     });
   });
-  //res.redirect("/");
+  res.send("<h1>All Clear</h1>");
 };
 
 module.exports = {

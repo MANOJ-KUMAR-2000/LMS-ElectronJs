@@ -17,6 +17,10 @@ const RegisterGet = (req, res) => {
   //res.render("register", { error: null });
 };
 
+const ForgotPassGet = (req, res) => {
+  //res.render("forgot_pass", { error: null });
+};
+
 const LoginPost = (req, res) => {
   query = `SELECT username,password,department,name FROM Librarian_DB WHERE username  = ?`;
   values = [req.body["username"]];
@@ -63,10 +67,6 @@ const RegisterPost = async (req, res) => {
   });
 };
 
-const ForgotPassGet = (req, res) => {
-  //res.render("forgot_pass", { error: null });
-};
-
 const ForgotPassPost = (req, res) => {
   db.get("SELECT * FROM App_Security", async (err, result) => {
     if (err) {
@@ -80,7 +80,7 @@ const ForgotPassPost = (req, res) => {
           if (err) {
             console.log(err);
           } else {
-            //res.redirect('/')
+            res.send("<h1>All Clear</h1>");
           }
         });
       }
