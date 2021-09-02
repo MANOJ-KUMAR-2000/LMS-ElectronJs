@@ -69,20 +69,25 @@ const AddFacultys = (req, res) => {
   });
 };
 const AddBooks = (req, res) => {
-  query = `INSERT INTO Library_Books (book_id,title,author_type,author,publisher) VALUES (?,?,?,?,?);`;
-  values = [
-    req.body["book_id"],
-    req.body["title"],
-    req.body["author_type"],
-    req.body["author"],
-    req.body["publisher"],
-  ];
-  db.run(query, values, (err) => {
-    if (err) {
-      res.send("<h1>Error Unique</h1>");
-    } else {
-      res.send("<h1>All Clear</h1>");
-    }
+  db.all(`SELECT * FROM Library_Books`, async (err, result) => {
+    book_id = req.cookies.nscet.department + (result.length + 1);
+
+    query = `INSERT INTO Library_Books (book_id,title,author_type,author,publisher) VALUES (?,?,?,?,?);`;
+    values = [
+      book_id,
+      req.body["title"],
+      req.body["author_type"],
+      req.body["author"],
+      req.body["publisher"],
+    ];
+    db.run(query, values, (err) => {
+      if (err) {
+        console.log(err);
+        res.send("<h1>Error Unique</h1>");
+      } else {
+        res.send("<h1>All Clear</h1>");
+      }
+    });
   });
 };
 

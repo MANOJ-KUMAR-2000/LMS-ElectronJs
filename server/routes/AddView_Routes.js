@@ -7,8 +7,8 @@ routes.get("/view-students", controller.ViewStudents);
 routes.get("/view-facultys", controller.ViewFacultys);
 routes.get("/view-books", controller.ViewBooks);
 
-routes.post("/add-students", controller.AddStudents);
-routes.post("/add-facultys", controller.AddFacultys);
-routes.post("/add-books", controller.AddBooks);
+routes.post("/add-student", controller.AddStudents);
+routes.post("/add-faculty", controller.AddFacultys);
+routes.post("/add-book", controller.AddBooks);
 
 module.exports = routes;
