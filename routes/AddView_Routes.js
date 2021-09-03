@@ -1,7 +1,7 @@
 const express = require("express");
 const controller = require("../controllers/AddView_Controller");
 
-const routes = express();
+const routes = express.Router();
 
 routes.get("/view-students", controller.ViewStudents);
 routes.get("/view-facultys", controller.ViewFacultys);

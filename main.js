@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require("electron");
-const server = require("./server/app.js");
+const server = require("./app.js");
 
 let mainWindow;
 
@@ -17,7 +17,7 @@ async function createWindow() {
     },
   });
 
-  mainWindow.loadURL("http://localhost:8888");
+  mainWindow.loadURL("http://localhost:8888/authentication/login");
   mainWindow.on("closed", function () {
     mainWindow = null;
   });
