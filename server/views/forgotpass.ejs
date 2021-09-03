@@ -9,7 +9,12 @@
                         <span>&nbsp;&nbsp;Security Key</span>
                     </div>
                     <div>
-                        <input type="text" name="username" required/>
+                        <select name="username" required>
+                            <option value="" hidden></option>
+                            <% users.forEach(function(user) { %>
+                                <option value=<%=user.username%>><%=user.username%></option>
+                            <% }) %>
+                        </select>
                         <span>&nbsp;&nbsp;Username</span>
                     </div>
 
