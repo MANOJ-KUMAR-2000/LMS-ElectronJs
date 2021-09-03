@@ -31,4 +31,4 @@ app.use("/record", RecordRoutes);
 app.use("/add-view", AddViewRoutes);
 app.use("/upload", UploadRoutes);
 app.use("/issue-return", IssueReturnRoutes);
-app.use("/reports", RecordRoutes);
+app.use("/reports", ReportRoutes);
