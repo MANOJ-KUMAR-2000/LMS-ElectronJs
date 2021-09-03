@@ -10,6 +10,7 @@ const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
 });
 
 const LoginGet = (req, res) => {
+
     res.render("login", { error: null });
 };
 
@@ -22,24 +23,23 @@ const ForgotPassGet = (req, res) => {
 };
 
 const LoginPost = (req, res) => {
-    query = `SELECT username,password,department,name FROM Librarian_DB WHERE username  = ?`;
+    query = `SELECT username,password,department FROM Librarian_DB WHERE username  = ?`;
     values = [req.body["username"]];
 
     db.get(query, values, async(err, result) => {
         if (err) {
-            console.log(err.message);
+            console.log(err);
         } else {
-            if (await bcrypt.compare(req.body["password"], result.password)) {
+            if (result && await bcrypt.compare(req.body["password"], result.password)) {
                 res.cookie(
                     "nscet", {
                         username: result.username,
-                        name: result.name,
                         department: result.department,
                     }, { httpOnly: true }
                 );
-                res.send("<h1>Logged In</h1>");
+                res.redirect("/home");
             } else {
-                res.send("<h1>Wrong Password</h1>");
+                res.render("login", { "error": "Invalid Password!" });
             }
         }
     });
@@ -47,20 +47,21 @@ const LoginPost = (req, res) => {
 
 const RegisterPost = async(req, res) => {
     const password = await bcrypt.hash(req.body["password"], 12);
-    query = `INSERT INTO Librarian_DB (username,password,name,department) VALUES (?,?,?,?);`;
+
+    query = `INSERT INTO Librarian_DB (username,password,department) VALUES (?,?,?);`;
     values = [
         req.body["username"],
         password,
-        req.body["name"],
         req.body["department"],
     ];
 
     db.run(query, values, (err) => {
         if (err) {
-            console.log(err);
-            res.send("<h1>Error Unique</h1>");
+            err_msg = "Error !";
+            if (err.errno === 19) { err_msg = "Username exists !" }
+            res.render("register", { error: err_msg });
         } else {
-            res.send("<h1>All Clear</h1>");
+            res.redirect("/authentication/login");;
         }
     });
 };
@@ -78,9 +79,11 @@ const ForgotPassPost = (req, res) => {
                     if (err) {
                         console.log(err);
                     } else {
-                        res.send("<h1>All Clear</h1>");
+                        res.redirect("/authentication/login");
                     }
                 });
+            } else {
+                res.render("forgotpass", { error: "Invalid secirity key" });
             }
         }
     });

@@ -3,20 +3,32 @@
         <div class="content">
             <div class="heading">REGISTRATION</div>
             <div class="main-content">
-                <form action="" method="post">
+                <form action="/authentication/register" method="post">
                     <div>
-                        <input type="text" required/>
+                        <input type="text" name="username" required/>
                         <span>&nbsp;&nbsp;Username</span>
                     </div>
                     <div>
-                        <input type="text" required/>
+                        <select name="department" id="" required>
+                            <option value="" hidden></option>
+                            <option value="CSE">Computer Science &amp; Engineering</option>
+                            <option value="MECH">Mechanical Engineering</option>
+                            <option value="ECE">Electronics &amp; Communication Engg</option>
+                            <option value="CIVIL">Civil Engineering</option>
+                            <option value="EEE">Electrical &amp; Electronics Engineering</option>
+                        </select>
                         <span>&nbsp;&nbsp;Department</span>
                     </div>
                     <div>
-                        <input type="text" required/>
+                        <input type="text" name="password" required/>
                         <span>&nbsp;&nbsp;Password</span>
                     </div>
                     <button type="submit">Register</button>
+                    <p class="error-msg">
+                        <% if (error !=null || error!=undefined){%>
+                            <%=error%>
+                                <%}%>
+                    </p>
                 </form>
             </div>
             <div class="links">

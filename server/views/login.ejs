@@ -3,17 +3,23 @@
         <div class="content">
             <div class="heading">LOGIN PORTAL</div>
             <div class="main-content">
-                <form action="" method="post">
+                <form action="/authentication/login" method="post">
                     <div class="username-div">
-                        <input type="text" required/>
+                        <input type="text" name="username" required/>
                         <span>&nbsp;&nbsp;Username</span>
                     </div>
                     <div class="password-div">
-                        <input type="text" required/>
+                        <input type="text" name="password" required/>
                         <span>&nbsp;&nbsp;Password</span>
                     </div>
                     <button type="submit">Login</button>
+                    <p class="error-msg">
+                        <% if (error !=null || error!=undefined){%>
+                            <%=error%>
+                                <%}%>
+                    </p>
                 </form>
+
             </div>
             <div class="links">
                 <a href="/authentication/register">Register</a>
@@ -22,7 +28,7 @@
         </div>
     </div>
     </div>
-    <footer>&copy; Designed &amp; Developed by iSPIN of CSE Department</footer>
+    <footer>&copy;&nbsp;Designed&nbsp;&amp;&nbsp;Developed&nbsp;by&nbsp;iSPIN&nbsp;of&nbsp;CSE&nbsp;Department</footer>
     </body>
 
     </html>

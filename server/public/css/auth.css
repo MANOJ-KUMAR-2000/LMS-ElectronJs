@@ -110,7 +110,8 @@ body {
     width: 80%;
 }
 
-.main .login-loc .content form input {
+.main .login-loc .content form input,
+select {
     height: 25px;
     width: 100%;
     margin-bottom: 32px;
@@ -119,7 +120,12 @@ body {
 .main .login-loc .content form div:focus-within span,
 .main .login-loc .content form div input:valid~span {
     opacity: 1;
-    transform: translateX(-6px) translateY(-26px);
+    transform: translateX(-6px) translateY(-22px);
+}
+
+.main .login-loc .content form div select:valid~span {
+    opacity: 1;
+    transform: translateX(-6px) translateY(-22px);
 }
 
 .main .login-loc .content form button {
