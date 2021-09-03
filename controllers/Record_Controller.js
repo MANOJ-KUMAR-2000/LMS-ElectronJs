@@ -10,8 +10,8 @@ const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
 
 const StudentsRecord = (req, res) => {
   db.all(
-    `SELECT * FROM Book_Issued WHERE role  = Student`,
-    (err, student_issued) => {
+    `SELECT * FROM Book_Issued WHERE role = Student`,
+    async (err, student_issued) => {
       if (err) {
         res.send("Something Went Wrong");
       } else {
@@ -24,7 +24,7 @@ const StudentsRecord = (req, res) => {
 
 const FacultysRecord = (req, res) => {
   db.all(
-    `SELECT * FROM Book_Issued WHERE role  = Student`,
+    `SELECT * FROM Book_Issued WHERE role = Student`,
     (err, faculty_issued) => {
       if (err) {
         res.send("Something Went Wrong");
@@ -47,30 +47,65 @@ const BooksRecord = (req, res) => {
   });
 };
 
-const SearchStudent = (req, res) => {};
-
-const SearchFaculty = (req, res) => {};
+const SearchFacultyStudent = (req, res) => {
+  if (req.body["search_key"] == undefined) {
+    query_id = `SELECT * FROM Book_Issued WHERE roll_number = ?`;
+    value_id = [req.body["search_roll_number"]];
+    db.get(query_id, value_id, async (err, result) => {
+      if (err) {
+        res.send("Something Went Wrong");
+      } else {
+        if (book_result == undefined) {
+          res.send("no id found");
+        } else {
+          res.send(result);
+        }
+      }
+    });
+  } else {
+    query_key = `SELECT * FROM Book_Issued WHERE book_title LIKE ?`;
+    value_key = "%" + req.body["search_key"] + "%";
+    db.all(query_key, value_key, async (err, match_books) => {
+      if (err) {
+        res.send("SomeThing Went Wrong");
+      } else {
+        if (match_books.length == 0) {
+          res.send("no such found");
+        } else {
+          res.send(match_books);
+        }
+      }
+    });
+  }
+};
 
 const SearchBook = (req, res) => {
   if (req.body["search_key"] == undefined) {
     query_id = `SELECT * FROM Currently_Available WHERE book_id = ?`;
     value_id = [req.body["search_id"]];
-    db.get(query, value, (err, book_result) => {
+    db.get(query_id, value_id, async (err, book_result) => {
       if (err) {
         res.send("Something Went Wrong");
       } else {
-        res.send(book_result);
+        if (book_result == undefined) {
+          res.send("no book id found");
+        } else {
+          res.send(book_result);
+        }
       }
     });
   } else {
-    query_key = `SELECT * FROM Currently_Available WHERE title LIKE = ?;`;
-    value_key = ["%" + req.body["search_key"] + "%"];
-    console.log(value_key);
-    db.all(query_key, value_key, (err, match_books) => {
+    query_key = `SELECT * FROM Currently_Available WHERE title LIKE ?`;
+    value_key = "%" + req.body["search_key"] + "%";
+    db.all(query_key, value_key, async (err, match_books) => {
       if (err) {
         res.send("SomeThing Went Wrong");
       } else {
-        res.send(match_books);
+        if (match_books.length == 0) {
+          res.send("no such book found");
+        } else {
+          res.send(match_books);
+        }
       }
     });
   }
@@ -80,7 +115,6 @@ module.exports = {
   StudentsRecord,
   FacultysRecord,
   BooksRecord,
-  SearchStudent,
-  SearchFaculty,
+  SearchFacultyStudent,
   SearchBook,
 };

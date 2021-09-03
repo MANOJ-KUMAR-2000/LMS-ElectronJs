@@ -7,6 +7,8 @@ const AuthRoutes = require("./routes/Auth_Routes");
 const UploadRoutes = require("./routes/Upload_Routes");
 const AddViewRoutes = require("./routes/AddView_Routes");
 const RecordRoutes = require("./routes/Record_Routes");
+const ReportRoutes = require("./routes/Report_Routes");
+const IssueReturnRoutes = require("./routes/IssueReturn_Routes");
 
 const app = express();
 
@@ -28,3 +30,5 @@ app.use("/authentication", AuthRoutes);
 app.use("/record", RecordRoutes);
 app.use("/add-view", AddViewRoutes);
 app.use("/upload", UploadRoutes);
+app.use("/issue-return", IssueReturnRoutes);
+app.use("/reports", RecordRoutes);
