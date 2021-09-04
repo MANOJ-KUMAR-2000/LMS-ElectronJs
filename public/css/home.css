@@ -1,12 +1,11 @@
 .home-main-content {
     width: 100%;
-    padding-top: 180px;
+    padding-top: 136px;
 }
 
-.home-main-content h2,
-span {
-    text-align: center;
+.home-main-content .wel-msg h2 {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 46px;
+    font-size: 50px;
     font-weight: bold;
+    text-align: center;
 }

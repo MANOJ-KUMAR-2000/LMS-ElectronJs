@@ -1,0 +1,39 @@
+<%- include('../templates/mainPage.ejs') %>
+    <div class="book-record-main-content record-main">
+        <h1>BOOK RECORDS</h1>
+        <%- include('../templates/recordLinks.ejs') %>
+
+            <div class="book-record-filters">
+                <form action="" method="post">
+                    <div>
+                        <input type="text" name="title" placeholder="Title">
+                    </div>
+                    <div>
+                        <input type="text" name="authur" id="" placeholder="Author Name">
+                    </div>
+                    <div>
+                        <select name="type" id="">
+                            <option value="" hidden>Author From</option>
+                    <option value="Local Author">Local Author</option>
+                    <option value="Foreign Author">Foreign Author</option>
+                </select>
+                    </div>
+                    <div>
+                        <input type="text" name="publisher" id="">
+                    </div>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <div class="book-recod-details">
+
+            </div>
+    </div>
+
+
+    <!--Template Ending-->
+    </div>
+    </div>
+
+    </body>
+
+    </html>

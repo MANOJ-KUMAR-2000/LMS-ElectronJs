@@ -1,0 +1,11 @@
+.record-main {
+    padding: 16px 12px;
+}
+
+.record-main .record-links {
+    display: flex;
+}
+
+.record-main form {
+    display: flex;
+}

@@ -1,0 +1,149 @@
+<%- include('../templates/mainPage.ejs') %>
+
+    <div class="database-main-content">
+        <h2>DATABASE</h2>
+        <!-- Tab links -->
+        <div class="primary_tab">
+            <button class="primary_tablinks" onclick="openPrimary(event, 'add_db')">Add</button>
+            <button class="primary_tablinks" onclick="openPrimary(event, 'view_db')">View</button>
+            <button class="primary_tablinks" onclick="">Backup</button>
+            <button class="primary_tablinks" onclick="">Restore</button>
+        </div>
+
+        <!-- Tab content 1-->
+        <div id="add_db" class="primary_tabcontent">
+            <h3>Add to database</h3>
+            <div class="secondry1_tab">
+                <button class="secondry_tablinks" onclick="openSecondry1(event, 'add_book')">Books</button>
+                <button class="secondry_tablinks" onclick="openSecondry1(event, 'add_student')">Students</button>
+                <button class="secondry_tablinks" onclick="openSecondry1(event, 'add_faculty')">Faculty</button>
+            </div>
+            <div id="add_book" class="secondry1_tabcontent">
+                <div class="add_book">
+                    <div class="solo">
+                        Add a single book
+                        <div>
+                            <input name="title" type="text">
+                            <span>Title</span>
+                        </div>
+                        <div>
+                            <input name="author" type="text">
+                            <span>Author Name</span>
+                        </div>
+                        <div>
+                            <select name="author_type" id="">
+                                <option value="Local Author">Local Author</option>
+                                <option value="Foreign Author">Foreign Author</option>
+                            </select>
+                            <span>Author Type</span>
+                        </div>
+                        <div>
+                            <input name="publisher" type="text">
+                            <span>Title</span>
+                        </div>
+                        <button>Add</button>
+                    </div>
+                    <div class="multi">
+                        Add multiple Books
+                        <div>
+                            <input type="file" name="book_excel_file" id="book_excel_file">
+                            <button>Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="add_student" class="secondry1_tabcontent">
+                <div class="add_student">
+                    <div class="solo">
+                        Add a single student
+                        <div>
+                            <input name="roll_number" type="text">
+                            <span>Register No</span>
+                        </div>
+                        <div>
+                            <input name="name" type="text">
+                            <span>Name</span>
+                        </div>
+                        <div>
+                            <select name="department" id="">
+                            <option value="CSE">Computer Science & Engg</option>
+                            <option value="MECH">Mechanical & Engg</option>
+                            <option value="ECE">Electronics & Communication Engg</option>
+                            <option value="CIVIL">Civil Engg</option>
+                            <option value="EEE">Electrical & Electronics Engg</option>
+                        </select>
+                            <span>Department</span>
+                        </div>
+                        <div>
+                            <input name="batch" type="text">
+                            <span>batch</span>
+                        </div>
+                        <button>Add</button>
+                    </div>
+                    <div class="multi">
+                        Add multiple students
+                        <div>
+                            <input type="file" name="student_excel_file" id="student_excel_file">
+                            <button>Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="add_faculty" class="secondry1_tabcontent">
+                <div class="add_faculty">
+                    <div class="solo">
+                        Add a single Faculty
+                        <div>
+                            <input name="roll_number" type="text">
+                            <span>Faculty Id</span>
+                        </div>
+                        <div>
+                            <input name="name" type="text">
+                            <span>Name</span>
+                        </div>
+                        <div>
+                            <select name="department" id="">
+                        <option value="CSE">Computer Science & Engg</option>
+                        <option value="MECH">Mechanical & Engg</option>
+                        <option value="ECE">Electronics & Communication Engg</option>
+                        <option value="CIVIL">Civil Engg</option>
+                        <option value="EEE">Electrical & Electronics Engg</option>
+                    </select>
+                            <span>Department</span>
+                        </div>
+                        <button>Add</button>
+                    </div>
+                    <div class="multi">
+                        Add multiple faculty
+                        <div>
+                            <input type="file" name="faculty_excel_file" id="faculty_excel_file">
+                            <button>Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Tab content 2-->
+        <div id="view_db" class="primary_tabcontent">
+            <h3>View in database</h3>
+            <div class="secondry2_tab">
+                <button class="secondry_tablinks" onclick="openSecondry2(event, 'view_book')">Books</button>
+                <button class="secondry_tablinks" onclick="openSecondry2(event, 'view_student')">Students</button>
+                <button class="secondry_tablinks" onclick="openSecondry2(event, 'view_faculty')">Faculty</button>
+            </div>
+            <div id="view_book" class="secondry2_tabcontent">view_book</div>
+            <div id="view_student" class="secondry2_tabcontent">view_student</div>
+            <div id="view_faculty" class="secondry2_tabcontent">view_faculty</div>
+
+        </div>
+    </div>
+
+    <!--Template Ending-->
+    </div>
+    </div>
+
+    <script src="/js/TabNav.js"></script>
+    </body>
+
+    </html>
