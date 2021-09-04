@@ -3,10 +3,7 @@ const controller = require("../controllers/IssueReturn_Controller");
 
 const routes = express.Router();
 
-/*
-routes.get("/", controller.);
-
-routes.post("/", controller.);
-*/
+routes.post("/issue", controller.IssueBook);
+routes.post("/return", controller.ReturnBook);
 
 module.exports = routes;

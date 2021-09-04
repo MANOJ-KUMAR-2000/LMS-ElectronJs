@@ -74,7 +74,7 @@ const UploadBooks = (req, res) => {
   var workbook = XLSX.read(req.files[""].data);
   const data = ExtractData(workbook);
   db.serialize(() => {
-    db.all("SELECT * FROM Library_Books", async (err, books) => {
+    db.all("SELECT * FROM Library_Books", (err, books) => {
       result = books.length;
       if (
         JSON.stringify(Object.keys(data[0])) ==

@@ -3,9 +3,7 @@ const controller = require("../controllers/AddView_Controller");
 
 const routes = express.Router();
 
-routes.get("/view-students", controller.ViewStudents);
-routes.get("/view-facultys", controller.ViewFacultys);
-routes.get("/view-books", controller.ViewBooks);
+routes.get("/all", controller.All);
 
 routes.post("/add-student", controller.AddStudents);
 routes.post("/add-faculty", controller.AddFacultys);
