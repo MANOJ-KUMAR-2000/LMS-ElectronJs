@@ -47,7 +47,9 @@ const LoginPost = (req, res) => {
         );
         res.redirect("/home");
       } else {
-        res.render("login", { error: "Invalid Password!" });
+        db.all(`SELECT username FROM Librarian_DB`, (err, result) => {
+          res.render("login", { users: result, error: "Invalid Password!" });
+        });
       }
     }
   });
@@ -89,7 +91,12 @@ const ForgotPassPost = (req, res) => {
           }
         });
       } else {
-        res.render("forgotpass", { error: "Invalid secirity key" });
+        db.all(`SELECT username FROM Librarian_DB`, (err, result) => {
+          res.render("forgotpass", {
+            users: result,
+            error: "Invalid secirity key",
+          });
+        });
       }
     }
   });
