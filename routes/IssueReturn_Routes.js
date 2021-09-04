@@ -5,5 +5,6 @@ const routes = express.Router();
 
 routes.post("/issue", controller.IssueBook);
 routes.post("/return", controller.ReturnBook);
+routes.post("/find-return", controller.ShowReturnBook);
 
 module.exports = routes;

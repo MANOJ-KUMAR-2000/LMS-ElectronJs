@@ -19,7 +19,7 @@ const IssueBook = (req, res) => {
   var date_time = date + " " + time;
 
   var validation_date = new Date(Date.now() + 12096e5);
-  validation_date = validation_date.toLocaleDateString();
+  validation_date = validation_date.toLocaleDateString() + " " + time;
   db.serialize(() => {
     var value = "";
     for (let i = 0; i < req.body["book_ids"].length; i++) {
@@ -65,6 +65,20 @@ const IssueBook = (req, res) => {
   });
 };
 
+const ShowReturnBook = (req, res) => {
+  db.all(
+    `SELECT * FROM Book_Issued WHERE roll_number = ?`,
+    [req.body["roll_number"]],
+    (err, result) => {
+      if (result.length == 0) {
+        console.log("No Books Issued");
+      } else {
+        res.send(result);
+      }
+    }
+  );
+};
+
 const ReturnBook = (req, res) => {};
 
-module.exports = { IssueBook, ReturnBook };
+module.exports = { IssueBook, ShowReturnBook, ReturnBook };
