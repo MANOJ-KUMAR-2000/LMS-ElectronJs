@@ -1,0 +1,15 @@
+.issue-return-main-content {
+    padding: 16px 12px;
+}
+
+.issue-return-main-content .issue {
+    display: flex;
+}
+
+.issue-return-main-content .issue .left-issue {
+    width: 60%;
+}
+
+.issue-return-main-content .issue .right-issue {
+    width: 40%;
+}
