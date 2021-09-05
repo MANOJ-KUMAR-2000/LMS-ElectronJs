@@ -25,7 +25,29 @@
                 </form>
             </div>
             <div class="book-recod-details">
-
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Book ID</th>
+                            <th>Title</th>
+                            <th>Author Type</th>
+                            <th>Author</th>
+                            <th>Publisher</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <% for(var i=0; i < books.length; i++) { %>
+                            <tr>
+                              <td><%= books[i].book_id %></td>
+                              <td><%= books[i].title %></td>
+                              <td><%= books[i].author_type %></td>
+                              <td><%= books[i].author %></td>
+                              <td><%= books[i].publisher %></td>
+                            </tr>
+                         <% } %>
+                    </tbody>
+                </table>
             </div>
     </div>
 

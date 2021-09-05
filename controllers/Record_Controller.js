@@ -12,10 +12,14 @@ const StudentsRecord = (req, res) => {
   db.all(
     `SELECT * FROM Book_Issued WHERE role = 'Student'`,
     (err, student_issued) => {
-      if (err) {
-        res.send("Something Went Wrong");
+      if (student_issued.length == 0) {
+        res.send(
+          JSON.stringify({
+            message: "No Book Issued to Students"
+          })
+        );
       } else {
-        res.send(student_issued);
+        res.render('studentsRecords',{students:student_issued,username:req.cookies.nscet.username});
       }
     }
   );
@@ -25,11 +29,14 @@ const FacultysRecord = (req, res) => {
   db.all(
     `SELECT * FROM Book_Issued WHERE role = 'Faculty'`,
     (err, faculty_issued) => {
-      if (err) {
-        console.log(err);
-        res.send("Something Went Wrong");
+      if (faculty_issued.length == 0) {
+        res.send(
+          JSON.stringify({
+            message: "No Book Issued to Facultys"
+          })
+        );
       } else {
-        res.send(faculty_issued);
+        res.render('facultyRecords',{facultys:faculty_issued,username:req.cookies.nscet.username});
       }
     }
   );
@@ -37,10 +44,14 @@ const FacultysRecord = (req, res) => {
 
 const BooksRecord = (req, res) => {
   db.all(`SELECT * FROM Currently_Available`, (err, available_book) => {
-    if (err) {
-      res.send("Something Went Wrong");
+    if (available_book.length == 0) {
+      res.send(
+        JSON.stringify({
+          message: "No Book Currently Available"
+        })
+      );
     } else {
-      res.send(available_book);
+      res.render('booksRecord',{books:available_book,username:req.cookies.nscet.username});
     }
   });
 };
@@ -50,35 +61,34 @@ const SearchFacultyStudent = (req, res) => {
     query_id = `SELECT * FROM Book_Issued WHERE roll_number = ?`;
     value_id = [req.body["search_roll_number"]];
     db.all(query_id, value_id, (err, result) => {
-      if (err) {
-        res.send("Something Went Wrong");
-      } else {
-        if (book_result == undefined) {
-          res.send("no id found");
+        if (result.length == 0) {
+          res.send(
+            JSON.stringify({
+              message: "No Book Issued To RollNumber : " + req.body["search_roll_number"]
+            })
+          );
         } else {
           res.send(result);
         }
-      }
     });
   } else {
     query_key = `SELECT * FROM Book_Issued WHERE book_title LIKE ?`;
     value_key = "%" + req.body["search_key"] + "%";
     db.all(query_key, value_key, (err, match_books) => {
-      if (err) {
-        res.send("SomeThing Went Wrong");
-      } else {
-        if (match_books.length == 0) {
-          res.send("no such found");
-        } else {
+      if (match_books.length == 0) {
+        res.send(
+          JSON.stringify({
+            message: "No Book Found To Keyword : " + req.body["search_key"]
+          })
+        );
+      } else{
           res.send(match_books);
         }
-      }
     });
   }
 };
 
 const SearchBook = (req, res) => {
-  if (req.body["search_key"] == undefined) {
     query_id = `SELECT * FROM Currently_Available WHERE author_type LIKE ? AND author LIKE ? AND title LIKE ? AND publisher LIKE ?`;
     value_id = [
       "%" + req.body["author_type"] + "%",
@@ -87,31 +97,14 @@ const SearchBook = (req, res) => {
       "%" + req.body["publisher"] + "%",
     ];
     db.all(query_id, value_id, (err, book_result) => {
-      if (err) {
-        res.send("Something Went Wrong");
-      } else {
-        if (book_result.lenght === 0) {
-          res.send("no Book found");
+      
+        if (book_result.length == 0) {
+          res.send("No Book found");
         } else {
           res.send(book_result);
         }
-      }
+      
     });
-  } else {
-    query_key = `SELECT * FROM Currently_Available WHERE title LIKE ?`;
-    value_key = "%" + req.body["search_key"] + "%";
-    db.all(query_key, value_key, (err, match_books) => {
-      if (err) {
-        res.send("SomeThing Went Wrong");
-      } else {
-        if (match_books.length == 0) {
-          res.send("no such book found");
-        } else {
-          res.send(match_books);
-        }
-      }
-    });
-  }
 };
 
 module.exports = {

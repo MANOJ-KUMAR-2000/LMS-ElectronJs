@@ -44,21 +44,33 @@ const IssueBook = (req, res) => {
                     date_time,
                     validation_date,
                     req.body["roll_number"],
-                    book_titles.title,
+                    book_titles[i].title,
                   ];
                   add_query = `INSERT INTO Book_Issued (role,book_id,date,validation_date,roll_number,book_title) VALUES (?,?,?,?,?,?);`;
                   remove_query = `DELETE FROM Currently_Available WHERE book_id = ?`;
                   db.run(add_query, value);
                   db.run(remove_query, req.body["book_ids"][i]);
                 }
-                res.send("All Clear");
+                res.send(
+                  JSON.stringify({
+                    message: "Book Successfully Issued to RollNumber : " + req.body["roll_number"],
+                  })
+                );
               } else {
-                console.log("bookid mismatch");
+                res.send(
+                  JSON.stringify({
+                    message: "Currently One of the Book is Not Available",
+                  })
+                );
               }
             }
           );
         } else {
-          res.send("ID not found");
+          res.send(
+            JSON.stringify({
+              message: "RollNumber is Invalid",
+            })
+          );
         }
       }
     );
@@ -71,7 +83,11 @@ const ShowReturnBook = (req, res) => {
     [req.body["roll_number"]],
     (err, result) => {
       if (result.length == 0) {
-        console.log("No Books Issued");
+        res.send(
+          JSON.stringify({
+            message: "No Book Issued to RollNumber : "+ req.body["roll_number"],
+          })
+        );
       } else {
         res.send(result);
       }

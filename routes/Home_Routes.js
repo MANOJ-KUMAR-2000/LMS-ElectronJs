@@ -3,7 +3,6 @@ const express = require("express");
 const routes = express.Router();
 
 routes.get("/home", (req, res) => {
-    console.log(req.cookies.nscet.department)
     if(req.cookies.nscet.department == 'CSE'){
         res.render("home",{username:req.cookies.nscet.username,dept_name:"Computer Science & Engineering"});
     }

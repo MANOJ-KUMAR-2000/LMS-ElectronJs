@@ -31,8 +31,9 @@ const UploadStudents = (req, res) => {
   db.serialize(() => {
     if (
       JSON.stringify(Object.keys(data[0])) ==
-      JSON.stringify(["roll_number", "name", "batch", "department"])
+      JSON.stringify(["rollno", "name", "batch", "department"])
     ) {
+
       for (let i = 0; i < data.length; i++) {
         query = `INSERT INTO Student_DB (roll_number,name,batch,department) VALUES (?,?,?,?);`;
         values = [
@@ -41,11 +42,23 @@ const UploadStudents = (req, res) => {
           data[i].batch,
           data[i].department,
         ];
-        db.run(query, values);
+        db.run(query, values,(err)=>{
+          if(err){
+            //PASS
+          }
+        });
       }
-      res.send("<h1>All Clear</h1>");
+      res.send(
+        JSON.stringify({
+          message: "Successfully Students Added to Library",
+        })
+      );
     } else {
-      res.send("Check Xlsx File");
+      res.send(
+        JSON.stringify({
+          message: "Check Xlsx File Coloum Name should match [rollno,name,batch,department]",
+        })
+      );
     }
   });
 };
@@ -56,16 +69,28 @@ const UploadFacultys = (req, res) => {
   db.serialize(() => {
     if (
       JSON.stringify(Object.keys(data[0])) ==
-      JSON.stringify(["rool_number", "name", "department"])
+      JSON.stringify(["rollno", "name", "department"])
     ) {
       for (let i = 0; i < data.length; i++) {
         query = `INSERT INTO Faculty_DB (roll_number,name,department) VALUES (?,?,?);`;
         values = [data[i].rollno, data[i].name, data[i].department];
-        db.run(query, values);
+        db.run(query, values,(err)=>{
+          if(err){
+            //PASS
+          }
+        });
       }
-      res.send("<h1>All Clear</h1>");
+      res.send(
+        JSON.stringify({
+          message: "Successfully Facultys Added to Library",
+        })
+      );
     } else {
-      res.send("Check Xlsx File");
+      res.send(
+        JSON.stringify({
+          message: "Check Xlsx File Coloum Name should match [rollno,name,department]",
+        })
+      );
     }
   });
 };
@@ -98,9 +123,17 @@ const UploadBooks = (req, res) => {
         }
         var xls = json2xls(data);
         fs.writeFileSync("data.xlsx", xls, "binary");
-        res.send("<h1>All Clear</h1>");
+        res.send(
+          JSON.stringify({
+            message: "Successfully Books Added to Library",
+          })
+        );
       } else {
-        res.send("Check Xlsx File");
+        res.send(
+          JSON.stringify({
+            message: "Check Xlsx File Coloum Name should match [title,author_type,author,publisher]",
+          })
+        );
       }
     });
   });

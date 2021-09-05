@@ -14,7 +14,29 @@
 
             </div>
             <div class="faculty-recod-details">
-
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Faculty ID</th>
+                            <th>Book ID</th>
+                            <th>Book Name</th>
+                            <th>Date Issued</th>
+                            <th>Validatation Untill</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <% for(var i=0; i < facultys.length; i++) { %>
+                            <tr>
+                              <td><%= facultys[i].roll_number %></td>
+                              <td><%= facultys[i].book_id %></td>
+                              <td><%= facultys[i].book_title %></td>
+                              <td><%= facultys[i].date %></td>
+                              <td><%= facultys[i].validation_date %></td>
+                            </tr>
+                         <% } %>
+                    </tbody>
+                </table>
             </div>
     </div>
 

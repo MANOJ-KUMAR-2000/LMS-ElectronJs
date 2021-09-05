@@ -12,8 +12,7 @@ const All = (req, res) => {
   db.all(`SELECT * FROM Student_DB`, (err, studnets) => {
     db.all(`SELECT * FROM Faculty_DB`, (err, facultys) => {
       db.all(`SELECT * FROM Library_Books`, (err, books) => {
-        console.log(studnets, facultys, books);
-        res.render("database",{username:req.cookies.nscet.username});
+        res.render("database",{username:req.cookies.nscet.username,students_db:studnets,facultys_db:facultys,books_db:books});
       });
     });
   });
@@ -29,9 +28,17 @@ const AddStudents = (req, res) => {
   ];
   db.run(query, values, (err) => {
     if (err) {
-      res.send("<h1>Error Unique</h1>");
+      res.send(
+        JSON.stringify({
+          message: "Student RollNumber Already Exist",
+        })
+      );
     } else {
-      res.send("<h1>All Clear</h1>");
+      res.send(
+        JSON.stringify({
+          message: "Student Added Succesfully",
+        })
+      );
     }
   });
 };
@@ -41,9 +48,17 @@ const AddFacultys = (req, res) => {
   values = [req.body["roll_number"], req.body["name"], req.body["department"]];
   db.run(query, values, (err) => {
     if (err) {
-      res.send("<h1>Error Unique</h1>");
+      res.send(
+        JSON.stringify({
+          message: "Faculty RollNumber Already Exist",
+        })
+      );
     } else {
-      res.send("<h1>All Clear</h1>");
+      res.send(
+        JSON.stringify({
+          message: "Faculty Added Successfully",
+        })
+      );
     }
   });
 };
@@ -63,15 +78,17 @@ const AddBooks = (req, res) => {
     ];
     db.run(db_query, values, (err) => {
       if (err) {
-        console.log(err);
-        res.send("<h1>Error Unique</h1>");
+        //PASS
       } else {
         db.run(available_query, values, (err) => {
           if (err) {
-            console.log(err);
-            res.send("<h1>Error Unique</h1>");
+            //PASS
           } else {
-            res.send("All Clear");
+            res.send(
+              JSON.stringify({
+                message: "Book Sucessfully Added BookID is : " + book_id,
+              })
+            );
           }
         });
       }
