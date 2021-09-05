@@ -4,15 +4,15 @@
         <%- include('../templates/recordLinks.ejs') %>
 
             <div class="book-record-filters">
-                <form action="" method="post">
+                <form action="/record/book" method="post">
                     <div>
                         <input type="text" name="title" placeholder="Title">
                     </div>
                     <div>
-                        <input type="text" name="authur" id="" placeholder="Author Name">
+                        <input type="text" name="author" id="" placeholder="Author Name">
                     </div>
                     <div>
-                        <select name="type" id="">
+                        <select id="" name='author_type'>
                             <option value="" hidden>Author From</option>
                     <option value="Local Author">Local Author</option>
                     <option value="Foreign Author">Foreign Author</option>
