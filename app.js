@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const fileUpload = require("express-fileupload");
 
+const HomeRoutes = require("./routes/Home_Routes");
 const AuthRoutes = require("./routes/Auth_Routes");
 const UploadRoutes = require("./routes/Upload_Routes");
 const AddViewRoutes = require("./routes/AddView_Routes");
@@ -22,10 +23,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.listen(8888);
 
-app.get("/home", (req, res) => {
-  res.render("home");
-});
 
+app.use("/",HomeRoutes)
 app.use("/authentication", AuthRoutes);
 app.use("/record", RecordRoutes);
 app.use("/add-view", AddViewRoutes);

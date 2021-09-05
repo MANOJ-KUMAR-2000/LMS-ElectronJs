@@ -132,9 +132,75 @@
                 <button class="secondry_tablinks" onclick="openSecondry2(event, 'view_student')">Students</button>
                 <button class="secondry_tablinks" onclick="openSecondry2(event, 'view_faculty')">Faculty</button>
             </div>
-            <div id="view_book" class="secondry2_tabcontent">view_book</div>
-            <div id="view_student" class="secondry2_tabcontent">view_student</div>
-            <div id="view_faculty" class="secondry2_tabcontent">view_faculty</div>
+            <div id="view_book" class="secondry2_tabcontent">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Book ID</th>
+                            <th>Title</th>
+                            <th>Author Type</th>
+                            <th>Author</th>
+                            <th>Publisher</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <% for(var i=0; i < books_db.length; i++) { %>
+                            <tr>
+                              <td><%= books_db[i].book_id %></td>
+                              <td><%= books_db[i].title %></td>
+                              <td><%= books_db[i].author_type %></td>
+                              <td><%= books_db[i].author %></td>
+                              <td><%= books_db[i].publisher %></td>
+                            </tr>
+                         <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <div id="view_student" class="secondry2_tabcontent">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Name</th>
+                            <th>Batch</th>
+                            <th>Department</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <% for(var i=0; i < students_db.length; i++) { %>
+                            <tr>
+                              <td><%= students_db[i].roll_number %></td>
+                              <td><%= students_db[i].name %></td>
+                              <td><%= students_db[i].batch %></td>
+                              <td><%= students_db[i].department %></td>
+                            </tr>
+                         <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <div id="view_faculty" class="secondry2_tabcontent">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Faculty ID</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <% for(var i=0; i < facultys_db.length; i++) { %>
+                            <tr>
+                              <td><%= facultys_db[i].roll_number %></td>
+                              <td><%= facultys_db[i].name %></td>
+                              <td><%= facultys_db[i].department %></td>
+                            </tr>
+                         <% } %>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     </div>

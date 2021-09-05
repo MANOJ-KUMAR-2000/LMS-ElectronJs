@@ -9,3 +9,9 @@
 .record-main form {
     display: flex;
 }
+
+/* Testing Testing */
+.book-recod-details{
+    height: 350px;
+    overflow: auto;
+}

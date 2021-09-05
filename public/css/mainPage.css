@@ -56,3 +56,12 @@ header .user-sec {
 .content .main-content {
     width: 85%;
 }
+
+
+
+
+/* Testing Testing */
+.secondry2_tabcontent{
+    height: 350px;
+    overflow: auto;
+}
