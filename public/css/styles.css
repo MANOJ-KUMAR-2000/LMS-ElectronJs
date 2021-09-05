@@ -14,7 +14,21 @@ body {
     user-select: none;
 }
 
-img,a{
+ ::-webkit-scrollbar {
+    width: 6px;
+}
+
+ ::-webkit-scrollbar-track {
+    border-radius: 16px;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: tomato;
+    border-radius: 10px;
+}
+
+img,
+a {
     -webkit-user-drag: none;
     user-select: none;
     -moz-user-select: none;
@@ -28,4 +42,49 @@ a {
 
 a:hover {
     text-decoration: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+th {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+th,
+td {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: rgb(27, 27, 27);
+}
+
+th {
+    text-align: left;
+}
+
+thead th {
+    background-color: tomato;
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 99, 71, 0.1);
+}
+
+tbody td {
+    position: relative;
+}
+
+tbody td:hover:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -9999px;
+    bottom: -9999px;
+    background-color: rgba(255, 99, 71, 0.1);
+    z-index: -1;
 }

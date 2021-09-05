@@ -10,8 +10,10 @@
     display: flex;
 }
 
+
 /* Testing Testing */
-.book-recod-details{
-    height: 350px;
+
+.book-recod-details {
+    height: 60vh;
     overflow: auto;
 }

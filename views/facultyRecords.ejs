@@ -24,17 +24,27 @@
                             <th>Validatation Untill</th>
                         </tr>
                     </thead>
-                    
+
                     <tbody>
                         <% for(var i=0; i < facultys.length; i++) { %>
                             <tr>
-                              <td><%= facultys[i].roll_number %></td>
-                              <td><%= facultys[i].book_id %></td>
-                              <td><%= facultys[i].book_title %></td>
-                              <td><%= facultys[i].date %></td>
-                              <td><%= facultys[i].validation_date %></td>
+                                <td>
+                                    <%= facultys[i].roll_number %>
+                                </td>
+                                <td>
+                                    <%= facultys[i].book_id %>
+                                </td>
+                                <td>
+                                    <%= facultys[i].book_title %>
+                                </td>
+                                <td>
+                                    <%= facultys[i].date %>
+                                </td>
+                                <td>
+                                    <%= facultys[i].validation_date %>
+                                </td>
                             </tr>
-                         <% } %>
+                            <% } %>
                     </tbody>
                 </table>
             </div>
@@ -44,7 +54,7 @@
     <!--Template Ending-->
     </div>
     </div>
-
+    <script src="/js/time.js"></script>
     </body>
 
     </html>

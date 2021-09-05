@@ -7,5 +7,11 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 50px;
     font-weight: bold;
+    color: rgb(27, 27, 27);
     text-align: center;
+}
+
+.home-main-content .wel-msg .sys {
+    text-transform: uppercase;
+    color: #FF4500;
 }

@@ -4,19 +4,25 @@
         <h2>DATABASE</h2>
         <!-- Tab links -->
         <div class="primary_tab">
-            <button class="primary_tablinks" onclick="openPrimary(event, 'add_db')">Add</button>
-            <button class="primary_tablinks" onclick="openPrimary(event, 'view_db')">View</button>
-            <button class="primary_tablinks" onclick="">Backup</button>
-            <button class="primary_tablinks" onclick="">Restore</button>
+            <div>
+                <button class="primary_tablinks" onclick="openPrimary(event, 'add_db')">Add</button>
+                <button class="primary_tablinks" onclick="openPrimary(event, 'view_db')">View</button>
+            </div>
+
+            <div>
+                <button class="primary_tablinks" onclick="">Backup</button>
+                <button class="primary_tablinks" onclick="">Restore</button>
+            </div>
+
         </div>
 
         <!-- Tab content 1-->
         <div id="add_db" class="primary_tabcontent">
             <h3>Add to database</h3>
             <div class="secondry1_tab">
-                <button class="secondry_tablinks" onclick="openSecondry1(event, 'add_book')">Books</button>
-                <button class="secondry_tablinks" onclick="openSecondry1(event, 'add_student')">Students</button>
-                <button class="secondry_tablinks" onclick="openSecondry1(event, 'add_faculty')">Faculty</button>
+                <button class="secondry1_tablinks" onclick="openSecondry1(event, 'add_book')">Books</button>
+                <button class="secondry1_tablinks" onclick="openSecondry1(event, 'add_student')">Students</button>
+                <button class="secondry1_tablinks" onclick="openSecondry1(event, 'add_faculty')">Faculty</button>
             </div>
             <div id="add_book" class="secondry1_tabcontent">
                 <div class="add_book">
@@ -128,9 +134,9 @@
         <div id="view_db" class="primary_tabcontent">
             <h3>View in database</h3>
             <div class="secondry2_tab">
-                <button class="secondry_tablinks" onclick="openSecondry2(event, 'view_book')">Books</button>
-                <button class="secondry_tablinks" onclick="openSecondry2(event, 'view_student')">Students</button>
-                <button class="secondry_tablinks" onclick="openSecondry2(event, 'view_faculty')">Faculty</button>
+                <button class="secondry2_tablinks" onclick="openSecondry2(event, 'view_book')">Books</button>
+                <button class="secondry2_tablinks" onclick="openSecondry2(event, 'view_student')">Students</button>
+                <button class="secondry2_tablinks" onclick="openSecondry2(event, 'view_faculty')">Faculty</button>
             </div>
             <div id="view_book" class="secondry2_tabcontent">
                 <table>
@@ -143,17 +149,27 @@
                             <th>Publisher</th>
                         </tr>
                     </thead>
-                    
+
                     <tbody>
                         <% for(var i=0; i < books_db.length; i++) { %>
                             <tr>
-                              <td><%= books_db[i].book_id %></td>
-                              <td><%= books_db[i].title %></td>
-                              <td><%= books_db[i].author_type %></td>
-                              <td><%= books_db[i].author %></td>
-                              <td><%= books_db[i].publisher %></td>
+                                <td>
+                                    <%= books_db[i].book_id %>
+                                </td>
+                                <td>
+                                    <%= books_db[i].title %>
+                                </td>
+                                <td>
+                                    <%= books_db[i].author_type %>
+                                </td>
+                                <td>
+                                    <%= books_db[i].author %>
+                                </td>
+                                <td>
+                                    <%= books_db[i].publisher %>
+                                </td>
                             </tr>
-                         <% } %>
+                            <% } %>
                     </tbody>
                 </table>
             </div>
@@ -167,16 +183,24 @@
                             <th>Department</th>
                         </tr>
                     </thead>
-                    
+
                     <tbody>
                         <% for(var i=0; i < students_db.length; i++) { %>
                             <tr>
-                              <td><%= students_db[i].roll_number %></td>
-                              <td><%= students_db[i].name %></td>
-                              <td><%= students_db[i].batch %></td>
-                              <td><%= students_db[i].department %></td>
+                                <td>
+                                    <%= students_db[i].roll_number %>
+                                </td>
+                                <td>
+                                    <%= students_db[i].name %>
+                                </td>
+                                <td>
+                                    <%= students_db[i].batch %>
+                                </td>
+                                <td>
+                                    <%= students_db[i].department %>
+                                </td>
                             </tr>
-                         <% } %>
+                            <% } %>
                     </tbody>
                 </table>
             </div>
@@ -189,15 +213,21 @@
                             <th>Department</th>
                         </tr>
                     </thead>
-                    
+
                     <tbody>
                         <% for(var i=0; i < facultys_db.length; i++) { %>
                             <tr>
-                              <td><%= facultys_db[i].roll_number %></td>
-                              <td><%= facultys_db[i].name %></td>
-                              <td><%= facultys_db[i].department %></td>
+                                <td>
+                                    <%= facultys_db[i].roll_number %>
+                                </td>
+                                <td>
+                                    <%= facultys_db[i].name %>
+                                </td>
+                                <td>
+                                    <%= facultys_db[i].department %>
+                                </td>
                             </tr>
-                         <% } %>
+                            <% } %>
                     </tbody>
                 </table>
             </div>
@@ -208,7 +238,7 @@
     <!--Template Ending-->
     </div>
     </div>
-
+    <script src="/js/time.js"></script>
     <script src="/js/TabNav.js"></script>
     </body>
 

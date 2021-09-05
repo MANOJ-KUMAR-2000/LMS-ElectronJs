@@ -96,50 +96,50 @@ const UploadFacultys = (req, res) => {
 };
 
 const UploadBooks = (req, res) => {
-        var workbook = XLSX.read(req.files[""].data);
-        const data = ExtractData(workbook);
-        db.serialize(() => {
-                    db.all("SELECT * FROM Library_Books", (err, books) => {
-                        result = books.length;
-                        if (
-                            JSON.stringify(Object.keys(data[0])) ==
-                            JSON.stringify(["title", "author_type", "author", "publisher"])
-                        ) {
-                            for (let i = 0; i < data.length; i++) {
-                                result += 1;
-                                book_id = req.cookies.nscet.department + result;
-                                db_query = `INSERT INTO Library_Books (book_id,title,author_type,author,publisher) VALUES (?,?,?,?,?);`;
-                                available_query = `INSERT INTO Currently_Available (book_id,title,author_type,author,publisher) VALUES (?,?,?,?,?);`;
-                                values = [
-                                    book_id,
-                                    data[i].title,
-                                    data[i].author_type,
-                                    data[i].author,
-                                    data[i].publisher,
-                                ];
-                                data[i].book_id = book_id;
-                                db.run(db_query, values);
-                                db.run(available_query, values);
-                            }
-                            var xls = json2xls(data);
-                            fs.writeFileSync("data.xlsx", xls, "binary");
-                            res.send(
-                                JSON.stringify({
-                                    message: "Successfully Books Added to Library",
-                                })
-                            );
-                        } else {
-                            res.send(
-                                JSON.stringify({
-                                    message: "Check Xlsx File Coloum Name should match [title,author_type,author,publisher]",
-                                })
-                            );
-                        }
-                    });
-                };
-
-                module.exports = {
-                    UploadStudents,
-                    UploadFacultys,
-                    UploadBooks,
-                };
+    var workbook = XLSX.read(req.files[""].data);
+    const data = ExtractData(workbook);
+    db.serialize(() => {
+        db.all("SELECT * FROM Library_Books", (err, books) => {
+            result = books.length;
+            if (
+                JSON.stringify(Object.keys(data[0])) ==
+                JSON.stringify(["title", "author_type", "author", "publisher"])
+            ) {
+                for (let i = 0; i < data.length; i++) {
+                    result += 1;
+                    book_id = req.cookies.nscet.department + result;
+                    db_query = `INSERT INTO Library_Books (book_id,title,author_type,author,publisher) VALUES (?,?,?,?,?);`;
+                    available_query = `INSERT INTO Currently_Available (book_id,title,author_type,author,publisher) VALUES (?,?,?,?,?);`;
+                    values = [
+                        book_id,
+                        data[i].title,
+                        data[i].author_type,
+                        data[i].author,
+                        data[i].publisher,
+                    ];
+                    data[i].book_id = book_id;
+                    db.run(db_query, values);
+                    db.run(available_query, values);
+                }
+                var xls = json2xls(data);
+                fs.writeFileSync("data.xlsx", xls, "binary");
+                res.send(
+                    JSON.stringify({
+                        message: "Successfully Books Added to Library",
+                    })
+                );
+            } else {
+                res.send(
+                    JSON.stringify({
+                        message: "Check Xlsx File Coloum Name should match [title,author_type,author,publisher]",
+                    })
+                );
+            }
+        });
+    });
+}
+module.exports = {
+    UploadStudents,
+    UploadFacultys,
+    UploadBooks,
+};

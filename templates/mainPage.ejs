@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/css/database.css">
     <link rel="stylesheet" href="/css/records.css">
     <link rel="stylesheet" href="/css/issue_return.css">
+
 </head>
 
 <body>
@@ -23,18 +24,24 @@
             <h1>NADAR SARASWATHI COLLEGE OF ENGINEERING<br/>AND TECHNOLOGY</h1>
         </div>
         <div class="user-sec">
-            <h6>Welcome, <%=username%></h6>
+            <h6>Welcome,
+                <%=username%>
+            </h6>
+            <a href="/home">home</a>
             <a type="button" href="/authentication/logout">Logout</a>
         </div>
     </header>
     <hr/>
     <div class="content">
         <div class="navigation">
-            <a href="/add-view/all">Database</a>
-            <a href="">Issue / Return</a>
-            <a href="/record/students">Records</a>
-            <a href="">Report</a>
+            <div class="nav-links">
+                <a href="/add-view/all">Database</a>
+                <a href="">Issue / Return</a>
+                <a href="/record/students">Records</a>
+                <a href="">Report</a>
+            </div>
+            <div id="clock"></div>
+            <div class="logo"><img src="/img/iSPIN_logo.png" alt="iSPIN_logo"></div>
 
-            <img src="/img/iSPIN_logo.png" alt="iSPIN_logo">
         </div>
         <div class="main-content">
