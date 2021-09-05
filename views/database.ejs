@@ -23,31 +23,36 @@
                     <div class="solo">
                         Add a single book
                         <div>
-                            <input name="title" type="text">
+                            <input name="title" type="text" id="book_title" required>
                             <span>Title</span>
                         </div>
                         <div>
-                            <input name="author" type="text">
+                            <input name="author" type="text" id="book_author" required>
                             <span>Author Name</span>
                         </div>
                         <div>
-                            <select name="author_type" id="">
+                            <select name="author_type" id="book_author_type" required>
+                                <option value="" hidden> </option>
                                 <option value="Local Author">Local Author</option>
                                 <option value="Foreign Author">Foreign Author</option>
                             </select>
                             <span>Author Type</span>
                         </div>
                         <div>
-                            <input name="publisher" type="text">
-                            <span>Title</span>
+                            <input name="publisher" type="text" id='book_publisher' required>
+                            <span>Publisher</span>
                         </div>
-                        <button>Add</button>
+                        <button onclick="add_book()">Add</button>
+                        <p id="book_success_message"></p>
+                        <p id="book_error_message"></p>
                     </div>
                     <div class="multi">
                         Add multiple Books
                         <div>
-                            <input type="file" name="book_excel_file" id="book_excel_file">
-                            <button>Add</button>
+                            <input type="file" name="book_excel_file" id="book_excel_file" required>
+                            <button onclick="add_book_xlsx()">Add</button>
+                            <p id="book_xlsx_success_message"></p>
+                            <p id="book_xlsx_error_message"></p>
                         </div>
                     </div>
                 </div>
@@ -57,15 +62,16 @@
                     <div class="solo">
                         Add a single student
                         <div>
-                            <input name="roll_number" type="text">
+                            <input name="roll_number" id='stu_roll_number' type="text">
                             <span>Register No</span>
                         </div>
                         <div>
-                            <input name="name" type="text">
+                            <input name="name" id='stu_name' type="text">
                             <span>Name</span>
                         </div>
                         <div>
-                            <select name="department" id="">
+                            <select name="department" id="stu_department" required>
+                            <option value="" hidden> </option>
                             <option value="CSE">Computer Science & Engg</option>
                             <option value="MECH">Mechanical & Engg</option>
                             <option value="ECE">Electronics & Communication Engg</option>
@@ -75,16 +81,21 @@
                             <span>Department</span>
                         </div>
                         <div>
-                            <input name="batch" type="text">
+                            <input name="batch" id='stu_batch' type="text" required>
                             <span>batch</span>
                         </div>
-                        <button>Add</button>
+                        <button onclick="add_student()">Add</button>
+                        <p id="stu_success_message"></p>
+                        <p id="stu_error_message"></p>
                     </div>
                     <div class="multi">
                         Add multiple students
                         <div>
-                            <input type="file" name="student_excel_file" id="student_excel_file">
-                            <button>Add</button>
+                            <input type="file" name="student_excel_file" id="student_excel_file" required>
+                            <button onclick="add_student_xlsx()">Add</button>
+                            <p id="stu_xlsx_success_message"></p>
+                            <p id="stu_xlsx_error_message"></p>
+                            
                         </div>
                     </div>
                 </div>
@@ -95,15 +106,16 @@
                     <div class="solo">
                         Add a single Faculty
                         <div>
-                            <input name="roll_number" type="text">
+                            <input name="roll_number" id='facu_roll_number' type="text" required>
                             <span>Faculty Id</span>
                         </div>
                         <div>
-                            <input name="name" type="text">
+                            <input name="name" id='facu_name' type="text" required>
                             <span>Name</span>
                         </div>
                         <div>
-                            <select name="department" id="">
+                            <select name="department" id="facu_department" required>
+                                <option value="" hidden> </option>
                         <option value="CSE">Computer Science & Engg</option>
                         <option value="MECH">Mechanical & Engg</option>
                         <option value="ECE">Electronics & Communication Engg</option>
@@ -112,13 +124,18 @@
                     </select>
                             <span>Department</span>
                         </div>
-                        <button>Add</button>
+                        <button onclick="add_faculty()">Add</button>
+                        <p id="facu_success_message"></p>
+                        <p id="facu_error_message"></p>
+
                     </div>
                     <div class="multi">
                         Add multiple faculty
                         <div>
-                            <input type="file" name="faculty_excel_file" id="faculty_excel_file">
-                            <button>Add</button>
+                            <input type="file" name="faculty_excel_file" id="faculty_excel_file" required>
+                            <button onclick="add_faculty_xlsx()">Add</button>
+                            <p id="facu_xlsx_success_message"></p>
+                            <p id="facu_xlsx_error_message"></p>
                         </div>
                     </div>
                 </div>
@@ -210,6 +227,7 @@
     </div>
 
     <script src="/js/TabNav.js"></script>
+    <script src="/js/Database.js"></script>
     </body>
 
     </html>

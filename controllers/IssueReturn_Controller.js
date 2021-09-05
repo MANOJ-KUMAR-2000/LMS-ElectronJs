@@ -8,18 +8,26 @@ const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
   }
 });
 
+/*
+{
+  "book_ids":["CSE1"],
+  "role":"Faculty",
+  "role_search":"Faculty_DB",
+  "roll_number":"190"
+}
+*/
+
 const IssueBook = (req, res) => {
   var today = new Date();
-  var date =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+  var validation_date = new Date(today);
+  validation_date = validation_date.setDate(validation_date.getDate()+ 14);
 
-  var time =
-    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-  var date_time = date + " " + time;
+  date_time = today.toLocaleDateString()+' '+time
 
-  var validation_date = new Date(Date.now() + 12096e5);
-  validation_date = validation_date.toLocaleDateString() + " " + time;
+  validation_date =  new Date(validation_date).toLocaleDateString()+' '+time;
+
   db.serialize(() => {
     var value = "";
     for (let i = 0; i < req.body["book_ids"].length; i++) {

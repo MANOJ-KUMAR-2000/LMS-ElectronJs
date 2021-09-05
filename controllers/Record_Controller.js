@@ -56,23 +56,8 @@ const BooksRecord = (req, res) => {
   });
 };
 
-const SearchFacultyStudent = (req, res) => {
-  if (req.body["search_key"] == undefined) {
-    query_id = `SELECT * FROM Book_Issued WHERE roll_number = ?`;
-    value_id = [req.body["search_roll_number"]];
-    db.all(query_id, value_id, (err, result) => {
-        if (result.length == 0) {
-          res.send(
-            JSON.stringify({
-              message: "No Book Issued To RollNumber : " + req.body["search_roll_number"]
-            })
-          );
-        } else {
-          res.send(result);
-        }
-    });
-  } else {
-    query_key = `SELECT * FROM Book_Issued WHERE book_title LIKE ?`;
+const SearchbyKey = (req,res)=>{
+  query_key = `SELECT * FROM Book_Issued WHERE book_title LIKE ?`;
     value_key = "%" + req.body["search_key"] + "%";
     db.all(query_key, value_key, (err, match_books) => {
       if (match_books.length == 0) {
@@ -85,7 +70,32 @@ const SearchFacultyStudent = (req, res) => {
           res.send(match_books);
         }
     });
-  }
+}
+
+
+const SearchFaculty = (req,res)=>{
+  query_id = `SELECT * FROM Book_Issued WHERE roll_number = ?`;
+    value_id = [req.body["search_roll_number"]];
+    db.all(query_id, value_id, (err, result) => {
+        if (result.length == 0) {
+          res.render('facultyRecords',{facultys:[],username:req.cookies.nscet.username});
+        } else {
+          res.render('facultyRecords',{facultys:result,username:req.cookies.nscet.username});
+        }
+    });
+}
+
+
+const SearchStudent = (req, res) => {
+    query_id = `SELECT * FROM Book_Issued WHERE roll_number = ?`;
+    value_id = [req.body["search_roll_number"]];
+    db.all(query_id, value_id, (err, result) => {
+        if (result.length == 0) {
+          res.render('studentsRecords',{students:[],username:req.cookies.nscet.username});
+        } else {
+          res.render('studentsRecords',{students:result,username:req.cookies.nscet.username});
+        }
+    });
 };
 
 const SearchBook = (req, res) => {
@@ -99,9 +109,9 @@ const SearchBook = (req, res) => {
     db.all(query_id, value_id, (err, book_result) => {
       
         if (book_result.length == 0) {
-          res.send("No Book found");
+          res.render('booksRecord',{books:[],username:req.cookies.nscet.username});
         } else {
-          res.send(book_result);
+          res.render('booksRecord',{books:book_result,username:req.cookies.nscet.username});
         }
       
     });
@@ -111,6 +121,8 @@ module.exports = {
   StudentsRecord,
   FacultysRecord,
   BooksRecord,
-  SearchFacultyStudent,
+  SearchFaculty,
+  SearchStudent,
+  SearchbyKey,
   SearchBook,
 };

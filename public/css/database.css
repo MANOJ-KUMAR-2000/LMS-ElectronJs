@@ -64,3 +64,22 @@
 .database-main-content .primary_tabcontent .secondry1_tabcontent .multi {
     width: 30%;
 }
+
+#success-div{
+    position: absolute;
+    top: 0;
+    width: 99vw;
+    height: 99vh;
+    background-color: rgba(0,0,0,0.3);
+}
+
+#success-div div{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 25% 35%;
+}
+
+#success-div a{
+    cursor: pointer;
+}

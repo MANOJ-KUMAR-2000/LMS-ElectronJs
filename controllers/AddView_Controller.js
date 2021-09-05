@@ -9,9 +9,9 @@ const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
 });
 
 const All = (req, res) => {
-  db.all(`SELECT * FROM Student_DB`, (err, studnets) => {
-    db.all(`SELECT * FROM Faculty_DB`, (err, facultys) => {
-      db.all(`SELECT * FROM Library_Books`, (err, books) => {
+  db.all(`SELECT * FROM Student_DB ORDER BY name`, (err, studnets) => {
+    db.all(`SELECT * FROM Faculty_DB ORDER BY name`, (err, facultys) => {
+      db.all(`SELECT * FROM Library_Books ORDER BY title`, (err, books) => {
         res.render("database",{username:req.cookies.nscet.username,students_db:studnets,facultys_db:facultys,books_db:books});
       });
     });
@@ -86,7 +86,7 @@ const AddBooks = (req, res) => {
           } else {
             res.send(
               JSON.stringify({
-                message: "Book Sucessfully Added BookID is : " + book_id,
+                message: "Book Sucessfully Added",bookid:book_id
               })
             );
           }

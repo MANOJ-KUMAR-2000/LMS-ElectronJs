@@ -26,7 +26,7 @@ function ExtractData(workbook) {
 }
 
 const UploadStudents = (req, res) => {
-  var workbook = XLSX.read(req.files[""].data);
+  var workbook = XLSX.read(req.files['file'].data);
   const data = ExtractData(workbook);
   db.serialize(() => {
     if (
@@ -64,7 +64,7 @@ const UploadStudents = (req, res) => {
 };
 
 const UploadFacultys = (req, res) => {
-  var workbook = XLSX.read(req.files[""].data);
+  var workbook = XLSX.read(req.files['file'].data);
   const data = ExtractData(workbook);
   db.serialize(() => {
     if (
@@ -96,7 +96,7 @@ const UploadFacultys = (req, res) => {
 };
 
 const UploadBooks = (req, res) => {
-  var workbook = XLSX.read(req.files[""].data);
+  var workbook = XLSX.read(req.files['file'].data);
   const data = ExtractData(workbook);
   db.serialize(() => {
     db.all("SELECT * FROM Library_Books", (err, books) => {
