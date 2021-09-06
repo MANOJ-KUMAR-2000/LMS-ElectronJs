@@ -4,9 +4,9 @@
         <%- include('../templates/recordLinks.ejs') %>
 
             <div class="who-what-record-filters">
-                <form action="/record/student" method="post">
+                <form action="/record/by-key" method="post">
                     <div>
-                        <input type="text" name="book_title" required>
+                        <input type="text" name="search_key" required>
                         <span>Book Title</span>
                     </div>
                     <button type="submit">Search</button>
@@ -26,22 +26,22 @@
                     </thead>
 
                     <tbody>
-                        <% for(var i=0; i < students.length; i++) { %>
+                        <% for(var i=0; i < match_books.length; i++) { %>
                             <tr>
                                 <td>
-                                    <%= students[i].roll_number %>
+                                    <%= match_books[i].roll_number %>
                                 </td>
                                 <td>
-                                    <%= students[i].book_id %>
+                                    <%= match_books[i].book_id %>
                                 </td>
                                 <td>
-                                    <%= students[i].book_title %>
+                                    <%= match_books[i].book_title %>
                                 </td>
                                 <td>
-                                    <%= students[i].date %>
+                                    <%= match_books[i].date %>
                                 </td>
                                 <td>
-                                    <%= students[i].validation_date %>
+                                    <%= match_books[i].validation_date %>
                                 </td>
                             </tr>
                             <% } %>

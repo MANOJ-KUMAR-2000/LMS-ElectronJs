@@ -30,15 +30,21 @@
                     <button onclick="add_book()">+</button>
                     <button onclick="remove_book()">-</button>
                     <div id='book-id-input'>
-                        
+
                     </div>
                 </div>
                 <div class="books-issue">
-                    
+
                 </div>
             </div>
             <div class="right-issue">
-                
+                <div class="book-issue-check-detail">
+                    <h4>Roll Number : <span id="check-detail-rollnumber"></span></h4>
+                    <h4>Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span id="check-detail-name"></span></h4>
+                    <h4>Department : <span id="check-detail-department"></span></h4>
+                    <h4>Batch &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span id="check-detail-batch"></span></h4>
+                </div>
+                <div id="book-issue-check-table"></div>
             </div>
         </div>
         <div id="return" class="irprimary_tabcontent return">
@@ -47,8 +53,8 @@
                     <div class="type">
                         <select name="type" id="type">
                         <option value="" hidden></option>
-                        <option value="student">Student</option>
-                        <option value="faculty">Faculty</option>
+                        <option value="Student">Student</option>
+                        <option value="Faculty">Faculty</option>
                     </select>
                         <span>Type</span>
                     </div>

@@ -6,15 +6,15 @@
             <div class="book-record-filters">
                 <form action="/record/book" method="post">
                     <div>
-                        <input type="text" name="title" required>
+                        <input type="text" name="title">
                         <span>&nbsp;Title</span>
                     </div>
                     <div>
-                        <input type="text" name="author" id="" required>
+                        <input type="text" name="author" id="">
                         <span>&nbsp;Author Name</span>
                     </div>
                     <div>
-                        <select id="" name='author_type' required>
+                        <select id="" name='author_type'>
                             <option value="" hidden></option>
                     <option value="Local Author">Local Author</option>
                     <option value="Foreign Author">Foreign Author</option>
@@ -22,7 +22,7 @@
                         <span>&nbsp;Author Type</span>
                     </div>
                     <div>
-                        <input type="text" name="publisher" id="" required>
+                        <input type="text" name="publisher" id="">
                         <span>&nbsp;publisher</span>
                     </div>
                     <button type="submit">Search</button>
@@ -32,11 +32,11 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Book ID</th>
-                            <th>Title</th>
-                            <th>Author Type</th>
-                            <th>Author</th>
-                            <th>Publisher</th>
+                            <th width='15%'>Book ID</th>
+                            <th width='35%'>Title</th>
+                            <th width='15%'>Author Type</th>
+                            <th width='20%'>Author</th>
+                            <th width='25%'>Publisher</th>
                         </tr>
                     </thead>
 

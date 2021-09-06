@@ -8,6 +8,10 @@ const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
     }
 });
 
+const WhoHasWhatGet = (req, res) => {
+    res.render('whohaswhatRec', { students: [], match_books: [], roll_detail: [], message: null, username: req.cookies.nscet.username })
+}
+
 const StudentsRecord = (req, res) => {
     db.all(
         `SELECT * FROM Book_Issued WHERE role = 'Student'`,
@@ -65,11 +69,11 @@ const SearchbyKey = (req, res) => {
         } else {
             if (match_books[0].role == 'Faculty') {
                 db.get(`SELECT * FROM Faculty_DB WHERE roll_number = ?`, [match_books[0].roll_number], (err, roll_number_detail) => {
-                    res.render('whohaswhatRec', { match_books: match_books, roll_detail: roll_number_detail, message: null })
+                    res.render('whohaswhatRec', { username: req.cookies.nscet.username, match_books: match_books, roll_detail: roll_number_detail, message: null })
                 })
             } else {
                 db.get(`SELECT * FROM Student_DB WHERE roll_number = ?`, [match_books[0].roll_number], (err, roll_number_detail) => {
-                    res.render('whohaswhatRec', { match_books: match_books, roll_detail: roll_number_detail, message: null })
+                    res.render('whohaswhatRec', { username: req.cookies.nscet.username, match_books: match_books, roll_detail: roll_number_detail, message: null })
                 })
             }
         }
@@ -129,4 +133,5 @@ module.exports = {
     SearchStudent,
     SearchbyKey,
     SearchBook,
+    WhoHasWhatGet,
 };

@@ -97,7 +97,6 @@ const UploadFacultys = (req, res) => {
 const UploadBooks = (req, res) => {
     var workbook = XLSX.read(req.files["file"].data);
     const data = ExtractData(workbook);
-    console.log(data)
     db.serialize(() => {
         db.all("SELECT * FROM Library_Books", (err, books) => {
             result = books.length;
@@ -126,6 +125,12 @@ const UploadBooks = (req, res) => {
                 res.send(
                     JSON.stringify({
                         message: "Successfully Books Added to Library",
+                    })
+                );
+            } else {
+                res.send(
+                    JSON.stringify({
+                        message: "Check Xlsx File Coloum Name",
                     })
                 );
             }
