@@ -57,9 +57,7 @@ function stu_facu_issue() {
   });
 }
 
-function stu_facu_return() {}
-
-function stu_facu_check() {
+function stu_facu_issue_check() {
   document.getElementById("book-issue-check-table").innerHTML = "";
   document.getElementById("check-detail-rollnumber").innerHTML = "";
   document.getElementById("check-detail-name").innerHTML = "";
@@ -157,6 +155,65 @@ function stu_facu_check() {
     });
   }
 }
+
+function stu_facu_return_check() {
+  document.getElementById("book-issue-check-table").innerHTML = "";
+  document.getElementById("check-detail-rollnumber").innerHTML = "";
+  document.getElementById("check-detail-name").innerHTML = "";
+  document.getElementById("check-detail-department").innerHTML = "";
+  document.getElementById("check-detail-batch").innerHTML = "";
+  document.getElementById("check-error").innerHTML = "";
+  var role = document.getElementById("role").value;
+  var role_number = document.getElementById("roll_number").value;
+
+  if (role == "Student") {
+    var roll_search = "Student_DB";
+  } else {
+    if (role == "Faculty") {
+      var roll_search = "Faculty_DB";
+    } else {
+      var roll_search = "";
+    }
+  }
+  if (role == "" || role_number == "" || roll_search == "") {
+    document.getElementById("check-error").innerHTML = "Input Field Empty";
+  } else {
+    fetch("/issue-return/check-issued", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        roll_number: role_number,
+        roll_search: roll_search,
+      }),
+    }).then((res) => {
+      res.json().then((responce) => {
+        if (responce.roll_detail == undefined) {
+          document.getElementById("check-error").innerHTML =
+            "Role Number Does Not Exist";
+        } else {
+          document.getElementById("r_check-detail-rollnumber").innerHTML =
+            "Roll Number : " + responce.roll_detail.roll_number;
+          document.getElementById("r_check-detail-name").innerHTML =
+            "Name : " + responce.roll_detail.name;
+          document.getElementById("r_check-detail-department").innerHTML =
+            "Department : " + responce.roll_detail.department;
+          if (responce.roll_detail.batch == undefined) {
+            document.getElementById("r_check-detail-batch").innerHTML =
+              "Batch : ";
+          } else {
+            document.getElementById("r_check-detail-batch").innerHTML =
+              "Batch : " + responce.roll_detail.batch;
+          }
+        }
+      });
+    });
+  }
+}
+
+function stu_facu_return() {}
 
 function add_book() {
   if (document.getElementsByName("book_ids[]").length < 6) {

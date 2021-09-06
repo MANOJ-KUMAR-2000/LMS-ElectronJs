@@ -147,6 +147,54 @@ const ShowIssuedCheck = (req, res) => {
   );
 };
 
+const ShowReturnCheck = (req, res) => {
+  db.get(
+    `SELECT * FROM ` + req.body["roll_search"] + ` WHERE roll_number = ?;`,
+    [req.body["roll_number"]],
+    (err, detail_result) => {
+      if (detail_result == undefined) {
+        res.send(
+          JSON.stringify({
+            message:
+              "Roll Number " + req.body["return_roll_number"] + " Not Found",
+          })
+        );
+      } else {
+        db.all(
+          `SELECT * FROM Book_Issued WHERE roll_number = ?`,
+          [req.body["return_roll_number"]],
+          (err, issued_result) => {
+            if (issued_result.length == 0) {
+              res.send(
+                JSON.stringify({
+                  message:
+                    "No Book Issued to Roll Number : " +
+                    req.body["return_roll_number"],
+                  roll_detail: detail_result,
+                  return_detail: [],
+                })
+              );
+            } else {
+              res.send(
+                JSON.stringify({
+                  roll_detail: detail_result,
+                  return_detail: issued_result,
+                })
+              );
+            }
+          }
+        );
+      }
+    }
+  );
+};
+
 const ReturnBook = (req, res) => {};
 
-module.exports = { IssueReturnGet, IssueBook, ShowIssuedCheck, ReturnBook };
+module.exports = {
+  IssueReturnGet,
+  IssueBook,
+  ShowIssuedCheck,
+  ReturnBook,
+  ShowReturnCheck,
+};
