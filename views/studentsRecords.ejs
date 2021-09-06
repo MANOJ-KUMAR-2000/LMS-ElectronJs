@@ -4,11 +4,23 @@
         <%- include('../templates/recordLinks.ejs') %>
 
             <div class="student-record-filters">
-                <form action="/record/student" method="post">
+                <form action="/record/students" method="post">
                     <div>
-                        <input type="text" name="search_roll_number" required>
+                        <input type="text" name="search_roll_number" value=" ">
                         <span>&nbsp;Register Number</span>
                     </div>
+                    <div>
+                        <input type="text" name="search_department" value=" ">
+                        <span>&nbsp;Department</span>
+                    </div>
+
+                    <!--
+                    <div>
+                        <input type="text" name="search_batch" value=" ">
+                        <span>&nbsp;Batch</span>
+                    </div>
+                    -->
+                     
                     <button type="submit">Search</button>
                 </form>
 
@@ -18,6 +30,8 @@
                     <thead>
                         <tr>
                             <th>Student ID</th>
+                            <th>Department</th>
+                            <th>Batch</th>
                             <th>Book ID</th>
                             <th>Book Name</th>
                             <th>Date Issued</th>
@@ -30,6 +44,12 @@
                             <tr>
                                 <td>
                                     <%= students[i].roll_number %>
+                                </td>
+                                <td>
+                                    <%= students[i].department %>
+                                </td>
+                                <td>
+                                    <%= students[i].batch %>
                                 </td>
                                 <td>
                                     <%= students[i].book_id %>

@@ -4,10 +4,14 @@
         <%- include('../templates/recordLinks.ejs') %>
 
             <div class="faculty-record-filters">
-                <form action="/record/faculty" method="post">
+                <form action="/record/facultys" method="post">
                     <div>
-                        <input type="text" name="search_roll_number" required />
+                        <input type="text" name="search_roll_number" value=" "/>
                         <span>&nbsp;Faculty Id</span>
+                    </div>
+                    <div>
+                        <input type="text" name="search_department" value=" "/>
+                        <span>&nbsp;Department</span>
                     </div>
                     <button type="submit">Search</button>
                 </form>
@@ -18,6 +22,7 @@
                     <thead>
                         <tr>
                             <th>Faculty ID</th>
+                            <th>Department</th>
                             <th>Book ID</th>
                             <th>Book Name</th>
                             <th>Date Issued</th>
@@ -30,6 +35,9 @@
                             <tr>
                                 <td>
                                     <%= facultys[i].roll_number %>
+                                </td>
+                                <td>
+                                    <%= facultys[i].department %>
                                 </td>
                                 <td>
                                     <%= facultys[i].book_id %>
