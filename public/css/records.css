@@ -56,10 +56,10 @@
     border-radius: 28px;
 }
 
-.faculty-record-filters form button,
-.student-record-filters form button,
-.who-what-record-filters form button {
-    margin-left: 36px;
+.faculty-record-filters form div,
+.student-record-filters form div,
+.who-what-record-filters form div {
+    margin-right: 36px;
 }
 
 
