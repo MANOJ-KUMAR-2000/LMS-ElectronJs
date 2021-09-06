@@ -31,7 +31,10 @@
 
 /* Testing Testing */
 
-.book-recod-details {
+.book-recod-details,
+.faculty-recod-details,
+.student-recod-details,
+.who-book-recod-details {
     height: 60vh;
     overflow: auto;
 }

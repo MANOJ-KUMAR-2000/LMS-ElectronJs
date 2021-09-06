@@ -57,6 +57,8 @@
 
 .return .return-who {
     display: flex;
+    margin-top: 22px;
+    margin-bottom: 12px;
 }
 
 .return .return-who div {
@@ -89,6 +91,23 @@
 }
 
 .issue .left-issue .issue-who div select:valid~span {
+    font-size: 18px;
+    color: rgb(8, 44, 80);
+    opacity: 1;
+    transform: translateX(-6px) translateY(-23px);
+    font-weight: 500;
+}
+
+.return .return-who div:focus-within span,
+.return .return-who div input:valid~span {
+    color: rgb(8, 44, 80);
+    opacity: 1;
+    transform: translateX(-6px) translateY(-23px);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.return .return-who div select:valid~span {
     font-size: 18px;
     color: rgb(8, 44, 80);
     opacity: 1;
@@ -133,4 +152,9 @@
     padding: 6px 12px;
     border: 1px solid rgb(0, 48, 96);
     border-top: none;
+}
+
+#book-issue-check-table {
+    height: 48vh;
+    overflow: auto;
 }
