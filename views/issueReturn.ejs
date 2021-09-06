@@ -9,30 +9,36 @@
                 <div class="issue-who">
                     <div>
                         <div class="type">
-                            <select name="type" id="type">
+                            <select name="type" id='role'>
                             <option value="" hidden></option>
-                            <option value="student">Student</option>
-                            <option value="faculty">Faculty</option>
+                            <option value="Student">Student</option>
+                            <option value="Faculty">Faculty</option>
                         </select>
                             <span>Type</span>
                         </div>
                         <div>
-                            <input type="text" name="rollno" id="rollno">
+                            <input type="text" name="rollno" id="roll_number">
                             <span>Roll No</span>
                         </div>
                     </div>
                     <div>
-                        <button>Check</button>
+                        <button onclick="stu_facu_check()">Check</button>
+                    </div>
+                </div>
+                <div class="issue-book-div">
+                    <button onclick="stu_facu_issue()">IssueBook</button>
+                    <button onclick="add_book()">+</button>
+                    <button onclick="remove_book()">-</button>
+                    <div id='book-id-input'>
+                        
                     </div>
                 </div>
                 <div class="books-issue">
-                    <div>
-                        <input type="text" name="" id="">
-                    </div>
+                    
                 </div>
             </div>
             <div class="right-issue">
-
+                
             </div>
         </div>
         <div id="return" class="irprimary_tabcontent return">
@@ -65,6 +71,7 @@
     </div>
     </div>
     <script src="/js/time.js"></script>
+    <script src="/js/Issue_Return.js"></script>
     </body>
 
     </html>
