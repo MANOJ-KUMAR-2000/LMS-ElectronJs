@@ -85,37 +85,14 @@ const SearchbyKey = (req, res) => {
     if (match_books.length == 0) {
       res.render("whohaswhatRec", {
         match_books: [],
-        roll_detail: [],
         message: "No Book Found To Keyword : " + req.body["search_key"],
+        username: req.cookies.nscet.username,
       });
     } else {
-      if (match_books[0].role == "Faculty") {
-        db.get(
-          `SELECT * FROM Faculty_DB WHERE roll_number = ?`,
-          [match_books[0].roll_number],
-          (err, roll_number_detail) => {
-            res.render("whohaswhatRec", {
-              username: req.cookies.nscet.username,
-              match_books: match_books,
-              roll_detail: roll_number_detail,
-              message: null,
-            });
-          }
-        );
-      } else {
-        db.get(
-          `SELECT * FROM Student_DB WHERE roll_number = ?`,
-          [match_books[0].roll_number],
-          (err, roll_number_detail) => {
-            res.render("whohaswhatRec", {
-              username: req.cookies.nscet.username,
-              match_books: match_books,
-              roll_detail: roll_number_detail,
-              message: null,
-            });
-          }
-        );
-      }
+      res.render("whohaswhatRec", {
+        match_books: match_books,
+        username: req.cookies.nscet.username,
+      });
     }
   });
 };
