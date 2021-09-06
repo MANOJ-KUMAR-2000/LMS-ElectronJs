@@ -7,7 +7,7 @@
                 <form action="/record/who-has-what" method="post">
                     <div>
                         <input type="text" name="search_key" required>
-                        <span>Book Title</span>
+                        <span>&nbsp;Book Title</span>
                     </div>
                     <button type="submit">Search</button>
                 </form>
@@ -17,7 +17,9 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Student ID</th>
+                            <th>ID</th>
+                            <th>Department</th>
+                            <th>Batch</th>
                             <th>Book ID</th>
                             <th>Book Name</th>
                             <th>Date Issued</th>
@@ -30,6 +32,12 @@
                             <tr>
                                 <td>
                                     <%= match_books[i].roll_number %>
+                                </td>
+                                <td>
+                                    <%= match_books[i].department %>
+                                </td>
+                                <td>
+                                    <%= match_books[i].batch %>
                                 </td>
                                 <td>
                                     <%= match_books[i].book_id %>
