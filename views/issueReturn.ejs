@@ -4,65 +4,62 @@
             <button class="irprimary_tablinks" onclick="openissuereturn(event, 'issue')">Issue</button>
             <button class="irprimary_tablinks" onclick="openissuereturn(event, 'return')">Return</button>
         </div>
-        <div id="issue" class="irprimary_tabcontent issue">
-            <div class="left-issue">
-                <div class="issue-who">
-                    <div>
-                        <div class="type">
-                            <select name="type" id='role'>
+        <div id="issue" class="irprimary_tabcontent">
+            <div class="issue">
+                <div class="left-issue">
+                    <div class="issue-who">
+                        <div>
+                            <div class="type">
+                                <select name="type" id='role'>
                             <option value="" hidden></option>
                             <option value="Student">Student</option>
                             <option value="Faculty">Faculty</option>
                         </select>
-                            <span>Type</span>
+                                <span>&nbsp;Type</span>
+                            </div>
+                            <div>
+                                <input type="text" name="rollno" id="roll_number">
+                                <span>&nbsp;Roll No</span>
+                            </div>
                         </div>
                         <div>
-                            <input type="text" name="rollno" id="roll_number">
-                            <span>Roll No</span>
+                            <button onclick="stu_facu_check()">Check</button>
+                            <p id="check-error"></p>
                         </div>
                     </div>
-                    <div>
-                        <button onclick="stu_facu_check()">Check</button>
-                        <p id="check-error"></p>
+                    <div class="issue-book-div">
+                        <button class="issue-btn" onclick="stu_facu_issue()">IssueBook</button>
+                        <button onclick="add_book()">+</button>
+                        <button onclick="remove_book()">-</button>
+                        <div id='book-id-input'>
+
+                        </div>
                     </div>
                 </div>
-                <div class="issue-book-div">
-                    <button onclick="stu_facu_issue()">IssueBook</button>
-                    <button onclick="add_book()">+</button>
-                    <button onclick="remove_book()">-</button>
-                    <div id='book-id-input'>
-
+                <div class="right-issue">
+                    <div class="book-issue-check-detail">
+                        <h4>Roll Number : <span id="check-detail-rollnumber"></span></h4>
+                        <h4>Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span id="check-detail-name"></span></h4>
+                        <h4>Department : <span id="check-detail-department"></span></h4>
+                        <h4>Batch &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span id="check-detail-batch"></span></h4>
                     </div>
+                    <div id="book-issue-check-table"></div>
                 </div>
-                <div class="books-issue">
-
-                </div>
-            </div>
-            <div class="right-issue">
-                <div class="book-issue-check-detail">
-                    <h4>Roll Number : <span id="check-detail-rollnumber"></span></h4>
-                    <h4>Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span id="check-detail-name"></span></h4>
-                    <h4>Department : <span id="check-detail-department"></span></h4>
-                    <h4>Batch &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span id="check-detail-batch"></span></h4>
-                </div>
-                <div id="book-issue-check-table"></div>
             </div>
         </div>
         <div id="return" class="irprimary_tabcontent return">
             <div class="return-who">
-                <div>
-                    <div class="type">
-                        <select name="type" id="type">
+                <div class="type">
+                    <select name="type" id="type">
                         <option value="" hidden></option>
                         <option value="Student">Student</option>
                         <option value="Faculty">Faculty</option>
                     </select>
-                        <span>Type</span>
-                    </div>
-                    <div>
-                        <input type="text" name="rollno" id="rollno">
-                        <span>Roll No</span>
-                    </div>
+                    <span>&nbsp;Type</span>
+                </div>
+                <div>
+                    <input type="text" name="rollno" id="rollno">
+                    <span>&nbsp;Roll No</span>
                 </div>
                 <div>
                     <button>Check</button>
@@ -79,6 +76,7 @@
     </div>
     <script src="/js/time.js"></script>
     <script src="/js/Issue_Return.js"></script>
+    <script src="/js/TabNav.js"></script>
     </body>
 
     </html>

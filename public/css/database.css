@@ -97,7 +97,7 @@
 }
 
 .database-main-content .primary_tabcontent .secondry1_tabcontent .solo input,
-select {
+.database-main-content .primary_tabcontent .secondry1_tabcontent .solo select {
     width: 50%;
     background-color: rgba(255, 255, 255, 0.151);
     border-radius: 2px;
@@ -154,26 +154,6 @@ select {
 .secondry2_tabcontent {
     height: 58vh;
     overflow: auto;
-}
-
-#success-div {
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-#success-div div {
-    background-color: white;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    margin: 25% 35%;
-}
-
-#success-div a {
-    cursor: pointer;
 }
 
 .database-main-content h3 {

@@ -47,17 +47,18 @@
                             <input name="publisher" type="text" id='book_publisher' required>
                             <span>&nbsp;Publisher</span>
                         </div>
-                        <button onclick="add_book()">Add</button>
-                        <p id="book_success_message"></p>
-                        <p id="book_error_message"></p>
+                        <div><button onclick="add_book()">Add</button></div>
+                        <p id="book_error_message" class="error_msg"></p>
                     </div>
                     <div class="multi">
                         <h3>Add multiple Books</h3>
                         <div>
                             <input type="file" name="book_excel_file" id="book_excel_file" required>
                             <button onclick="add_book_xlsx()">Add</button>
+                            <p class="usr_msg">The excel sheet column name must be this names.</p>
+                            <p class="usr_msg">| title | author_type | author | publisher |</p>
                             <p id="book_xlsx_success_message"></p>
-                            <p id="book_xlsx_error_message"></p>
+                            <p id="book_xlsx_error_message" class="error_msg"></p>
                         </div>
                     </div>
                 </div>
@@ -89,17 +90,18 @@
                             <input name="batch" id='stu_batch' type="text" required>
                             <span>&nbsp;batch</span>
                         </div>
-                        <button onclick="add_student()">Add</button>
-                        <p id="stu_success_message"></p>
-                        <p id="stu_error_message"></p>
+                        <div><button onclick="add_student()">Add</button></div>
+                        <p id="stu_error_message" class="error_msg"></p>
                     </div>
                     <div class="multi">
                         <h3>Add multiple students</h3>
                         <div>
                             <input type="file" name="student_excel_file" id="student_excel_file" required>
                             <button onclick="add_student_xlsx()">Add</button>
+                            <p class="usr_msg">The excel sheet column name must be this names.</p>
+                            <p class="usr_msg">| roll_number | name | department | batch |</p>
                             <p id="stu_xlsx_success_message"></p>
-                            <p id="stu_xlsx_error_message"></p>
+                            <p id="stu_xlsx_error_message" class="error_msg"></p>
 
                         </div>
                     </div>
@@ -130,8 +132,7 @@
                             <span>&nbsp;Department</span>
                         </div>
                         <div><button onclick="add_faculty()">Add</button></div>
-                        <p id="facu_success_message"></p>
-                        <p id="facu_error_message"></p>
+                        <p id="facu_error_message" class="error_msg"></p>
 
                     </div>
                     <div class="multi">
@@ -139,8 +140,10 @@
                         <div>
                             <input type="file" name="faculty_excel_file" id="faculty_excel_file" required>
                             <button onclick="add_faculty_xlsx()">Add</button>
+                            <p class="usr_msg">The excel sheet column name must be this names.</p>
+                            <p class="usr_msg">| roll_number | name | department |</p>
                             <p id="facu_xlsx_success_message"></p>
-                            <p id="facu_xlsx_error_message"></p>
+                            <p id="facu_xlsx_error_message" class="error_msg"></p>
                         </div>
                     </div>
                 </div>

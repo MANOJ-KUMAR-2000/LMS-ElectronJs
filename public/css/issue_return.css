@@ -7,9 +7,130 @@
 }
 
 .issue-return-main-content .issue .left-issue {
-    width: 60%;
+    width: 50%;
 }
 
 .issue-return-main-content .issue .right-issue {
-    width: 40%;
+    width: 50%;
+}
+
+.issue .left-issue .issue-who {
+    margin: 24px 0;
+    display: flex;
+}
+
+.issue .left-issue .issue-who div {
+    display: flex;
+    margin-right: 8px;
+}
+
+.issue .left-issue .issue-who button,
+.return .return-who button {
+    border: none;
+    color: white;
+    background-color: rgb(0, 63, 126);
+    box-shadow: 0 2px 4px 1px rgba(27, 27, 27, 0.3);
+    padding: 2px 8px;
+    border-radius: 2px;
+}
+
+#book-id-input input {
+    margin-right: 12px;
+    margin-bottom: 6px;
+}
+
+.issue-btn {
+    margin-bottom: 16px;
+    border: none;
+    color: white;
+    background-color: tomato;
+    padding: 2px 8px;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 1px rgba(27, 27, 27, 0.3);
+}
+
+.issue .left-issue .issue-who div span {
+    position: absolute;
+    opacity: 0.5;
+    transition: 0.5s linear;
+}
+
+.return .return-who {
+    display: flex;
+}
+
+.return .return-who div {
+    display: flex;
+    margin-right: 16px;
+}
+
+.return .return-who div span {
+    position: absolute;
+    opacity: 0.5;
+    transition: 0.5s linear;
+}
+
+.issue-return-main-content input,
+.issue-return-main-content select {
+    background-color: rgba(255, 255, 255, 0.151);
+    border-radius: 2px;
+    border: 2px solid rgb(0, 48, 96);
+    outline-width: 3px;
+    outline-color: tomato;
+}
+
+.issue .left-issue .issue-who div:focus-within span,
+.issue .left-issue .issue-who div input:valid~span {
+    color: rgb(8, 44, 80);
+    opacity: 1;
+    transform: translateX(-6px) translateY(-23px);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.issue .left-issue .issue-who div select:valid~span {
+    font-size: 18px;
+    color: rgb(8, 44, 80);
+    opacity: 1;
+    transform: translateX(-6px) translateY(-23px);
+    font-weight: 500;
+}
+
+.issue_return_tab {
+    overflow: hidden;
+    border: 1px solid rgb(0, 48, 96);
+}
+
+.issue_return_tab button {
+    font-size: 18px;
+    margin-right: 16px;
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: 0.3s;
+}
+
+
+/* Change background color of buttons on hover */
+
+.issue_return_tab button:hover {
+    background-color: rgb(182, 182, 182);
+}
+
+
+/* Create an active/current tablink class */
+
+.issue_return_tab button.active {
+    background-color: rgb(0, 48, 96);
+    color: white;
+}
+
+.irprimary_tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid rgb(0, 48, 96);
+    border-top: none;
 }
