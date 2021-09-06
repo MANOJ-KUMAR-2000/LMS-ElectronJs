@@ -18,7 +18,6 @@
 
         <!-- Tab content 1-->
         <div id="add_db" class="primary_tabcontent">
-            <h3>Add to database</h3>
             <div class="secondry1_tab">
                 <button class="secondry1_tablinks" onclick="openSecondry1(event, 'add_book')">Books</button>
                 <button class="secondry1_tablinks" onclick="openSecondry1(event, 'add_student')">Students</button>
@@ -27,14 +26,14 @@
             <div id="add_book" class="secondry1_tabcontent">
                 <div class="add_book">
                     <div class="solo">
-                        Add a single book
+                        <h3>Add a single book</h3>
                         <div>
-                            <input name="title" type="text" id="book_title" required>
-                            <span>Title</span>
+                            <input name="title" type="text" id="book_title" required/>
+                            <span>&nbsp;Title</span>
                         </div>
                         <div>
-                            <input name="author" type="text" id="book_author" required>
-                            <span>Author Name</span>
+                            <input name="author" type="text" id="book_author" required/>
+                            <span>&nbsp;Author Name</span>
                         </div>
                         <div>
                             <select name="author_type" id="book_author_type" required>
@@ -42,18 +41,18 @@
                                 <option value="Local Author">Local Author</option>
                                 <option value="Foreign Author">Foreign Author</option>
                             </select>
-                            <span>Author Type</span>
+                            <span>&nbsp;Author Type</span>
                         </div>
                         <div>
                             <input name="publisher" type="text" id='book_publisher' required>
-                            <span>Publisher</span>
+                            <span>&nbsp;Publisher</span>
                         </div>
                         <button onclick="add_book()">Add</button>
                         <p id="book_success_message"></p>
                         <p id="book_error_message"></p>
                     </div>
                     <div class="multi">
-                        Add multiple Books
+                        <h3>Add multiple Books</h3>
                         <div>
                             <input type="file" name="book_excel_file" id="book_excel_file" required>
                             <button onclick="add_book_xlsx()">Add</button>
@@ -66,14 +65,14 @@
             <div id="add_student" class="secondry1_tabcontent">
                 <div class="add_student">
                     <div class="solo">
-                        Add a single student
+                        <h3>Add a single student</h3>
                         <div>
-                            <input name="roll_number" id='stu_roll_number' type="text">
-                            <span>Register No</span>
+                            <input name="roll_number" id='stu_roll_number' type="text" required>
+                            <span>&nbsp;Register No</span>
                         </div>
                         <div>
-                            <input name="name" id='stu_name' type="text">
-                            <span>Name</span>
+                            <input name="name" id='stu_name' type="text" required>
+                            <span>&nbsp;Name</span>
                         </div>
                         <div>
                             <select name="department" id="stu_department" required>
@@ -84,24 +83,24 @@
                             <option value="CIVIL">Civil Engg</option>
                             <option value="EEE">Electrical & Electronics Engg</option>
                         </select>
-                            <span>Department</span>
+                            <span>&nbsp;Department</span>
                         </div>
                         <div>
                             <input name="batch" id='stu_batch' type="text" required>
-                            <span>batch</span>
+                            <span>&nbsp;batch</span>
                         </div>
                         <button onclick="add_student()">Add</button>
                         <p id="stu_success_message"></p>
                         <p id="stu_error_message"></p>
                     </div>
                     <div class="multi">
-                        Add multiple students
+                        <h3>Add multiple students</h3>
                         <div>
                             <input type="file" name="student_excel_file" id="student_excel_file" required>
                             <button onclick="add_student_xlsx()">Add</button>
                             <p id="stu_xlsx_success_message"></p>
                             <p id="stu_xlsx_error_message"></p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -110,14 +109,14 @@
             <div id="add_faculty" class="secondry1_tabcontent">
                 <div class="add_faculty">
                     <div class="solo">
-                        Add a single Faculty
+                        <h3>Add a single Faculty</h3>
                         <div>
                             <input name="roll_number" id='facu_roll_number' type="text" required>
-                            <span>Faculty Id</span>
+                            <span>&nbsp;Faculty Id</span>
                         </div>
                         <div>
                             <input name="name" id='facu_name' type="text" required>
-                            <span>Name</span>
+                            <span>&nbsp;Name</span>
                         </div>
                         <div>
                             <select name="department" id="facu_department" required>
@@ -128,15 +127,15 @@
                         <option value="CIVIL">Civil Engg</option>
                         <option value="EEE">Electrical & Electronics Engg</option>
                     </select>
-                            <span>Department</span>
+                            <span>&nbsp;Department</span>
                         </div>
-                        <button onclick="add_faculty()">Add</button>
+                        <div><button onclick="add_faculty()">Add</button></div>
                         <p id="facu_success_message"></p>
                         <p id="facu_error_message"></p>
 
                     </div>
                     <div class="multi">
-                        Add multiple faculty
+                        <h3>Add multiple faculty</h3>
                         <div>
                             <input type="file" name="faculty_excel_file" id="faculty_excel_file" required>
                             <button onclick="add_faculty_xlsx()">Add</button>
@@ -149,7 +148,6 @@
         </div>
         <!-- Tab content 2-->
         <div id="view_db" class="primary_tabcontent">
-            <h3>View in database</h3>
             <div class="secondry2_tab">
                 <button class="secondry2_tablinks" onclick="openSecondry2(event, 'view_book')">Books</button>
                 <button class="secondry2_tablinks" onclick="openSecondry2(event, 'view_student')">Students</button>
@@ -159,11 +157,11 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Book ID</th>
-                            <th>Title</th>
-                            <th>Author Type</th>
-                            <th>Author</th>
-                            <th>Publisher</th>
+                            <th width='10%'>Book ID</th>
+                            <th width='30%'>Title</th>
+                            <th width='15%'>Author Type</th>
+                            <th width='20%'>Author</th>
+                            <th width='25%'>Publisher</th>
                         </tr>
                     </thead>
 

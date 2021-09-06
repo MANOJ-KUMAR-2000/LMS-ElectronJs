@@ -6,20 +6,24 @@
             <div class="book-record-filters">
                 <form action="/record/book" method="post">
                     <div>
-                        <input type="text" name="title" placeholder="Title">
+                        <input type="text" name="title" required>
+                        <span>&nbsp;Title</span>
                     </div>
                     <div>
-                        <input type="text" name="author" id="" placeholder="Author Name">
+                        <input type="text" name="author" id="" required>
+                        <span>&nbsp;Author Name</span>
                     </div>
                     <div>
-                        <select id="" name='author_type'>
-                            <option value="" hidden>Author From</option>
+                        <select id="" name='author_type' required>
+                            <option value="" hidden></option>
                     <option value="Local Author">Local Author</option>
                     <option value="Foreign Author">Foreign Author</option>
                 </select>
+                        <span>&nbsp;Author Type</span>
                     </div>
                     <div>
-                        <input type="text" name="publisher" id="">
+                        <input type="text" name="publisher" id="" required>
+                        <span>&nbsp;publisher</span>
                     </div>
                     <button type="submit">Search</button>
                 </form>
@@ -66,6 +70,7 @@
     </div>
     </div>
     <script src="/js/time.js"></script>
+    <script src="/js/RecActive.js"></script>
     </body>
 
     </html>

@@ -1,19 +1,19 @@
 <%- include('../templates/mainPage.ejs') %>
     <div class="student-record-main-content record-main">
-        <h1>STUDENTS RECORDS</h1>
+        <h1>Who Has What</h1>
         <%- include('../templates/recordLinks.ejs') %>
 
-            <div class="student-record-filters">
+            <div class="who-what-record-filters">
                 <form action="/record/student" method="post">
                     <div>
-                        <input type="text" name="search_roll_number" required>
-                        <span>&nbsp;Register Number</span>
+                        <input type="text" name="book_title" required>
+                        <span>Book Title</span>
                     </div>
                     <button type="submit">Search</button>
                 </form>
 
             </div>
-            <div class="student-recod-details">
+            <div class="who-book-recod-details">
                 <table>
                     <thead>
                         <tr>

@@ -6,8 +6,8 @@
             <div class="faculty-record-filters">
                 <form action="/record/faculty" method="post">
                     <div>
-                        <span>Faculty Id</span>
-                        <input type="text" name="search_roll_number">
+                        <input type="text" name="search_roll_number" required />
+                        <span>&nbsp;Faculty Id</span>
                     </div>
                     <button type="submit">Search</button>
                 </form>
@@ -55,6 +55,7 @@
     </div>
     </div>
     <script src="/js/time.js"></script>
+    <script src="/js/RecActive.js"></script>
     </body>
 
     </html>
