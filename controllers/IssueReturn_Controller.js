@@ -17,16 +17,21 @@ const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
 }
 */
 
+const IssueReturnGet = (req, res) => {
+  res.render("issueReturn", { username: req.cookies.nscet.username });
+};
+
 const IssueBook = (req, res) => {
   var today = new Date();
   var validation_date = new Date(today);
-  validation_date = validation_date.setDate(validation_date.getDate()+ 14);
+  validation_date = validation_date.setDate(validation_date.getDate() + 14);
 
-  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  var time =
+    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-  date_time = today.toLocaleDateString()+' '+time
+  date_time = today.toLocaleDateString() + " " + time;
 
-  validation_date =  new Date(validation_date).toLocaleDateString()+' '+time;
+  validation_date = new Date(validation_date).toLocaleDateString() + " " + time;
 
   db.serialize(() => {
     var value = "";
@@ -61,7 +66,9 @@ const IssueBook = (req, res) => {
                 }
                 res.send(
                   JSON.stringify({
-                    message: "Book Successfully Issued to RollNumber : " + req.body["roll_number"],
+                    message:
+                      "Book Successfully Issued to RollNumber : " +
+                      req.body["roll_number"],
                   })
                 );
               } else {
@@ -85,19 +92,42 @@ const IssueBook = (req, res) => {
   });
 };
 
-const ShowReturnBook = (req, res) => {
-  db.all(
-    `SELECT * FROM Book_Issued WHERE roll_number = ?`,
+const ShowIssuedCheck = (req, res) => {
+  db.get(
+    `SELECT * FROM ` + req.body["roll_search"] + ` WHERE roll_number = ?`,
     [req.body["roll_number"]],
-    (err, result) => {
-      if (result.length == 0) {
+    (err, detail_result) => {
+      if (detail_result == undefined) {
         res.send(
           JSON.stringify({
-            message: "No Book Issued to RollNumber : "+ req.body["roll_number"],
+            message: "Roll Number " + req.body["roll_number"] + " Not Found",
           })
         );
       } else {
-        res.send(result);
+        db.all(
+          `SELECT * FROM Book_Issued WHERE roll_number = ?`,
+          [req.body["roll_number"]],
+          (err, issued_result) => {
+            if (issued_result.length == 0) {
+              res.send(
+                JSON.stringify({
+                  message:
+                    "No Book Issued to Roll Number : " +
+                    req.body["roll_number"],
+                  roll_detail: detail_result,
+                  issue_detail: [],
+                })
+              );
+            } else {
+              res.send(
+                JSON.stringify({
+                  roll_detail: detail_result,
+                  issued_detail: issued_result,
+                })
+              );
+            }
+          }
+        );
       }
     }
   );
@@ -105,4 +135,4 @@ const ShowReturnBook = (req, res) => {
 
 const ReturnBook = (req, res) => {};
 
-module.exports = { IssueBook, ShowReturnBook, ReturnBook };
+module.exports = { IssueReturnGet, IssueBook, ShowIssuedCheck, ReturnBook };

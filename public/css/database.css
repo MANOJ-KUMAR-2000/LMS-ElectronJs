@@ -98,8 +98,8 @@
 #success-div {
   position: absolute;
   top: 0;
-  width: 99vw;
-  height: 99vh;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
