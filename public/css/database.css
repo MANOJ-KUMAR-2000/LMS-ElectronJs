@@ -1,120 +1,116 @@
 .database-main-content {
-    padding: 0px 16px;
+  padding: 0px 16px;
 }
 
 .database-main-content h2 {
-    color: rgb(27, 27, 27);
-    font-size: 25px;
-    font-weight: 500;
+  color: rgb(27, 27, 27);
+  font-size: 25px;
+  font-weight: 500;
 }
 
 .primary_tab {
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid rgb(0, 48, 96);
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgb(0, 48, 96);
 }
-
 
 /* Style the buttons that are used to open the tab content */
 
 .primary_tab button {
-    font-size: 18px;
-    margin-right: 16px;
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 8px 16px;
-    transition: 0.3s;
+  font-size: 18px;
+  margin-right: 16px;
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: 0.3s;
 }
-
 
 /* Change background color of buttons on hover */
 
 .primary_tab button:hover {
-    background-color: rgb(182, 182, 182);
+  background-color: rgb(182, 182, 182);
 }
-
 
 /* Create an active/current tablink class */
 
 .primary_tab button.active {
-    background-color: rgb(0, 48, 96);
-    color: white;
+  background-color: rgb(0, 48, 96);
+  color: white;
 }
-
 
 /* Style the tab content */
 
 .primary_tabcontent,
 .secondry1_tabcontent,
 .secondry2_tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid rgb(0, 48, 96);
-    border-top: none;
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid rgb(0, 48, 96);
+  border-top: none;
 }
 
 .primary_tabcontent .secondry1_tab button,
 .secondry2_tab button {
-    font-size: 16px;
-    margin-left: 12px;
-    background-color: white;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 8px 16px;
-    transition: 0.3s;
-    box-shadow: 0px 2px 3px 1px rgba(27, 27, 27, 0.3);
+  font-size: 16px;
+  margin-left: 12px;
+  background-color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: 0.3s;
+  box-shadow: 0px 2px 3px 1px rgba(27, 27, 27, 0.3);
 }
 
 .secondry1_tab button.active {
-    box-shadow: 0px -2px 6px 2px rgba(27, 27, 27, 0.3) inset;
+  box-shadow: 0px -2px 6px 2px rgba(27, 27, 27, 0.3) inset;
 }
 
 .secondry2_tab button.active {
-    box-shadow: 0px -2px 6px 2px rgba(27, 27, 27, 0.3) inset;
+  box-shadow: 0px -2px 6px 2px rgba(27, 27, 27, 0.3) inset;
 }
-
 
 /*Aboue are Tab nav styles*/
 
 .database-main-content .primary_tabcontent .secondry1_tabcontent .add_book,
 .add_student,
 .add_faculty {
-    display: flex;
+  display: flex;
 }
 
 .database-main-content .primary_tabcontent .secondry1_tabcontent .solo {
-    width: 70%;
+  width: 70%;
 }
 
 .database-main-content .primary_tabcontent .secondry1_tabcontent .multi {
-    width: 30%;
+  width: 30%;
 }
 
 .secondry2_tabcontent {
-    height: 58vh;
-    overflow: auto;
+  height: 58vh;
+  overflow: auto;
 }
 
 #success-div {
-    position: absolute;
-    top: 0;
-    width: 99vw;
-    height: 99vh;
-    background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  width: 99vw;
+  height: 99vh;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 #success-div div {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    margin: 25% 35%;
+  background-color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 25% 35%;
 }
 
 #success-div a {
-    cursor: pointer;
+  cursor: pointer;
 }
