@@ -72,7 +72,7 @@
 }
 
 .book-record-filters input,
-select {
+.book-record-filters select {
     border: 2px solid rgb(0, 48, 96);
     outline-width: 3px;
     outline-color: tomato;

@@ -1,5 +1,4 @@
 function add_student() {
-    document.getElementById("stu_success_message").innerHTML = "";
     document.getElementById("stu_error_message").innerHTML = "";
 
     var roll_number = document.getElementById("stu_roll_number").value;
@@ -79,7 +78,6 @@ function add_student_xlsx() {
 }
 
 function add_faculty() {
-    document.getElementById("facu_success_message").innerHTML = "";
     document.getElementById("facu_error_message").innerHTML = "";
 
     var roll_number = document.getElementById("facu_roll_number").value;
@@ -157,7 +155,6 @@ function add_faculty_xlsx() {
 }
 
 function add_book() {
-    document.getElementById("book_success_message").innerHTML = "";
     document.getElementById("book_error_message").innerHTML = "";
 
     var title = document.getElementById("book_title").value;

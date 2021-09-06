@@ -84,10 +84,6 @@ function stu_facu_check() {
             }),
         }).then((res) => {
             res.json().then((responce) => {
-                console.log(responce.message);
-                console.log(responce.roll_detail);
-                console.log(responce.issued_detail);
-
                 document.getElementById('check-detail-rollnumber').innerHTML = responce.roll_detail.roll_number
                 document.getElementById('check-detail-name').innerHTML = responce.roll_detail.name
                 document.getElementById('check-detail-department').innerHTML = responce.roll_detail.department
