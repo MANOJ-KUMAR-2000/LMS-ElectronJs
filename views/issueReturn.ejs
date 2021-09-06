@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div>
-                            <button onclick="stu_facu_check()">Check</button>
+                            <button onclick="stu_facu_issue_check()">Check</button>
                             <p id="check-error"></p>
                         </div>
                     </div>
@@ -48,10 +48,11 @@
                 </div>
             </div>
         </div>
+
         <div id="return" class="irprimary_tabcontent return">
             <div class="return-who">
                 <div class="type">
-                    <select name="type" id="type">
+                    <select name="type" id="return_role">
                         <option value="" hidden></option>
                         <option value="Student">Student</option>
                         <option value="Faculty">Faculty</option>
@@ -59,15 +60,20 @@
                     <span>&nbsp;Type</span>
                 </div>
                 <div>
-                    <input type="text" name="rollno" id="rollno">
+                    <input type="text" name="rollno" id="return_roll_number">
                     <span>&nbsp;Roll No</span>
                 </div>
                 <div>
-                    <button>Check</button>
+                    <button onclick="stu_facu_return_check()">Check</button>
+                    <p id="return-check-error"></p>
                 </div>
             </div>
-            <div class="books-return">
+            <div id="return-check-bokes">
 
+            </div>
+            <button class="issue-btn" onclick="stu_facu_return()">ReturnBook</button>
+            <div class="books-return">
+                
             </div>
         </div>
     </div>
