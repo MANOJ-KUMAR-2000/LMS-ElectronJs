@@ -8,4 +8,10 @@ const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
   }
 });
 
-module.exports = {};
+const ReportGet = (req, res) => {
+  res.render("report", { username: req.cookies.nscet.username });
+};
+
+const ReportPost = (req, res) => {};
+
+module.exports = { ReportGet, ReportPost };

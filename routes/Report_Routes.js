@@ -3,10 +3,10 @@ const controller = require("../controllers/Report_Controller");
 
 const routes = express.Router();
 
-/*
-routes.get("/", controller.);
+routes.get("/", controller.ReportGet);
 
-routes.post("/", controller.);
+/*
+routes.post("/", controller.ReportPost);
 */
 
 module.exports = routes;
