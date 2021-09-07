@@ -50,30 +50,38 @@
         </div>
 
         <div id="return" class="irprimary_tabcontent return">
-            <div class="return-who">
-                <div class="type">
-                    <select name="type" id="return_role">
+            <div class="return-left">
+                <div class="return-who">
+                    <div class="type">
+                        <select name="type" id="return_role">
                         <option value="" hidden></option>
                         <option value="Student">Student</option>
                         <option value="Faculty">Faculty</option>
                     </select>
-                    <span>&nbsp;Type</span>
+                        <span>&nbsp;Type</span>
+                    </div>
+                    <div>
+                        <input type="text" name="rollno" id="return_roll_number">
+                        <span>&nbsp;Roll No</span>
+                    </div>
+                    <div>
+                        <button onclick="stu_facu_return_check()">Check</button>
+                        <p id="return-check-error"></p>
+                    </div>
                 </div>
-                <div>
-                    <input type="text" name="rollno" id="return_roll_number">
-                    <span>&nbsp;Roll No</span>
+                <div id="return-check-bokes">
+                    <input type="radio" name="dawd[]">
                 </div>
-                <div>
-                    <button onclick="stu_facu_return_check()">Check</button>
-                    <p id="return-check-error"></p>
-                </div>
-            </div>
-            <div id="return-check-bokes">
+                <button class="issue-btn" onclick="stu_facu_return()">ReturnBook</button></div>
 
-            </div>
-            <button class="issue-btn" onclick="stu_facu_return()">ReturnBook</button>
-            <div class="books-return">
-                
+            <div class="right-return">
+                <div class="book-issue-check-detail">
+                    <h4 id="r-check-detail-rollnumber"></h4>
+                    <h4 id="r-check-detail-name"></h4>
+                    <h4 id="r-check-detail-department"></h4>
+                    <h4 id="r-check-detail-batch"></h4>
+                </div>
+                <div id="book-issue-check-table"></div>
             </div>
         </div>
     </div>
