@@ -149,9 +149,26 @@
     font-weight: 500;
 }
 
+.student-record-filters form div select:valid~span,
+.faculty-record-filters form div select:valid~span {
+    color: rgb(8, 44, 80);
+    opacity: 1;
+    transform: translateX(-6px) translateY(-23px);
+    font-size: 18px;
+    font-weight: 500;
+}
+
 .faculty-record-filters input,
 .student-record-filters input,
 .who-what-record-filters input {
+    border: 2px solid rgb(0, 48, 96);
+    outline-width: 3px;
+    outline-color: tomato;
+}
+
+.faculty-record-filters select,
+.student-record-filters select,
+.who-what-record-filters select {
     border: 2px solid rgb(0, 48, 96);
     outline-width: 3px;
     outline-color: tomato;

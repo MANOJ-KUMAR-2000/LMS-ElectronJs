@@ -10,7 +10,15 @@
                         <span>&nbsp;Faculty Id</span>
                     </div>
                     <div>
-                        <input type="text" name="search_department" value=" " />
+                        <select name="search_department" id="search_department">
+                            <option value=" " hidden selected></option>
+                            <option value="CSE"> Computer Science &amp; Engineering</option>
+                            <option value="MECH">Mechanical Engineering</option>
+                            <option value="ECE">Electronics &amp; Communications Engineering</option>
+                            <option value="CIVIL">Civil Engineering</option>
+                            <option value="EEE">Electrical &amp; Electronics Engineering
+                            </option>
+                        </select>
                         <span>&nbsp;Department</span>
                     </div>
                     <div><button type="submit">Search</button></div>

@@ -98,6 +98,7 @@ function stu_facu_issue_check() {
                     document.getElementById("check-error").innerHTML =
                         "Role Number Does Not Exist";
                 } else {
+                    document.getElementById('curr_hold').style.display = 'block'
                     document.getElementById('issue-book-div').style.display = 'block'
                     document.getElementById("i-detail-head").innerHTML = 'ID Details'
                     document.getElementById("check-detail-rollnumber").innerHTML =

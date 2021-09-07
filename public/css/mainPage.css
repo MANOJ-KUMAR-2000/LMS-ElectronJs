@@ -59,7 +59,7 @@ header .user-sec a {
 }
 
 .content .navigation {
-    box-shadow: 0px 0px 72px 36px rgba(0, 128, 255, 0.1) inset;
+    background-color: rgba(195, 221, 255, 0.1);
     padding: 0 6px;
     text-align: center;
     align-items: center;
@@ -95,7 +95,7 @@ header .user-sec a {
 }
 
 .content .main-content {
-    background-color: rgba(0, 128, 255, 0.1);
+    background-color: rgb(255, 255, 255);
     padding: 12px;
     width: 85%;
 }

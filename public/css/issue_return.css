@@ -14,6 +14,11 @@
     width: 50%;
 }
 
+.issue-return-main-content .issue .right-issue h5 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
 .issue .left-issue .issue-who {
     margin: 24px 0;
     display: flex;
@@ -36,7 +41,7 @@
 
 #book-id-input input {
     margin-right: 12px;
-    margin-bottom: 6px;
+    margin-bottom: 26px;
 }
 
 .issue-btn {
@@ -155,7 +160,7 @@
 }
 
 #book-issue-check-table {
-    height: 48vh;
+    height: 45vh;
     overflow: auto;
 }
 
@@ -177,6 +182,8 @@
 }
 
 #return-check-bokes {
+    height: 50vh;
+    overflow: auto;
     display: flex;
     flex-direction: column;
 }
