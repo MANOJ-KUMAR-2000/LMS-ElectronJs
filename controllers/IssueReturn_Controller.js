@@ -180,7 +180,27 @@ const ShowReturnCheck = (req, res) => {
     );
 };
 
-const ReturnBook = (req, res) => {};
+const ReturnBook = (req, res) => {
+    get_from_db_query = `SELECT * FROM Library_Books WHERE book_id = ?`
+    remove_from_issued_query = `DELETE FROM Book_Issued WHERE book_id = ?`
+    insert_available_query = `INSERT INTO Currently_Available (book_id,title,author_type,author,publisher) VALUES (?,?,?,?,?);`
+
+    for (let i = 0; i < req.body["return_books"].length; i++) {
+        db.get(get_from_db_query, [req.body["return_books"][i]], (err, book) => {
+            insert_available_value = [book.book_id, book.title, book.author_type, book.author, book.publisher]
+            db.run(insert_available_query, insert_available_value, (err) => {
+                db.run(remove_from_issued_query, [req.body["return_books"][i]])
+            })
+        })
+    }
+    res.send(
+        JSON.stringify({
+            message: req.body["return_books"] + "Book Successfully Returned To: " +
+                req.body["return_roll_number"],
+        })
+    );
+
+};
 
 module.exports = {
     IssueReturnGet,

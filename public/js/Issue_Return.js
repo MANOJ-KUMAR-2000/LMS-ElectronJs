@@ -1,4 +1,5 @@
 function stu_facu_issue() {
+    document.getElementById("i-detail-head").innerHTML = ""
     document.getElementById("book-issue-message").innerHTML = "";
     book_ids = [];
     var role = document.getElementById("role").value;
@@ -58,6 +59,7 @@ function stu_facu_issue() {
 }
 
 function stu_facu_issue_check() {
+    document.getElementById("i-detail-head").innerHTML = ""
     document.getElementById("book-issue-check-table").innerHTML = "";
     document.getElementById("check-detail-rollnumber").innerHTML = "";
     document.getElementById("check-detail-name").innerHTML = "";
@@ -92,24 +94,26 @@ function stu_facu_issue_check() {
         }).then((res) => {
             res.json().then((responce) => {
                 if (responce.roll_detail == undefined) {
+                    document.getElementById('issue-book-div').style.display = 'none'
                     document.getElementById("check-error").innerHTML =
                         "Role Number Does Not Exist";
                 } else {
+                    document.getElementById('issue-book-div').style.display = 'block'
+                    document.getElementById("i-detail-head").innerHTML = 'ID Details'
                     document.getElementById("check-detail-rollnumber").innerHTML =
-                        "Roll Number : " + responce.roll_detail.roll_number;
+                        "Roll Number &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; " + responce.roll_detail.roll_number;
                     document.getElementById("check-detail-name").innerHTML =
-                        "Name : " + responce.roll_detail.name;
+                        "Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; " + responce.roll_detail.name;
                     document.getElementById("check-detail-department").innerHTML =
-                        "Department : " + responce.roll_detail.department;
+                        "Department &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; " + responce.roll_detail.department;
                     if (responce.roll_detail.batch == undefined) {
                         document.getElementById("check-detail-batch").innerHTML =
-                            "Batch : ";
+                            "";
                     } else {
                         document.getElementById("check-detail-batch").innerHTML =
-                            "Batch : " + responce.roll_detail.batch;
+                            "Batch &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; " + responce.roll_detail.batch;
                     }
                     var table_div = document.getElementById("book-issue-check-table");
-                    console.log(document.getElementsByName("table_exist").length);
                     if (document.getElementsByClassName("table_exist")) {
                         table_div.innerHTML = "";
                     }
@@ -157,6 +161,7 @@ function stu_facu_issue_check() {
 }
 
 function stu_facu_return_check() {
+    document.getElementById("r-detail-head").innerHTML = ''
     document.getElementById("book-issue-check-table").innerHTML = "";
     document.getElementById("r-check-detail-rollnumber").innerHTML = "";
     document.getElementById("r-check-detail-name").innerHTML = "";
@@ -165,6 +170,8 @@ function stu_facu_return_check() {
     document.getElementById("return-check-error").innerHTML = "";
     var role = document.getElementById("return_role").value;
     var role_number = document.getElementById("return_roll_number").value;
+    var return_div = document.getElementById("return-check-bokes");
+    return_div.innerHTML = "";
 
     if (role == "Student") {
         var roll_search = "Student_DB";
@@ -191,34 +198,45 @@ function stu_facu_return_check() {
             }),
         }).then((res) => {
             res.json().then((responce) => {
-                console.log(responce.message)
-                console.log(responce.roll_detail)
-                console.log(responce.return_detail)
                 if (responce.roll_detail == undefined) {
+                    document.getElementById('return-book-btn').style.display = 'none'
                     document.getElementById("return-check-error").innerHTML =
                         "Role Number Does Not Exist";
                 } else {
-
-                    for (let i = 0; i < responce.return_detail.length; i++) {
-                        var return_div = document.getElementById("return-check-bokes");
-                        console.log(responce.return_detail[i])
-                        var radio_input = document.createElement("input");
-                        radio_input.type = "radio";
-                        radio_input.name = "radio_ids[]";
-                        return_div.appendChild(radio_input);
-                    }
-                    document.getElementById("r-check-detail-rollnumber").innerHTML =
-                        "Roll Number : " + responce.roll_detail.roll_number;
-                    document.getElementById("r-check-detail-name").innerHTML =
-                        "Name : " + responce.roll_detail.name;
-                    document.getElementById("r-check-detail-department").innerHTML =
-                        "Department : " + responce.roll_detail.department;
-                    if (responce.roll_detail.batch == undefined) {
-                        document.getElementById("r-check-detail-batch").innerHTML =
-                            "Batch : ";
+                    if (responce.return_detail.length == 0) {
+                        document.getElementById("return-check-error").innerHTML =
+                            "No Book Issued";
                     } else {
-                        document.getElementById("r-check-detail-batch").innerHTML =
-                            "Batch : " + responce.roll_detail.batch;
+                        document.getElementById('return-book-btn').style.display = 'block'
+                        for (let i = 0; i < responce.return_detail.length; i++) {
+                            var return_div = document.getElementById("return-check-bokes");
+                            var radio_input_div = document.createElement("div");
+                            var radio_input = document.createElement("input");
+                            var radio_lable = document.createElement("label");
+                            radio_input.value = responce.return_detail[i].book_id;
+                            radio_input.type = "checkbox";
+                            radio_input.className = "radio_ids[]";
+                            radio_lable.innerHTML = responce.return_detail[i].book_id + " | " + responce.return_detail[i].book_title;
+                            radio_input_div.appendChild(radio_input)
+                            radio_input_div.appendChild(radio_lable)
+                            return_div.appendChild(radio_input_div)
+
+                        }
+
+                        document.getElementById("r-detail-head").innerHTML = 'ID Details'
+                        document.getElementById("r-check-detail-rollnumber").innerHTML =
+                            "Roll Number &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; " + responce.roll_detail.roll_number;
+                        document.getElementById("r-check-detail-name").innerHTML =
+                            "Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; " + responce.roll_detail.name;
+                        document.getElementById("r-check-detail-department").innerHTML =
+                            "Department &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; " + responce.roll_detail.department;
+                        if (responce.roll_detail.batch == undefined) {
+                            document.getElementById("r-check-detail-batch").innerHTML =
+                                "";
+                        } else {
+                            document.getElementById("r-check-detail-batch").innerHTML =
+                                "Batch &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; " + responce.roll_detail.batch;
+                        }
                     }
                 }
             });
@@ -226,12 +244,66 @@ function stu_facu_return_check() {
     }
 }
 
-function stu_facu_return() {}
+function stu_facu_return() {
+    document.getElementById("return-check-error").innerHTML = "";
+    return_book_ids = []
+    for (let i = 0; i < document.getElementsByClassName('radio_ids[]').length; i++) {
+        if (document.getElementsByClassName('radio_ids[]')[i].checked) {
+            return_book_ids.push(document.getElementsByClassName('radio_ids[]')[i].value)
+        }
+    }
+    if (return_book_ids[0] == undefined) {
+        document.getElementById("return-check-error").innerHTML =
+            "No Book Selected";
+    } else {
+        var role_number = document.getElementById("return_roll_number").value;
+        fetch("/issue-return/return", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                return_books: return_book_ids,
+                return_roll_number: role_number
+            }),
+        }).then((res) => {
+            res.json().then((responce) => {
+                if (responce.message == "Currently One of the Book is Not Available") {
+                    document.getElementById("book-return-message").innerHTML =
+                        responce.message;
+                } else {
+                    document.getElementById("r-detail-head").innerHTML = ''
+                    document.getElementById("book-issue-check-table").innerHTML = "";
+                    document.getElementById("r-check-detail-rollnumber").innerHTML = "";
+                    document.getElementById("r-check-detail-name").innerHTML = "";
+                    document.getElementById("r-check-detail-department").innerHTML = "";
+                    document.getElementById("r-check-detail-batch").innerHTML = "";
+                    document.getElementById("return-check-error").innerHTML = "";
+                    document.getElementById("return_role").value = "";
+                    document.getElementById("return_roll_number").value = "";
+
+                    var return_div = document.getElementById("return-check-bokes");
+                    return_div.innerHTML = "";
+
+                    var success_div = document.createElement("div");
+                    success_div.id = "success-div";
+                    success_div.innerHTML =
+                        "<div><span class='success-msg'>" +
+                        responce.message +
+                        "</span><a onclick='success_noted()'>OK</a></div>";
+                    document.body.appendChild(success_div);
+                }
+            });
+        });
+    }
+}
 
 function add_book() {
     if (document.getElementsByName("book_ids[]").length < 6) {
         var input_div = document.getElementById("book-id-input");
         var new_input = document.createElement("input");
+        new_input.placeholder = 'Book ID'
         new_input.type = "text";
         new_input.name = "book_ids[]";
         input_div.append(new_input);
@@ -239,13 +311,15 @@ function add_book() {
 }
 
 function remove_book() {
-    var input_div = document.getElementById("book-id-input");
+    document.getElementById('return-book-btn').style.display = 'none'
     if (document.getElementsByName("book_ids[]").length > 0) {
         input_div.removeChild(input_div.lastElementChild);
     }
 }
 
 function success_noted() {
+    document.getElementById('return-book-btn').style.display = 'none'
+    document.getElementById('issue-book-div').style.display = 'none'
     var noted_div = document.getElementById("success-div");
     noted_div.remove();
 }

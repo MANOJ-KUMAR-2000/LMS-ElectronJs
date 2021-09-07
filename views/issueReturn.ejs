@@ -24,13 +24,13 @@
                         </div>
                         <div>
                             <button onclick="stu_facu_issue_check()">Check</button>
-                            <p id="check-error"></p>
                         </div>
                     </div>
-                    <div class="issue-book-div">
+                    <p id="check-error"></p>
+                    <div style="display: none;" id="issue-book-div">
                         <button class="issue-btn" onclick="stu_facu_issue()">IssueBook</button>
-                        <button onclick="add_book()">+</button>
-                        <button onclick="remove_book()">-</button>
+                        <button onclick="add_book()" style="color: green;"><i class="fas fa-plus"></i></button>
+                        <button onclick="remove_book()" style="color: red;"><i class="fas fa-minus"></i></button>
                         <div id='book-id-input'>
 
                         </div>
@@ -38,7 +38,8 @@
                     </div>
                 </div>
                 <div class="right-issue">
-                    <div class="book-issue-check-detail">
+                    <h3 style="text-align: center;color: tomato;" id="i-detail-head"></h3>
+                    <div class="book-check-detail">
                         <h4 id="check-detail-rollnumber"></h4>
                         <h4 id="check-detail-name"></h4>
                         <h4 id="check-detail-department"></h4>
@@ -50,38 +51,46 @@
         </div>
 
         <div id="return" class="irprimary_tabcontent return">
-            <div class="return-left">
-                <div class="return-who">
-                    <div class="type">
-                        <select name="type" id="return_role">
+            <div class="inner-return">
+                <div class="return-left">
+                    <div class="return-who">
+                        <div class="type">
+                            <select name="type" id="return_role">
                         <option value="" hidden></option>
                         <option value="Student">Student</option>
                         <option value="Faculty">Faculty</option>
                     </select>
-                        <span>&nbsp;Type</span>
-                    </div>
-                    <div>
-                        <input type="text" name="rollno" id="return_roll_number">
-                        <span>&nbsp;Roll No</span>
-                    </div>
-                    <div>
-                        <button onclick="stu_facu_return_check()">Check</button>
-                        <p id="return-check-error"></p>
-                    </div>
-                </div>
-                <div id="return-check-bokes">
-                    <input type="radio" name="dawd[]">
-                </div>
-                <button class="issue-btn" onclick="stu_facu_return()">ReturnBook</button></div>
+                            <span>&nbsp;Type</span>
+                        </div>
+                        <div>
+                            <input type="text" name="rollno" id="return_roll_number">
+                            <span>&nbsp;Roll No</span>
+                        </div>
+                        <div>
+                            <button onclick="stu_facu_return_check()">Check</button>
 
-            <div class="right-return">
-                <div class="book-issue-check-detail">
-                    <h4 id="r-check-detail-rollnumber"></h4>
-                    <h4 id="r-check-detail-name"></h4>
-                    <h4 id="r-check-detail-department"></h4>
-                    <h4 id="r-check-detail-batch"></h4>
+                        </div>
+                    </div>
+                    <p id="return-check-error"></p>
+                    <div id="return-check-bokes">
+
+                    </div>
+                    <div id="return-book-btn" style="display: none;">
+                        <button class="issue-btn" onclick="stu_facu_return()">ReturnBook</button>
+                    </div>
                 </div>
-                <div id="book-issue-check-table"></div>
+
+
+                <div class="right-return">
+                    <div class="book-check-detail">
+                        <h3 style="text-align: center;color: tomato;" id="r-detail-head"></h3>
+                        <h4 id="r-check-detail-rollnumber"></h4>
+                        <h4 id="r-check-detail-name"></h4>
+                        <h4 id="r-check-detail-department"></h4>
+                        <h4 id="r-check-detail-batch"></h4>
+                    </div>
+                    <div id="book-issue-check-table"></div>
+                </div>
             </div>
         </div>
     </div>

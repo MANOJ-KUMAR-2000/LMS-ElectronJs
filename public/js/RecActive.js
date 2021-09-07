@@ -9,6 +9,5 @@ for (let i = 0; i < elements_to_rem.length; i++) {
     elements_to_rem[i].classList.remove("active");
 }
 
-console.log(id_code)
 var element_to_active = document.getElementById(id_code);
 element_to_active.classList.add("active");

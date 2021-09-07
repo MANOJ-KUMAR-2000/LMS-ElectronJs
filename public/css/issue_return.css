@@ -159,10 +159,33 @@
     overflow: auto;
 }
 
-.return {
+.inner-return {
     display: flex;
 }
 
-.right-return {
-    margin-left: 164px;
+.right-return,
+.return-left {
+    width: 50%;
+}
+
+#return-check-bokes input {
+    margin: 10px 0px;
+}
+
+#return-check-bokes label {
+    margin: 0px 10px;
+}
+
+#return-check-bokes {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-check-detail h4 {
+    margin: 10px 0px;
+}
+
+#return-check-error,
+#check-error {
+    color: red;
 }
