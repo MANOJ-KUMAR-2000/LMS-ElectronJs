@@ -6,12 +6,12 @@
             <div class="student-record-filters">
                 <form action="/record/students" method="post">
                     <div>
-                        <input type="text" name="search_roll_number" value=" ">
+                        <input type="text" name="search_roll_number" value="">
                         <span>&nbsp;Register Number</span>
                     </div>
                     <div>
                         <select name="search_department" id="search_department">
-                            <option value=" " hidden selected></option>
+                            <option value="" hidden selected></option>
                             <option value="CSE"> Computer Science &amp; Engineering</option>
                             <option value="MECH">Mechanical Engineering</option>
                             <option value="ECE">Electronics &amp; Communications Engineering</option>
@@ -22,7 +22,7 @@
                         <span>&nbsp;Department</span>
                     </div>
                     <div>
-                        <input type="text" name="batch" id="batch">
+                        <input type="text" name="search_batch" id="search_batch" value=''>
                         <span>&nbsp;Batch</span>
                     </div>
 

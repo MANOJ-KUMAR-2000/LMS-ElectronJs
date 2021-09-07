@@ -137,14 +137,14 @@ const SearchStudent = (req, res) => {
     "%" + req.body["search_department"] + "%",
     "%" + req.body["search_batch"] + "%",
   ];
-  db.all(query_id, value_id, (err, result) => {
+  db.all(query_id, values, (err, result) => {
     if (result.length == 0) {
-      res.render("studentsRecord", {
+      res.render("studentsRecords", {
         students: [],
         username: req.cookies.nscet.username,
       });
     } else {
-      res.render("studentsRecord", {
+      res.render("studentsRecords", {
         students: result,
         username: req.cookies.nscet.username,
       });
