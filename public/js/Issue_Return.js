@@ -16,46 +16,51 @@ function stu_facu_issue() {
   for (let i = 0; i < document.getElementsByName("book_ids[]").length; i++) {
     book_ids.push(document.getElementsByName("book_ids[]")[i].value);
   }
-  fetch("/issue-return/issue", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      roll_number: role_number,
-      role_search: roll_search,
-      book_ids: book_ids,
-      role: role,
-    }),
-  }).then((res) => {
-    res.json().then((responce) => {
-      if (responce.message == "Currently One of the Book is Not Available") {
-        document.getElementById("book-issue-message").innerHTML =
-          responce.message;
-      } else {
-        document.getElementById("book-issue-check-table").innerHTML = "";
-        document.getElementById("check-detail-rollnumber").innerHTML = "";
-        document.getElementById("check-detail-name").innerHTML = "";
-        document.getElementById("check-detail-department").innerHTML = "";
-        document.getElementById("check-detail-batch").innerHTML = "";
-        document.getElementById("check-error").innerHTML = "";
-        document.getElementById("role").value = "";
-        document.getElementById("roll_number").value = "";
+  if (book_ids[0] == undefined) {
+    document.getElementById("book-issue-message").innerHTML = "No Book Entered";
+  } else {
+    document.getElementById("book-issue-message").innerHTML = "";
+    fetch("/issue-return/issue", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        roll_number: role_number,
+        role_search: roll_search,
+        book_ids: book_ids,
+        role: role,
+      }),
+    }).then((res) => {
+      res.json().then((responce) => {
+        if (responce.message == "Currently One of the Book is Not Available") {
+          document.getElementById("book-issue-message").innerHTML =
+            responce.message;
+        } else {
+          document.getElementById("book-issue-check-table").innerHTML = "";
+          document.getElementById("check-detail-rollnumber").innerHTML = "";
+          document.getElementById("check-detail-name").innerHTML = "";
+          document.getElementById("check-detail-department").innerHTML = "";
+          document.getElementById("check-detail-batch").innerHTML = "";
+          document.getElementById("check-error").innerHTML = "";
+          document.getElementById("role").value = "";
+          document.getElementById("roll_number").value = "";
 
-        var input_div = document.getElementById("book-id-input");
-        input_div.innerHTML = "";
+          var input_div = document.getElementById("book-id-input");
+          input_div.innerHTML = "";
 
-        var success_div = document.createElement("div");
-        success_div.id = "success-div";
-        success_div.innerHTML =
-          "<div><span class='success-msg'>" +
-          responce.message +
-          "</span><a onclick='success_noted()'>OK</a></div>";
-        document.body.appendChild(success_div);
-      }
+          var success_div = document.createElement("div");
+          success_div.id = "success-div";
+          success_div.innerHTML =
+            "<div><span class='success-msg'>" +
+            responce.message +
+            "</span><a onclick='success_noted()'>OK</a></div>";
+          document.body.appendChild(success_div);
+        }
+      });
     });
-  });
+  }
 }
 
 function stu_facu_issue_check() {

@@ -12,6 +12,7 @@
             <div>
                 <button class="primary_tablinks" onclick="">Backup</button>
                 <button class="primary_tablinks" onclick="">Restore</button>
+                <button class="primary_tablinks"><a href="/add-view/all"><i class="fas fa-sync-alt"></i></a></button>
             </div>
 
         </div>
@@ -99,7 +100,7 @@
                             <input type="file" name="student_excel_file" id="student_excel_file" required>
                             <button onclick="add_student_xlsx()">Add</button>
                             <p class="usr_msg">The excel column name must be in this format.</p>
-                            <p class="usr_msg">| roll_number | name | department | batch |</p>
+                            <p class="usr_msg">| rollno | name | batch | department |</p>
                             <p id="stu_xlsx_success_message"></p>
                             <p id="stu_xlsx_error_message" class="error_msg"></p>
 
@@ -141,7 +142,7 @@
                             <input type="file" name="faculty_excel_file" id="faculty_excel_file" required>
                             <button onclick="add_faculty_xlsx()">Add</button>
                             <p class="usr_msg">The excel column name must be in this format.</p>
-                            <p class="usr_msg">| roll_number | name | department |</p>
+                            <p class="usr_msg">| rollno | name | department |</p>
                             <p id="facu_xlsx_success_message"></p>
                             <p id="facu_xlsx_error_message" class="error_msg"></p>
                         </div>
