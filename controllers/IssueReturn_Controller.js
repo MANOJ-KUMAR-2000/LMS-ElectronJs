@@ -8,15 +8,6 @@ const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
   }
 });
 
-/*
-{
-  "book_ids":["CSE1"],
-  "role":"Faculty",
-  "role_search":"Faculty_DB",
-  "roll_number":"190"
-}
-*/
-
 const IssueReturnGet = (req, res) => {
   res.render("issueReturn", { username: req.cookies.nscet.username });
 };
@@ -198,22 +189,88 @@ const ShowReturnCheck = (req, res) => {
 
 const ReturnBook = (req, res) => {
   get_from_db_query = `SELECT * FROM Library_Books WHERE book_id = ?`;
+  issue_detail_query = `SELECT * FROM Book_Issued WHERE book_id = ?`;
   remove_from_issued_query = `DELETE FROM Book_Issued WHERE book_id = ?`;
   insert_available_query = `INSERT INTO Currently_Available (book_id,title,author_type,author,publisher) VALUES (?,?,?,?,?);`;
 
   for (let i = 0; i < req.body["return_books"].length; i++) {
-    db.get(get_from_db_query, [req.body["return_books"][i]], (err, book) => {
-      insert_available_value = [
-        book.book_id,
-        book.title,
-        book.author_type,
-        book.author,
-        book.publisher,
-      ];
-      db.run(insert_available_query, insert_available_value, (err) => {
-        db.run(remove_from_issued_query, [req.body["return_books"][i]]);
-      });
-    });
+    db.get(
+      issue_detail_query,
+      [req.body["return_books"][i]],
+      (err, issue_book_detail) => {
+        db.get(
+          get_from_db_query,
+          [req.body["return_books"][i]],
+          (err, book) => {
+            insert_available_value = [
+              book.book_id,
+              book.title,
+              book.author_type,
+              book.author,
+              book.publisher,
+            ];
+            db.run(insert_available_query, insert_available_value, (err) => {
+              full_report_insert_query = `INSERT INTO FullReport (roll_number,role,book_id,validation_date,is_delayed,book_title,department,batch,issued_date,return_date) VALUES (?,?,?,?,?,?,?,?,?,?)`;
+              var todayTime = new Date();
+
+              var month = todayTime.getMonth() + 1;
+              var date = todayTime.getDate();
+              var year = todayTime.getFullYear();
+              var today_date = date + "/" + month + "/" + year;
+              var today_time = todayTime.toLocaleString("en-US", {
+                hour: "numeric",
+                minute: "numeric",
+                hour12: true,
+              });
+              var today = today_date + " | " + today_time;
+              var is_delayed = "";
+              issued_info_date =
+                issue_book_detail.validation_date.split(" ")[0];
+
+              to_compare_validation_date = issued_info_date.split("/");
+              to_compare_returning_date = today_date.split("/");
+              if (
+                parseInt(to_compare_validation_date[2]) >=
+                parseInt(to_compare_returning_date[2])
+              ) {
+                if (
+                  parseInt(to_compare_validation_date[1]) >=
+                  parseInt(to_compare_returning_date[1])
+                ) {
+                  if (
+                    parseInt(to_compare_validation_date[0]) >=
+                    parseInt(to_compare_returning_date[0])
+                  ) {
+                    is_delayed = "On Time";
+                  } else {
+                    is_delayed = "Delayed";
+                  }
+                } else {
+                  is_delayed = "Delayed";
+                }
+              } else {
+                is_delayed = "Delayed";
+              }
+              full_value = [
+                issue_book_detail.roll_number,
+                issue_book_detail.role,
+                issue_book_detail.book_id,
+                issue_book_detail.validation_date,
+                is_delayed,
+                issue_book_detail.book_title,
+                issue_book_detail.department,
+                issue_book_detail.batch,
+                issue_book_detail.date,
+                today,
+              ];
+              db.run(full_report_insert_query, full_value, (err) => {
+                db.run(remove_from_issued_query, [req.body["return_books"][i]]);
+              });
+            });
+          }
+        );
+      }
+    );
   }
   res.send(
     JSON.stringify({
