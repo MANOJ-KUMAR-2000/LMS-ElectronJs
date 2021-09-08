@@ -4,7 +4,7 @@ const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
   if (err) {
     return console.error(err.message);
   } else {
-    console.log("IssueReturn Database Connected");
+    //console.log("IssueReturn Database Connected");
   }
 });
 
@@ -20,8 +20,8 @@ const IssueBook = (req, res) => {
   var vali_date = todayTime.getDate() + 14;
   var year = todayTime.getFullYear();
 
-  var date = today_date + "/" + month + "/" + year;
-  var untill_date = vali_date + "/" + month + "/" + year;
+  var date = today_date + "-" + month + "-" + year;
+  var untill_date = vali_date + "-" + month + "-" + year;
   var time = todayTime.toLocaleString("en-US", {
     hour: "numeric",
     minute: "numeric",
@@ -54,7 +54,7 @@ const IssueBook = (req, res) => {
                     value = [
                       req.body["role"],
                       req.body["book_ids"][i],
-                      date_time,
+                      date,
                       validation_date,
                       req.body["roll_number"],
                       book_titles[i].title,
@@ -65,7 +65,7 @@ const IssueBook = (req, res) => {
                     value = [
                       req.body["role"],
                       req.body["book_ids"][i],
-                      date_time,
+                      date,
                       validation_date,
                       req.body["roll_number"],
                       book_titles[i].title,
@@ -216,19 +216,19 @@ const ReturnBook = (req, res) => {
               var month = todayTime.getMonth() + 1;
               var date = todayTime.getDate();
               var year = todayTime.getFullYear();
-              var today_date = date + "/" + month + "/" + year;
+              var today_date = date + "-" + month + "-" + year;
               var today_time = todayTime.toLocaleString("en-US", {
                 hour: "numeric",
                 minute: "numeric",
                 hour12: true,
               });
-              var today = today_date + " | " + today_time;
+              var today = today_date;
               var is_delayed = "";
               issued_info_date =
                 issue_book_detail.validation_date.split(" ")[0];
 
-              to_compare_validation_date = issued_info_date.split("/");
-              to_compare_returning_date = today_date.split("/");
+              to_compare_validation_date = issued_info_date.split("-");
+              to_compare_returning_date = today_date.split("-");
               if (
                 parseInt(to_compare_validation_date[2]) >=
                 parseInt(to_compare_returning_date[2])

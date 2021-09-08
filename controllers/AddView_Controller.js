@@ -4,7 +4,7 @@ const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
   if (err) {
     return console.error(err.message);
   } else {
-    console.log("AddView Database Connected");
+    //console.log("AddView Database Connected");
   }
 });
 
@@ -12,7 +12,12 @@ const All = (req, res) => {
   db.all(`SELECT * FROM Student_DB ORDER BY name`, (err, studnets) => {
     db.all(`SELECT * FROM Faculty_DB ORDER BY name`, (err, facultys) => {
       db.all(`SELECT * FROM Library_Books ORDER BY title`, (err, books) => {
-        res.render("database",{username:req.cookies.nscet.username,students_db:studnets,facultys_db:facultys,books_db:books});
+        res.render("database", {
+          username: req.cookies.nscet.username,
+          students_db: studnets,
+          facultys_db: facultys,
+          books_db: books,
+        });
       });
     });
   });
@@ -86,7 +91,8 @@ const AddBooks = (req, res) => {
           } else {
             res.send(
               JSON.stringify({
-                message: "Book Sucessfully Added",bookid:book_id
+                message: "Book Sucessfully Added",
+                bookid: book_id,
               })
             );
           }

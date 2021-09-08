@@ -332,6 +332,7 @@ function add_book() {
   if (document.getElementsByName("book_ids[]").length < 6) {
     var input_div = document.getElementById("book-id-input");
     var new_input = document.createElement("input");
+    new_input.autocomplete = "off";
     new_input.placeholder = "Book ID";
     new_input.type = "text";
     new_input.name = "book_ids[]";

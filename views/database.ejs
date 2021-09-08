@@ -29,11 +29,11 @@
                     <div class="solo">
                         <h3>Add a single book</h3>
                         <div>
-                            <input name="title" type="text" id="book_title" required/>
+                            <input autocomplete="off" name="title" type="text" id="book_title" required/>
                             <span>&nbsp;Title</span>
                         </div>
                         <div>
-                            <input name="author" type="text" id="book_author" required/>
+                            <input autocomplete="off" name="author" type="text" id="book_author" required/>
                             <span>&nbsp;Author Name</span>
                         </div>
                         <div>
@@ -45,7 +45,7 @@
                             <span>&nbsp;Author Type</span>
                         </div>
                         <div>
-                            <input name="publisher" type="text" id='book_publisher' required>
+                            <input autocomplete="off" name="publisher" type="text" id='book_publisher' required>
                             <span>&nbsp;Publisher</span>
                         </div>
                         <div><button onclick="add_book()">Add</button></div>
@@ -69,11 +69,11 @@
                     <div class="solo">
                         <h3>Add a single student</h3>
                         <div>
-                            <input name="roll_number" id='stu_roll_number' type="text" required>
+                            <input autocomplete="off" name="roll_number" id='stu_roll_number' type="text" required>
                             <span>&nbsp;Register No</span>
                         </div>
                         <div>
-                            <input name="name" id='stu_name' type="text" required>
+                            <input autocomplete="off" name="name" id='stu_name' type="text" required>
                             <span>&nbsp;Name</span>
                         </div>
                         <div>
@@ -88,7 +88,7 @@
                             <span>&nbsp;Department</span>
                         </div>
                         <div>
-                            <input name="batch" id='stu_batch' type="text" required>
+                            <input autocomplete="off" name="batch" id='stu_batch' type="text" required>
                             <span>&nbsp;batch</span>
                         </div>
                         <div><button onclick="add_student()">Add</button></div>
@@ -97,7 +97,7 @@
                     <div class="multi">
                         <h3>Add multiple students</h3>
                         <div>
-                            <input type="file" name="student_excel_file" id="student_excel_file" required>
+                            <input autocomplete="off" type="file" name="student_excel_file" id="student_excel_file" required>
                             <button onclick="add_student_xlsx()">Add</button>
                             <p class="usr_msg">The excel column name must be in this format.</p>
                             <p class="usr_msg">| rollno | name | batch | department |</p>
@@ -114,11 +114,11 @@
                     <div class="solo">
                         <h3>Add a single Faculty</h3>
                         <div>
-                            <input name="roll_number" id='facu_roll_number' type="text" required>
+                            <input autocomplete="off" name="roll_number" id='facu_roll_number' type="text" required>
                             <span>&nbsp;Faculty Id</span>
                         </div>
                         <div>
-                            <input name="name" id='facu_name' type="text" required>
+                            <input autocomplete="off" name="name" id='facu_name' type="text" required>
                             <span>&nbsp;Name</span>
                         </div>
                         <div>
@@ -139,7 +139,7 @@
                     <div class="multi">
                         <h3>Add multiple faculty</h3>
                         <div>
-                            <input type="file" name="faculty_excel_file" id="faculty_excel_file" required>
+                            <input autocomplete="off" type="file" name="faculty_excel_file" id="faculty_excel_file" required>
                             <button onclick="add_faculty_xlsx()">Add</button>
                             <p class="usr_msg">The excel column name must be in this format.</p>
                             <p class="usr_msg">| rollno | name | department |</p>

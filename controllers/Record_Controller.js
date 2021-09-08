@@ -4,7 +4,7 @@ const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
   if (err) {
     return console.error(err.message);
   } else {
-    console.log("Record Database Connected");
+    //console.log("Record Database Connected");
   }
 });
 

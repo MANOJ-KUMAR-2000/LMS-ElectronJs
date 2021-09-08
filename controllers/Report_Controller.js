@@ -1,48 +1,46 @@
 const sqlite3 = require("sqlite3").verbose();
+var json2xls = require("json2xls");
+const fs = require("fs");
 
 const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
   if (err) {
     return console.error(err.message);
   } else {
-    console.log("Report Database Connected");
+    //console.log("Report Database Connected");
   }
 });
 
 const ReportGet = (req, res) => {
-  res.render("report", { reports: [], username: req.cookies.nscet.username });
-};
-
-const ReportPostData = (req, res) => {
-  console.log(req.body);
-  if (!(req.body["report_book_id"] == "")) {
-    db.all(
-      `SELECT * FROM FullReport WHERE book_id = ?`,
-      [req.body["report_book_id"]],
-      (err, allbook_report) => {
-        res.render("report", {
-          reports: allbook_report,
-          username: req.cookies.nscet.username,
-        });
-      }
-    );
-  }
-  if (!(req.body["report_roll_number"] == "")) {
-    db.all(
-      `SELECT * FROM FullReport WHERE roll_number = ?`,
-      [req.body["report_roll_number"]],
-      (err, allroll_report) => {
-        res.render("report", {
-          reports: allroll_report,
-          username: req.cookies.nscet.username,
-        });
-      }
-    );
-  }
-  common_query = `SELECT * FROM FullReport WHERE role LIKE ? AND department LIKE ? AND batch LIKE ? ORDER BY roll_number`;
+  db.all(`SELECT * FROM FullReport ORDER BY id`, (err, full_report) => {
+    res.render("report", {
+      export_msg: null,
+      reports: full_report,
+      username: req.cookies.nscet.username,
+    });
+  });
 };
 
 const ReportPostExport = (req, res) => {
-  console.log(req.body);
+  var todayTime = new Date();
+  var month = todayTime.getMonth() + 1;
+  var date = todayTime.getDate();
+  var year = todayTime.getFullYear();
+  var today_date = date + "-" + month + "-" + year;
+  db.all(`SELECT * FROM FullReport ORDER BY id`, (err, full_report) => {
+    var xls = json2xls(full_report);
+    fs.writeFileSync(
+      `GeneratedFiles/Reports/FullReport${
+        today_date + "-" + todayTime.getHours() + todayTime.getMinutes()
+      }.xlsx`,
+      xls,
+      "binary"
+    );
+    res.render("report", {
+      export_msg: "File Exported To {%App Path%}/GeneratedFiles/Reports/",
+      reports: full_report,
+      username: req.cookies.nscet.username,
+    });
+  });
 };
 
-module.exports = { ReportGet, ReportPostData, ReportPostExport };
+module.exports = { ReportGet, ReportPostExport };

@@ -2,7 +2,7 @@
     <div class="report-main-content">
         <div class="fliter-div">
             <div class="filters">
-                <form method="post">
+                <form autocomplete="off" method="post">
                     <div>
                         <input type="date" name="report_from_date" value="">
                         <span>&nbsp;From</span>
@@ -45,12 +45,21 @@
                         <span>&nbsp;Book Id</span>
                     </div>
                     <div class="filter-search">
-                        <button formaction="/reports/getdata">Generate</button>
+                        <!--<button formaction="/reports/getdata">Generate</button>-->
                         <button formaction="/reports/exportdata">Export</button>
                     </div>
                 </form>
             </div>
         </div>
+        <% if(export_msg) { %>
+            <div id="export-success">
+                <div>
+                    <p><%=export_msg%></p>
+                    <br />
+                    <a onclick="export_noted()">OK</a>
+                </div>
+            </div>
+            <% } %>
         <div class="record-table">
             <table>
                 <thead>
@@ -72,19 +81,34 @@
                     <% for(var i=0; i < reports.length; i++) { %>
                         <tr>
                             <td>
+                                <%= reports[i].id %>
+                            </td>
+                            <td>
+                                <%= reports[i].roll_number %>
+                            </td>
+                            <td>
+                                <%= reports[i].role %>
+                            </td>
+                            <td>
+                                <%= reports[i].department %>
+                            </td>
+                            <td>
+                                <%= reports[i].batch %>
+                            </td>
+                            <td>
                                 <%= reports[i].book_id %>
                             </td>
                             <td>
-                                <%= reports[i].title %>
+                                <%= reports[i].book_title %>
                             </td>
                             <td>
-                                <%= reports[i].author_type %>
+                                <%= reports[i].issued_date %>
                             </td>
                             <td>
-                                <%= reports[i].author %>
+                                <%= reports[i].return_date %>
                             </td>
                             <td>
-                                <%= reports[i].publisher %>
+                                <%= reports[i].is_delayed %>
                             </td>
                         </tr>
                         <% } %>
@@ -100,6 +124,7 @@
     </div>
     </div>
     <script src="/js/time.js"></script>
+    <script src="/js/Report.js"></script>
     </body>
 
     </html>
