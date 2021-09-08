@@ -5,8 +5,7 @@ const routes = express.Router();
 
 routes.get("/", controller.ReportGet);
 
-/*
-routes.post("/", controller.ReportPost);
-*/
+routes.post("/getdata", controller.ReportPostData);
+routes.post("/exportdata", controller.ReportPostExport);
 
 module.exports = routes;

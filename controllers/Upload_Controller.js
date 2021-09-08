@@ -97,6 +97,18 @@ const UploadFacultys = (req, res) => {
 const UploadBooks = (req, res) => {
   var workbook = XLSX.read(req.files["file"].data);
   const data = ExtractData(workbook);
+  var todayTime = new Date();
+
+  var month = todayTime.getMonth() + 1;
+  var date = todayTime.getDate();
+  var year = todayTime.getFullYear();
+  var today_date = date + "-" + month + "-" + year;
+  var today_time = todayTime.toLocaleString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
+  var today = today_date + " | " + today_time;
   db.serialize(() => {
     db.all("SELECT * FROM Library_Books", (err, books) => {
       result = books.length;
@@ -121,7 +133,11 @@ const UploadBooks = (req, res) => {
           db.run(available_query, values);
         }
         var xls = json2xls(data);
-        fs.writeFileSync("data.xlsx", xls, "binary");
+        fs.writeFileSync(
+          "excel_files/xlsx_book_ids/" + today + ".xlsx",
+          xls,
+          "binary"
+        );
         res.send(
           JSON.stringify({
             message: "Successfully Books Added to Library",

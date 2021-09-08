@@ -9,9 +9,40 @@ const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
 });
 
 const ReportGet = (req, res) => {
-  res.render("report", { username: req.cookies.nscet.username });
+  res.render("report", { reports: [], username: req.cookies.nscet.username });
 };
 
-const ReportPost = (req, res) => {};
+const ReportPostData = (req, res) => {
+  console.log(req.body);
+  if (!(req.body["report_book_id"] == "")) {
+    db.all(
+      `SELECT * FROM FullReport WHERE book_id = ?`,
+      [req.body["report_book_id"]],
+      (err, allbook_report) => {
+        res.render("report", {
+          reports: allbook_report,
+          username: req.cookies.nscet.username,
+        });
+      }
+    );
+  }
+  if (!(req.body["report_roll_number"] == "")) {
+    db.all(
+      `SELECT * FROM FullReport WHERE roll_number = ?`,
+      [req.body["report_roll_number"]],
+      (err, allroll_report) => {
+        res.render("report", {
+          reports: allroll_report,
+          username: req.cookies.nscet.username,
+        });
+      }
+    );
+  }
+  common_query = `SELECT * FROM FullReport WHERE role LIKE ? AND department LIKE ? AND batch LIKE ? ORDER BY roll_number`;
+};
 
-module.exports = { ReportGet, ReportPost };
+const ReportPostExport = (req, res) => {
+  console.log(req.body);
+};
+
+module.exports = { ReportGet, ReportPostData, ReportPostExport };

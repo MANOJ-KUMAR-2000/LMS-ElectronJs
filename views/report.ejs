@@ -2,16 +2,17 @@
     <div class="report-main-content">
         <div class="fliter-div">
             <div class="filters">
+                <form method="post">
                 <div>
-                    <input type="date" name="report_from_date" id="">
+                    <input type="date" name="report_from_date" value="">
                     <span>&nbsp;From</span>
                 </div>
                 <div>
-                    <input type="date" name="report_to_date" id="">
+                    <input type="date" name="report_to_date" value="">
                     <span>&nbsp;To</span>
                 </div>
                 <div>
-                    <select name="report_role" id="">
+                    <select name="report_role" value="">
                     <option value="" hidden></option>
                     <option value="Faculty">Faculty</option>
                     <option value="Student">Student</option>
@@ -32,26 +33,66 @@
                 </div>
 
                 <div>
-                    <input type="text" name="report_role_number" id="">
+                    <input type="text" name="report_role_number" value="">
                     <span>&nbsp;Roll number</span>
                 </div>
                 <div>
-                    <input type="text" name="report_batch" id="">
+                    <input type="text" name="report_batch" value="">
                     <span>&nbsp;Batch</span>
                 </div>
                 <div>
-                    <input type="text" name="report_book_id" id="">
+                    <input type="text" name="report_book_id" value="">
                     <span>&nbsp;Book Id</span>
                 </div>
                 <div class="filter-search">
-                    <button>Generate</button>
+                    <button formaction="/reports/getdata">Generate</button>
+                    <button formaction="/reports/exportdata">Export</button> 
                 </div>
+            </form>
             </div>
         </div>
         <div class="record-table">
             <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Roll Number</th>
+                        <th>Role</th>
+                        <th>Department</th>
+                        <th>Batch</th>
+                        <th>Book ID</th>
+                        <th>Book Title</th>
+                        <th>Issued Date</th>
+                        <th>Return Date</th>
+                        <th>Is Delay</th>
+                    </tr>
+                </thead>
 
+                <tbody>
+                    <% for(var i=0; i < reports.length; i++) { %>
+                        <tr>
+                            <td>
+                                <%= reports[i].book_id %>
+                            </td>
+                            <td>
+                                <%= reports[i].title %>
+                            </td>
+                            <td>
+                                <%= reports[i].author_type %>
+                            </td>
+                            <td>
+                                <%= reports[i].author %>
+                            </td>
+                            <td>
+                                <%= reports[i].publisher %>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
             </table>
+            <% if(reports.length == 0) { %>
+                <p id='no-record-found-p'>No Record Found</p>
+            <% } %>
         </div>
     </div>
 
