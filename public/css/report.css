@@ -1,0 +1,55 @@
+.report-main-content .fliter-div .filters {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 26px;
+}
+
+.report-main-content .fliter-div .filters div {
+    display: flex;
+    width: 25%;
+    margin-bottom: 28px;
+}
+
+.report-main-content .fliter-div .filters div span {
+    position: absolute;
+    opacity: 0.5;
+    transition: 0.5s;
+}
+
+.report-main-content .record-table {
+    height: 64vh;
+}
+
+.report-main-content input,
+.report-main-content select {
+    border: 2px solid rgb(0, 48, 96);
+    outline-width: 3px;
+    outline-color: tomato;
+    width: 80%;
+}
+
+.report-main-content button {
+    padding: 4px 16px;
+    color: white;
+    background-color: tomato;
+    border: none;
+    box-shadow: 0px 2px 4px 1px rgba(27, 27, 27, 0.3);
+    border-radius: 28px;
+}
+
+.report-main-content .fliter-div .filters div:focus-within span,
+.report-main-content .fliter-div .filters div input:valid~span {
+    color: rgb(8, 44, 80);
+    opacity: 1;
+    transform: translateX(-6px) translateY(-23px);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.report-main-content .fliter-div .filters div select:valid~span {
+    font-size: 18px;
+    color: rgb(8, 44, 80);
+    opacity: 1;
+    transform: translateX(-6px) translateY(-23px);
+    font-weight: 500;
+}
