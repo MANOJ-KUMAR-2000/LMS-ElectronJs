@@ -1,32 +1,33 @@
 .record-main {
-  padding: 16px 12px;
+    padding: 16px 12px;
 }
 
 .record-main .record-links {
-  display: flex;
-  margin: 8px 0px 16px 0;
+    display: flex;
+    margin: 8px 0px 16px 0;
 }
 
 .record-main .record-links div {
-  text-align: center;
-  width: 25%;
+    text-align: center;
+    width: 25%;
 }
 
 .record-main .record-links a {
-  background-color: white;
-  border-radius: 28px;
-  color: rgba(27, 27, 27, 1);
-  box-shadow: 0px 2px 4px 1px rgba(27, 27, 27, 0.3);
-  padding: 4px 12px;
+    background-color: white;
+    border-radius: 28px;
+    color: rgba(27, 27, 27, 1);
+    box-shadow: 0px 2px 4px 1px rgba(27, 27, 27, 0.3);
+    padding: 4px 12px;
 }
 
 .record-main .record-links .active {
-  box-shadow: 0px -2px 4px 1px rgba(27, 27, 27, 0.5) inset;
+    box-shadow: 0px -2px 4px 1px rgba(27, 27, 27, 0.5) inset;
 }
 
 .record-main form {
-  display: flex;
+    display: flex;
 }
+
 
 /* Testing Testing */
 
@@ -34,144 +35,146 @@
 .faculty-recod-details,
 .student-recod-details,
 .who-book-recod-details {
-  height: 60vh;
-  overflow: auto;
+    height: 58vh;
+    overflow: auto;
 }
 
 .book-record-filters form,
 .faculty-record-filters form,
 .student-record-filters form,
 .who-what-record-filters form {
-  display: flex;
-  padding: 20px 0 16px 0;
+    display: flex;
+    padding: 20px 0 16px 0;
 }
 
 .book-record-filters form button,
 .faculty-record-filters form button,
 .student-record-filters form button,
 .who-what-record-filters form button {
-  padding: 4px 16px;
-  color: white;
-  background-color: tomato;
-  border: none;
-  box-shadow: 0px 2px 4px 1px rgba(27, 27, 27, 0.3);
-  border-radius: 28px;
+    padding: 4px 16px;
+    color: white;
+    background-color: tomato;
+    border: none;
+    box-shadow: 0px 2px 4px 1px rgba(27, 27, 27, 0.3);
+    border-radius: 28px;
 }
 
 .faculty-record-filters form div,
 .student-record-filters form div,
 .who-what-record-filters form div {
-  margin-right: 36px;
+    margin-right: 36px;
 }
+
 
 /*Books Records*/
 
 .book-record-filters form div {
-  padding: 0 12px;
-  width: 20%;
-  display: flex;
+    padding: 0 12px;
+    width: 20%;
+    display: flex;
 }
 
 .book-record-filters input,
 .book-record-filters select {
-  border: 2px solid rgb(0, 48, 96);
-  outline-width: 3px;
-  outline-color: tomato;
-  width: 100%;
+    border: 2px solid rgb(0, 48, 96);
+    outline-width: 3px;
+    outline-color: tomato;
+    width: 100%;
 }
 
 .book-record-filters form div span {
-  position: absolute;
-  opacity: 0.5;
-  transition: 0.5s linear;
+    position: absolute;
+    opacity: 0.5;
+    transition: 0.5s linear;
 }
 
 .book-record-filters form div:focus-within span,
-.book-record-filters form div input:valid ~ span {
-  color: rgb(8, 44, 80);
-  opacity: 1;
-  transform: translateX(-6px) translateY(-23px);
-  font-size: 18px;
-  font-weight: 500;
+.book-record-filters form div input:valid~span {
+    color: rgb(8, 44, 80);
+    opacity: 1;
+    transform: translateX(-6px) translateY(-23px);
+    font-size: 18px;
+    font-weight: 500;
 }
 
-.book-record-filters form div select:valid ~ span {
-  font-size: 18px;
-  color: rgb(8, 44, 80);
-  opacity: 1;
-  transform: translateX(-6px) translateY(-23px);
-  font-weight: 500;
+.book-record-filters form div select:valid~span {
+    font-size: 18px;
+    color: rgb(8, 44, 80);
+    opacity: 1;
+    transform: translateX(-6px) translateY(-23px);
+    font-weight: 500;
 }
+
 
 /*Books Records*/
 
 .faculty-record-filters form div,
 .student-record-filters form div,
 .who-what-record-filters form div {
-  display: flex;
+    display: flex;
 }
 
 .faculty-record-filters form div span,
 .student-record-filters form div span,
 .who-what-record-filters form div span {
-  transition: 0.5s linear;
-  position: absolute;
-  opacity: 0.5;
+    transition: 0.5s linear;
+    position: absolute;
+    opacity: 0.5;
 }
 
 .faculty-record-filters form div:focus-within span,
-.faculty-record-filters form div input:valid ~ span {
-  color: rgb(8, 44, 80);
-  opacity: 1;
-  transform: translateX(-6px) translateY(-23px);
-  font-size: 18px;
-  font-weight: 500;
+.faculty-record-filters form div input:valid~span {
+    color: rgb(8, 44, 80);
+    opacity: 1;
+    transform: translateX(-6px) translateY(-23px);
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .who-what-record-filters form div:focus-within span,
-.who-what-record-filters form div input:valid ~ span {
-  color: rgb(8, 44, 80);
-  opacity: 1;
-  transform: translateX(-6px) translateY(-23px);
-  font-size: 18px;
-  font-weight: 500;
+.who-what-record-filters form div input:valid~span {
+    color: rgb(8, 44, 80);
+    opacity: 1;
+    transform: translateX(-6px) translateY(-23px);
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .student-record-filters form div:focus-within span,
-.student-record-filters form div input:valid ~ span {
-  color: rgb(8, 44, 80);
-  opacity: 1;
-  transform: translateX(-6px) translateY(-23px);
-  font-size: 18px;
-  font-weight: 500;
+.student-record-filters form div input:valid~span {
+    color: rgb(8, 44, 80);
+    opacity: 1;
+    transform: translateX(-6px) translateY(-23px);
+    font-size: 18px;
+    font-weight: 500;
 }
 
-.student-record-filters form div select:valid ~ span,
-.faculty-record-filters form div select:valid ~ span {
-  color: rgb(8, 44, 80);
-  opacity: 1;
-  transform: translateX(-6px) translateY(-23px);
-  font-size: 18px;
-  font-weight: 500;
+.student-record-filters form div select:valid~span,
+.faculty-record-filters form div select:valid~span {
+    color: rgb(8, 44, 80);
+    opacity: 1;
+    transform: translateX(-6px) translateY(-23px);
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .faculty-record-filters input,
 .student-record-filters input,
 .who-what-record-filters input {
-  border: 2px solid rgb(0, 48, 96);
-  outline-width: 3px;
-  outline-color: tomato;
+    border: 2px solid rgb(0, 48, 96);
+    outline-width: 3px;
+    outline-color: tomato;
 }
 
 .faculty-record-filters select,
 .student-record-filters select,
 .who-what-record-filters select {
-  border: 2px solid rgb(0, 48, 96);
-  outline-width: 3px;
-  outline-color: tomato;
+    border: 2px solid rgb(0, 48, 96);
+    outline-width: 3px;
+    outline-color: tomato;
 }
 
 #no-record-found-p {
-  margin-top: 30px;
-  text-align: center;
+    margin-top: 30px;
+    text-align: center;
 }

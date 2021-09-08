@@ -3,24 +3,24 @@
         <div class="fliter-div">
             <div class="filters">
                 <form method="post">
-                <div>
-                    <input type="date" name="report_from_date" value="">
-                    <span>&nbsp;From</span>
-                </div>
-                <div>
-                    <input type="date" name="report_to_date" value="">
-                    <span>&nbsp;To</span>
-                </div>
-                <div>
-                    <select name="report_role" value="">
+                    <div>
+                        <input type="date" name="report_from_date" value="">
+                        <span>&nbsp;From</span>
+                    </div>
+                    <div>
+                        <input type="date" name="report_to_date" value="">
+                        <span>&nbsp;To</span>
+                    </div>
+                    <div>
+                        <select name="report_role" value="">
                     <option value="" hidden></option>
                     <option value="Faculty">Faculty</option>
                     <option value="Student">Student</option>
                 </select>
-                    <span>&nbsp;Type</span>
-                </div>
-                <div>
-                    <select name="report_department" id="search_department">
+                        <span>&nbsp;Type</span>
+                    </div>
+                    <div>
+                        <select name="report_department" id="search_department">
                     <option value="" hidden selected></option>
                     <option value="CSE"> Computer Science &amp; Engg</option>
                     <option value="MECH">Mechanical Engg</option>
@@ -29,26 +29,26 @@
                     <option value="EEE">Electrical &amp; Electronics Engg
                     </option>
                 </select>
-                    <span>&nbsp;Department</span>
-                </div>
+                        <span>&nbsp;Department</span>
+                    </div>
 
-                <div>
-                    <input type="text" name="report_role_number" value="">
-                    <span>&nbsp;Roll number</span>
-                </div>
-                <div>
-                    <input type="text" name="report_batch" value="">
-                    <span>&nbsp;Batch</span>
-                </div>
-                <div>
-                    <input type="text" name="report_book_id" value="">
-                    <span>&nbsp;Book Id</span>
-                </div>
-                <div class="filter-search">
-                    <button formaction="/reports/getdata">Generate</button>
-                    <button formaction="/reports/exportdata">Export</button> 
-                </div>
-            </form>
+                    <div>
+                        <input type="text" name="report_role_number" value="">
+                        <span>&nbsp;Roll number</span>
+                    </div>
+                    <div>
+                        <input type="text" name="report_batch" value="">
+                        <span>&nbsp;Batch</span>
+                    </div>
+                    <div>
+                        <input type="text" name="report_book_id" value="">
+                        <span>&nbsp;Book Id</span>
+                    </div>
+                    <div class="filter-search">
+                        <button formaction="/reports/getdata">Generate</button>
+                        <button formaction="/reports/exportdata">Export</button>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="record-table">
@@ -92,7 +92,7 @@
             </table>
             <% if(reports.length == 0) { %>
                 <p id='no-record-found-p'>No Record Found</p>
-            <% } %>
+                <% } %>
         </div>
     </div>
 
