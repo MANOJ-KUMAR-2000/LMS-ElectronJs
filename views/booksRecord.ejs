@@ -16,8 +16,8 @@
                     <div>
                         <select id="" name='author_type'>
                             <option value="" hidden></option>
-                    <option value="Local Author">Local Author</option>
-                    <option value="Foreign Author">Foreign Author</option>
+                    <option value="Local">Local Author</option>
+                    <option value="Foreign">Foreign Author</option>
                 </select>
                         <span>&nbsp;Author Type</span>
                     </div>
@@ -62,6 +62,9 @@
                             <% } %>
                     </tbody>
                 </table>
+                <% if(books.length == 0) { %>
+                    <p id='no-record-found-p'>No Record Found</p>
+                <% } %>
             </div>
     </div>
 

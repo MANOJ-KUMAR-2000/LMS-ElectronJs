@@ -1,5 +1,4 @@
 function stu_facu_issue() {
-  document.getElementById("i-detail-head").innerHTML = "";
   document.getElementById("book-issue-message").innerHTML = "";
   book_ids = [];
   var role = document.getElementById("role").value;
@@ -38,6 +37,8 @@ function stu_facu_issue() {
           document.getElementById("book-issue-message").innerHTML =
             responce.message;
         } else {
+          document.getElementById("no-book-issue").innerHTML = "";
+          document.getElementById("i-detail-head").innerHTML = "";
           document.getElementById("book-issue-check-table").innerHTML = "";
           document.getElementById("check-detail-rollnumber").innerHTML = "";
           document.getElementById("check-detail-name").innerHTML = "";
@@ -100,10 +101,12 @@ function stu_facu_issue_check() {
     }).then((res) => {
       res.json().then((responce) => {
         if (responce.roll_detail == undefined) {
+          document.getElementById("curr_hold").style.display = "none";
           document.getElementById("issue-book-div").style.display = "none";
           document.getElementById("check-error").innerHTML =
             "Role Number Does Not Exist";
         } else {
+          document.getElementById("no-book-issue").innerHTML = "";
           document.getElementById("curr_hold").style.display = "block";
           document.getElementById("issue-book-div").style.display = "block";
           document.getElementById("i-detail-head").innerHTML = "ID Details";
@@ -139,7 +142,9 @@ function stu_facu_issue_check() {
 
           var tbl = document.createElement("table");
           var tblBody = document.createElement("tbody");
-          if (responce.issued_detail.length == 0) {
+          if (responce.issued_detail == undefined) {
+            document.getElementById("no-book-issue").innerHTML =
+              "No Book Issued";
           } else {
             for (var i = 0; i < responce.issued_detail.length; i++) {
               var row = document.createElement("tr");
@@ -342,6 +347,8 @@ function remove_book() {
 }
 
 function success_noted() {
+  document.getElementById("no-book-issue").innerHTML = "";
+  document.getElementById("curr_hold").style.display = "none";
   document.getElementById("return-book-btn").style.display = "none";
   document.getElementById("issue-book-div").style.display = "none";
   var noted_div = document.getElementById("success-div");

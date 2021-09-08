@@ -76,13 +76,12 @@ const BooksRecord = (req, res) => {
 };
 
 const SearchbyKey = (req, res) => {
-  query_key = `SELECT * FROM Book_Issued WHERE book_title LIKE ?`;
+  query_key = `SELECT * FROM Book_Issued WHERE book_title LIKE ? ORDER BY book_title`;
   value_key = "%" + req.body["search_key"] + "%";
   db.all(query_key, value_key, (err, match_books) => {
-    if (match_books.length == 0) {
+    if (match_books == undefined) {
       res.render("whohaswhatRec", {
         match_books: [],
-        message: "No Book Found To Keyword : " + req.body["search_key"],
         username: req.cookies.nscet.username,
       });
     } else {
@@ -96,7 +95,7 @@ const SearchbyKey = (req, res) => {
 
 const SearchFaculty = (req, res) => {
   if (req.body["search_roll_number"] == " ") {
-    query_id = `SELECT * FROM Book_Issued WHERE department = ?`;
+    query_id = `SELECT * FROM Book_Issued WHERE department = ? ORDER BY roll_number`;
     value_id = [req.body["search_department"].trim()];
     db.all(query_id, value_id, (err, result) => {
       if (result.length == 0) {
@@ -131,29 +130,45 @@ const SearchFaculty = (req, res) => {
 };
 
 const SearchStudent = (req, res) => {
-  query_id = `SELECT * FROM Book_Issued WHERE roll_number LIKE ? AND batch LIKE ? AND department LIKE ?`;
-  values = [
-    "%" + req.body["search_roll_number"] + "%",
-    "%" + req.body["search_department"] + "%",
-    "%" + req.body["search_batch"] + "%",
-  ];
-  db.all(query_id, values, (err, result) => {
-    if (result.length == 0) {
-      res.render("studentsRecords", {
-        students: [],
-        username: req.cookies.nscet.username,
-      });
-    } else {
-      res.render("studentsRecords", {
-        students: result,
-        username: req.cookies.nscet.username,
-      });
-    }
-  });
+  if (req.body["search_roll_number"] == "") {
+    query_id = `SELECT * FROM Book_Issued WHERE department LIKE ? AND batch LIKE ? ORDER BY roll_number`;
+    values = [
+      "%" + req.body["search_department"] + "%",
+      "%" + req.body["search_batch"] + "%",
+    ];
+    db.all(query_id, values, (err, result) => {
+      if (result.length == 0) {
+        res.render("studentsRecords", {
+          students: [],
+          username: req.cookies.nscet.username,
+        });
+      } else {
+        res.render("studentsRecords", {
+          students: result,
+          username: req.cookies.nscet.username,
+        });
+      }
+    });
+  } else {
+    query_id = `SELECT * FROM Book_Issued WHERE roll_number = ?`;
+    db.all(query_id, [req.body["search_roll_number"]], (err, result) => {
+      if (result.length == 0) {
+        res.render("studentsRecords", {
+          students: [],
+          username: req.cookies.nscet.username,
+        });
+      } else {
+        res.render("studentsRecords", {
+          students: result,
+          username: req.cookies.nscet.username,
+        });
+      }
+    });
+  }
 };
 
 const SearchBook = (req, res) => {
-  query_id = `SELECT * FROM Currently_Available WHERE author_type LIKE ? AND author LIKE ? AND title LIKE ? AND publisher LIKE ?`;
+  query_id = `SELECT * FROM Currently_Available WHERE author_type LIKE ? AND author LIKE ? AND title LIKE ? AND publisher LIKE ? ORDER BY title`;
   value_id = [
     "%" + req.body["author_type"] + "%",
     "%" + req.body["author"] + "%",

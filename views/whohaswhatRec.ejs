@@ -19,6 +19,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Department</th>
+                            <th>Role</th>
                             <th>Batch</th>
                             <th>Book ID</th>
                             <th>Book Name</th>
@@ -35,6 +36,9 @@
                                 </td>
                                 <td>
                                     <%= match_books[i].department %>
+                                </td>
+                                <td>
+                                    <%= match_books[i].role %>
                                 </td>
                                 <td>
                                     <%= match_books[i].batch %>
@@ -55,6 +59,9 @@
                             <% } %>
                     </tbody>
                 </table>
+                <% if(match_books.length == 0) { %>
+                    <p id='no-record-found-p'>No Record Found / Search For Detail</p>
+                <% } %>
             </div>
     </div>
 
