@@ -2,6 +2,10 @@
     padding: 0px 16px;
 }
 
+.database-main-content .utils button a {
+    color: tomato;
+}
+
 .database-main-content h2 {
     color: rgb(27, 27, 27);
     font-size: 25px;

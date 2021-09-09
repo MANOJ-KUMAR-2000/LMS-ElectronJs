@@ -1,6 +1,6 @@
 <%- include('../templates/mainPage.ejs') %>
     <div class="student-record-main-content record-main">
-        <h1>Who Has What</h1>
+        <h1>Book Status</h1>
         <%- include('../templates/recordLinks.ejs') %>
 
             <div class="who-what-record-filters">
@@ -61,7 +61,7 @@
                 </table>
                 <% if(match_books.length == 0) { %>
                     <p id='no-record-found-p'>No Record Found / Search For Detail</p>
-                <% } %>
+                    <% } %>
             </div>
     </div>
 
