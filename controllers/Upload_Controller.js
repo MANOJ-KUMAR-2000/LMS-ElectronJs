@@ -102,7 +102,7 @@ const UploadBooks = (req, res) => {
   var month = todayTime.getMonth() + 1;
   var date = todayTime.getDate();
   var year = todayTime.getFullYear();
-  var today_date = date + "-" + month + "-" + year;
+  var today_date = year + "-" + month + "-" + date;
   var today_time = todayTime.toLocaleString("en-US", {
     hour: "numeric",
     minute: "numeric",

@@ -20,8 +20,8 @@ const IssueBook = (req, res) => {
   var vali_date = todayTime.getDate() + 14;
   var year = todayTime.getFullYear();
 
-  var date = today_date + "-" + month + "-" + year;
-  var untill_date = vali_date + "-" + month + "-" + year;
+  var date = year + "-" + month + "-" + today_date;
+  var untill_date = year + "-" + month + "-" + vali_date;
   var time = todayTime.toLocaleString("en-US", {
     hour: "numeric",
     minute: "numeric",
@@ -216,7 +216,7 @@ const ReturnBook = (req, res) => {
               var month = todayTime.getMonth() + 1;
               var date = todayTime.getDate();
               var year = todayTime.getFullYear();
-              var today_date = date + "-" + month + "-" + year;
+              var today_date = year + "-" + month + "-" + date;
               var today_time = todayTime.toLocaleString("en-US", {
                 hour: "numeric",
                 minute: "numeric",
@@ -230,16 +230,16 @@ const ReturnBook = (req, res) => {
               to_compare_validation_date = issued_info_date.split("-");
               to_compare_returning_date = today_date.split("-");
               if (
-                parseInt(to_compare_validation_date[2]) >=
-                parseInt(to_compare_returning_date[2])
+                parseInt(to_compare_validation_date[0]) >=
+                parseInt(to_compare_returning_date[0])
               ) {
                 if (
                   parseInt(to_compare_validation_date[1]) >=
                   parseInt(to_compare_returning_date[1])
                 ) {
                   if (
-                    parseInt(to_compare_validation_date[0]) >=
-                    parseInt(to_compare_returning_date[0])
+                    parseInt(to_compare_validation_date[2]) >=
+                    parseInt(to_compare_returning_date[2])
                   ) {
                     is_delayed = "On Time";
                   } else {

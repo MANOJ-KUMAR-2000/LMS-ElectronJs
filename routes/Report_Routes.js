@@ -6,6 +6,6 @@ const routes = express.Router();
 routes.get("/", controller.ReportGet);
 
 routes.post("/exportdata", controller.ReportPostExport);
-/*routes.post("/searchdata", controller.ReportSearch);*/
+routes.post("/searchdata", controller.ReportSearch);
 
 module.exports = routes;

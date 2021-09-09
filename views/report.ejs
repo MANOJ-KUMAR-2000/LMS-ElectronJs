@@ -2,7 +2,6 @@
     <div class="report-main-content">
         <div class="fliter-div">
             <div class="filters">
-                <!--
                 <form autocomplete="off" method="post">
                     <div>
                         <input type="date" name="report_from_date" value="">
@@ -50,16 +49,6 @@
                         <button formaction="/reports/exportdata">Export</button>
                     </div>
                 </form>
-            -->
-
-                <form autocomplete="off" method="post">
-                    <div>
-                        <h1>Full Report</h1>
-                    </div>
-                    <div class="filter-search">
-                        <button formaction="/reports/exportdata">Export</button>
-                    </div>
-                </form>
             </div>
         </div>
         <% if(export_msg) { %>
@@ -77,16 +66,16 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Roll Number</th>
+                                <th width='1%'>ID</th>
+                                <th width='13%'>Roll Number</th>
                                 <th>Role</th>
                                 <th>Department</th>
                                 <th>Batch</th>
-                                <th>Book ID</th>
+                                <th width='5%'>Book</th>
                                 <th>Book Title</th>
-                                <th>Issued Date</th>
-                                <th>Return Date</th>
-                                <th>Is Delay</th>
+                                <th>Issued</th>
+                                <th>Return</th>
+                                <th>Delay</th>
                             </tr>
                         </thead>
 
