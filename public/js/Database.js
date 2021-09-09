@@ -220,7 +220,7 @@ function add_book_xlsx() {
           var success_div = document.createElement("div");
           success_div.id = "success-div";
           success_div.innerHTML =
-            "<div><span class='success-msg'>Books Successfully Added to Library<br /><p>Location : {App Path}/GeneratedFiles/BookIds</p></span><a onclick='success_noted()'>OK</a></div>";
+            "<div><span class='success-msg'>Books Successfully Added to Library</span><a onclick='success_noted()'>OK</a></div>";
           document.body.appendChild(success_div);
           document.getElementById("book_excel_file").value = "";
         } else {

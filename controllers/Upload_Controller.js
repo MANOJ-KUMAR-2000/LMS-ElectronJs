@@ -114,7 +114,13 @@ const UploadBooks = (req, res) => {
       result = books.length;
       if (
         JSON.stringify(Object.keys(data[0])) ==
-        JSON.stringify(["title", "author_type", "author", "publisher"])
+        JSON.stringify([
+          "book_id",
+          "title",
+          "author_type",
+          "author",
+          "publisher",
+        ])
       ) {
         for (let i = 0; i < data.length; i++) {
           result += 1;
@@ -127,8 +133,12 @@ const UploadBooks = (req, res) => {
             data[i].author,
             data[i].publisher,
           ];
-          db.run(db_query, values);
-          db.run(available_query, values);
+          db.run(db_query, values, (err) => {
+            //PASS
+          });
+          db.run(available_query, values, (err) => {
+            //PASS
+          });
         }
         res.send(
           JSON.stringify({
