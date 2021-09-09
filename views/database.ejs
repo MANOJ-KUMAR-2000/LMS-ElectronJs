@@ -1,83 +1,96 @@
 <%- include('../templates/mainPage.ejs') %>
 
     <div class="database-main-content">
-        <h2>DATABASE</h2>
-        <!-- Tab links -->
-        <div class="primary_tab">
-            <div>
-                <button class="primary_tablinks" onclick="openPrimary(event, 'add_db')">Add</button>
-                <button class="primary_tablinks" onclick="openPrimary(event, 'view_db')">View</button>
-            </div>
 
-            <div>
-                <button class="primary_tablinks" onclick="">Backup</button>
-                <button class="primary_tablinks" onclick="">Restore</button>
-                <button class="primary_tablinks"><a href="/add-view/all"><i class="fas fa-sync-alt"></i></a></button>
+        <% if(backup) { %>
+            <div id="export-success">
+                <div>
+                    <p>
+                        <%=backup%>
+                    </p>
+                    <br />
+                    <a onclick="export_noted()">OK</a>
+                </div>
             </div>
+            <% } %>
 
-        </div>
+                <h2>DATABASE</h2>
+                <!-- Tab links -->
+                <div class="primary_tab">
+                    <div>
+                        <button class="primary_tablinks" onclick="openPrimary(event, 'add_db')">Add</button>
+                        <button class="primary_tablinks" onclick="openPrimary(event, 'view_db')">View</button>
+                    </div>
 
-        <!-- Tab content 1-->
-        <div id="add_db" class="primary_tabcontent">
-            <div class="secondry1_tab">
-                <button class="secondry1_tablinks" onclick="openSecondry1(event, 'add_book')">Books</button>
-                <button class="secondry1_tablinks" onclick="openSecondry1(event, 'add_student')">Students</button>
-                <button class="secondry1_tablinks" onclick="openSecondry1(event, 'add_faculty')">Faculty</button>
-            </div>
-            <div id="add_book" class="secondry1_tabcontent">
-                <div class="add_book">
-                    <div class="solo">
-                        <h3>Add a single book</h3>
-                        <div>
-                            <input autocomplete="off" name="title" type="text" id="book_title" required/>
-                            <span>&nbsp;Title</span>
-                        </div>
-                        <div>
-                            <input autocomplete="off" name="author" type="text" id="book_author" required/>
-                            <span>&nbsp;Author Name</span>
-                        </div>
-                        <div>
-                            <select name="author_type" id="book_author_type" required>
+                    <div>
+                        <button class="primary_tablinks"><a href="/add-view/backup/">Backup</a></button>
+                        <button type="submit" class="primary_tablinks" onclick="restore()">Restore</button>
+                        <button class="primary_tablinks"><a href="/add-view/all"><i class="fas fa-sync-alt"></i></a></button>
+                    </div>
+
+                </div>
+
+                <!-- Tab content 1-->
+                <div id="add_db" class="primary_tabcontent">
+                    <div class="secondry1_tab">
+                        <button class="secondry1_tablinks" onclick="openSecondry1(event, 'add_book')">Books</button>
+                        <button class="secondry1_tablinks" onclick="openSecondry1(event, 'add_student')">Students</button>
+                        <button class="secondry1_tablinks" onclick="openSecondry1(event, 'add_faculty')">Faculty</button>
+                    </div>
+                    <div id="add_book" class="secondry1_tabcontent">
+                        <div class="add_book">
+                            <div class="solo">
+                                <h3>Add a single book</h3>
+                                <div>
+                                    <input autocomplete="off" name="title" type="text" id="book_title" required/>
+                                    <span>&nbsp;Title</span>
+                                </div>
+                                <div>
+                                    <input autocomplete="off" name="author" type="text" id="book_author" required/>
+                                    <span>&nbsp;Author Name</span>
+                                </div>
+                                <div>
+                                    <select name="author_type" id="book_author_type" required>
                                 <option value="" hidden> </option>
                                 <option value="Local Author">Local Author</option>
                                 <option value="Foreign Author">Foreign Author</option>
                             </select>
-                            <span>&nbsp;Author Type</span>
+                                    <span>&nbsp;Author Type</span>
+                                </div>
+                                <div>
+                                    <input autocomplete="off" name="publisher" type="text" id='book_publisher' required>
+                                    <span>&nbsp;Publisher</span>
+                                </div>
+                                <div><button onclick="add_book()">Add</button></div>
+                                <p id="book_error_message" class="error_msg"></p>
+                            </div>
+                            <div class="multi">
+                                <h3>Add multiple Books</h3>
+                                <div>
+                                    <input type="file" name="book_excel_file" id="book_excel_file" required>
+                                    <button onclick="add_book_xlsx()">Add</button>
+                                    <p class="usr_msg">The excel column name must be in this format.</p>
+                                    <p class="usr_msg">| title | author_type | author | publisher |</p>
+                                    <p id="book_xlsx_success_message"></p>
+                                    <p id="book_xlsx_error_message" class="error_msg"></p>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <input autocomplete="off" name="publisher" type="text" id='book_publisher' required>
-                            <span>&nbsp;Publisher</span>
-                        </div>
-                        <div><button onclick="add_book()">Add</button></div>
-                        <p id="book_error_message" class="error_msg"></p>
                     </div>
-                    <div class="multi">
-                        <h3>Add multiple Books</h3>
-                        <div>
-                            <input type="file" name="book_excel_file" id="book_excel_file" required>
-                            <button onclick="add_book_xlsx()">Add</button>
-                            <p class="usr_msg">The excel column name must be in this format.</p>
-                            <p class="usr_msg">| title | author_type | author | publisher |</p>
-                            <p id="book_xlsx_success_message"></p>
-                            <p id="book_xlsx_error_message" class="error_msg"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="add_student" class="secondry1_tabcontent">
-                <div class="add_student">
-                    <div class="solo">
-                        <h3>Add a single student</h3>
-                        <div>
-                            <input autocomplete="off" name="roll_number" id='stu_roll_number' type="text" required>
-                            <span>&nbsp;Register No</span>
-                        </div>
-                        <div>
-                            <input autocomplete="off" name="name" id='stu_name' type="text" required>
-                            <span>&nbsp;Name</span>
-                        </div>
-                        <div>
-                            <select name="department" id="stu_department" required>
+                    <div id="add_student" class="secondry1_tabcontent">
+                        <div class="add_student">
+                            <div class="solo">
+                                <h3>Add a single student</h3>
+                                <div>
+                                    <input autocomplete="off" name="roll_number" id='stu_roll_number' type="text" required>
+                                    <span>&nbsp;Register No</span>
+                                </div>
+                                <div>
+                                    <input autocomplete="off" name="name" id='stu_name' type="text" required>
+                                    <span>&nbsp;Name</span>
+                                </div>
+                                <div>
+                                    <select name="department" id="stu_department" required>
                             <option value="" hidden> </option>
                             <option value="CSE">Computer Science & Engg</option>
                             <option value="MECH">Mechanical & Engg</option>
@@ -85,44 +98,44 @@
                             <option value="CIVIL">Civil Engg</option>
                             <option value="EEE">Electrical & Electronics Engg</option>
                         </select>
-                            <span>&nbsp;Department</span>
-                        </div>
-                        <div>
-                            <input autocomplete="off" name="batch" id='stu_batch' type="text" required>
-                            <span>&nbsp;batch</span>
-                        </div>
-                        <div><button onclick="add_student()">Add</button></div>
-                        <p id="stu_error_message" class="error_msg"></p>
-                    </div>
-                    <div class="multi">
-                        <h3>Add multiple students</h3>
-                        <div>
-                            <input autocomplete="off" type="file" name="student_excel_file" id="student_excel_file" required>
-                            <button onclick="add_student_xlsx()">Add</button>
-                            <p class="usr_msg">The excel column name must be in this format.</p>
-                            <p class="usr_msg">| rollno | name | batch | department |</p>
-                            <p id="stu_xlsx_success_message"></p>
-                            <p id="stu_xlsx_error_message" class="error_msg"></p>
+                                    <span>&nbsp;Department</span>
+                                </div>
+                                <div>
+                                    <input autocomplete="off" name="batch" id='stu_batch' type="text" required>
+                                    <span>&nbsp;batch</span>
+                                </div>
+                                <div><button onclick="add_student()">Add</button></div>
+                                <p id="stu_error_message" class="error_msg"></p>
+                            </div>
+                            <div class="multi">
+                                <h3>Add multiple students</h3>
+                                <div>
+                                    <input autocomplete="off" type="file" name="student_excel_file" id="student_excel_file" required>
+                                    <button onclick="add_student_xlsx()">Add</button>
+                                    <p class="usr_msg">The excel column name must be in this format.</p>
+                                    <p class="usr_msg">| rollno | name | batch | department |</p>
+                                    <p id="stu_xlsx_success_message"></p>
+                                    <p id="stu_xlsx_error_message" class="error_msg"></p>
 
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div id="add_faculty" class="secondry1_tabcontent">
-                <div class="add_faculty">
-                    <div class="solo">
-                        <h3>Add a single Faculty</h3>
-                        <div>
-                            <input autocomplete="off" name="roll_number" id='facu_roll_number' type="text" required>
-                            <span>&nbsp;Faculty Id</span>
-                        </div>
-                        <div>
-                            <input autocomplete="off" name="name" id='facu_name' type="text" required>
-                            <span>&nbsp;Name</span>
-                        </div>
-                        <div>
-                            <select name="department" id="facu_department" required>
+                    <div id="add_faculty" class="secondry1_tabcontent">
+                        <div class="add_faculty">
+                            <div class="solo">
+                                <h3>Add a single Faculty</h3>
+                                <div>
+                                    <input autocomplete="off" name="roll_number" id='facu_roll_number' type="text" required>
+                                    <span>&nbsp;Faculty Id</span>
+                                </div>
+                                <div>
+                                    <input autocomplete="off" name="name" id='facu_name' type="text" required>
+                                    <span>&nbsp;Name</span>
+                                </div>
+                                <div>
+                                    <select name="department" id="facu_department" required>
                                 <option value="" hidden> </option>
                         <option value="CSE">Computer Science & Engg</option>
                         <option value="MECH">Mechanical & Engg</option>
@@ -130,128 +143,128 @@
                         <option value="CIVIL">Civil Engg</option>
                         <option value="EEE">Electrical & Electronics Engg</option>
                     </select>
-                            <span>&nbsp;Department</span>
-                        </div>
-                        <div><button onclick="add_faculty()">Add</button></div>
-                        <p id="facu_error_message" class="error_msg"></p>
+                                    <span>&nbsp;Department</span>
+                                </div>
+                                <div><button onclick="add_faculty()">Add</button></div>
+                                <p id="facu_error_message" class="error_msg"></p>
 
-                    </div>
-                    <div class="multi">
-                        <h3>Add multiple faculty</h3>
-                        <div>
-                            <input autocomplete="off" type="file" name="faculty_excel_file" id="faculty_excel_file" required>
-                            <button onclick="add_faculty_xlsx()">Add</button>
-                            <p class="usr_msg">The excel column name must be in this format.</p>
-                            <p class="usr_msg">| rollno | name | department |</p>
-                            <p id="facu_xlsx_success_message"></p>
-                            <p id="facu_xlsx_error_message" class="error_msg"></p>
+                            </div>
+                            <div class="multi">
+                                <h3>Add multiple faculty</h3>
+                                <div>
+                                    <input autocomplete="off" type="file" name="faculty_excel_file" id="faculty_excel_file" required>
+                                    <button onclick="add_faculty_xlsx()">Add</button>
+                                    <p class="usr_msg">The excel column name must be in this format.</p>
+                                    <p class="usr_msg">| rollno | name | department |</p>
+                                    <p id="facu_xlsx_success_message"></p>
+                                    <p id="facu_xlsx_error_message" class="error_msg"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- Tab content 2-->
-        <div id="view_db" class="primary_tabcontent">
-            <div class="secondry2_tab">
-                <button class="secondry2_tablinks" onclick="openSecondry2(event, 'view_book')">Books</button>
-                <button class="secondry2_tablinks" onclick="openSecondry2(event, 'view_student')">Students</button>
-                <button class="secondry2_tablinks" onclick="openSecondry2(event, 'view_faculty')">Faculty</button>
-            </div>
-            <div id="view_book" class="secondry2_tabcontent">
-                <table>
-                    <thead>
-                        <tr>
-                            <th width='10%'>Book ID</th>
-                            <th width='30%'>Title</th>
-                            <th width='15%'>Author Type</th>
-                            <th width='20%'>Author</th>
-                            <th width='25%'>Publisher</th>
-                        </tr>
-                    </thead>
+                <!-- Tab content 2-->
+                <div id="view_db" class="primary_tabcontent">
+                    <div class="secondry2_tab">
+                        <button class="secondry2_tablinks" onclick="openSecondry2(event, 'view_book')">Books</button>
+                        <button class="secondry2_tablinks" onclick="openSecondry2(event, 'view_student')">Students</button>
+                        <button class="secondry2_tablinks" onclick="openSecondry2(event, 'view_faculty')">Faculty</button>
+                    </div>
+                    <div id="view_book" class="secondry2_tabcontent">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width='10%'>Book ID</th>
+                                    <th width='30%'>Title</th>
+                                    <th width='15%'>Author Type</th>
+                                    <th width='20%'>Author</th>
+                                    <th width='25%'>Publisher</th>
+                                </tr>
+                            </thead>
 
-                    <tbody>
-                        <% for(var i=0; i < books_db.length; i++) { %>
-                            <tr>
-                                <td>
-                                    <%= books_db[i].book_id %>
-                                </td>
-                                <td>
-                                    <%= books_db[i].title %>
-                                </td>
-                                <td>
-                                    <%= books_db[i].author_type %>
-                                </td>
-                                <td>
-                                    <%= books_db[i].author %>
-                                </td>
-                                <td>
-                                    <%= books_db[i].publisher %>
-                                </td>
-                            </tr>
-                            <% } %>
-                    </tbody>
-                </table>
-            </div>
-            <div id="view_student" class="secondry2_tabcontent">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Student ID</th>
-                            <th>Name</th>
-                            <th>Batch</th>
-                            <th>Department</th>
-                        </tr>
-                    </thead>
+                            <tbody>
+                                <% for(var i=0; i < books_db.length; i++) { %>
+                                    <tr>
+                                        <td>
+                                            <%= books_db[i].book_id %>
+                                        </td>
+                                        <td>
+                                            <%= books_db[i].title %>
+                                        </td>
+                                        <td>
+                                            <%= books_db[i].author_type %>
+                                        </td>
+                                        <td>
+                                            <%= books_db[i].author %>
+                                        </td>
+                                        <td>
+                                            <%= books_db[i].publisher %>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="view_student" class="secondry2_tabcontent">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>Batch</th>
+                                    <th>Department</th>
+                                </tr>
+                            </thead>
 
-                    <tbody>
-                        <% for(var i=0; i < students_db.length; i++) { %>
-                            <tr>
-                                <td>
-                                    <%= students_db[i].roll_number %>
-                                </td>
-                                <td>
-                                    <%= students_db[i].name %>
-                                </td>
-                                <td>
-                                    <%= students_db[i].batch %>
-                                </td>
-                                <td>
-                                    <%= students_db[i].department %>
-                                </td>
-                            </tr>
-                            <% } %>
-                    </tbody>
-                </table>
-            </div>
-            <div id="view_faculty" class="secondry2_tabcontent">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Faculty ID</th>
-                            <th>Name</th>
-                            <th>Department</th>
-                        </tr>
-                    </thead>
+                            <tbody>
+                                <% for(var i=0; i < students_db.length; i++) { %>
+                                    <tr>
+                                        <td>
+                                            <%= students_db[i].roll_number %>
+                                        </td>
+                                        <td>
+                                            <%= students_db[i].name %>
+                                        </td>
+                                        <td>
+                                            <%= students_db[i].batch %>
+                                        </td>
+                                        <td>
+                                            <%= students_db[i].department %>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="view_faculty" class="secondry2_tabcontent">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Faculty ID</th>
+                                    <th>Name</th>
+                                    <th>Department</th>
+                                </tr>
+                            </thead>
 
-                    <tbody>
-                        <% for(var i=0; i < facultys_db.length; i++) { %>
-                            <tr>
-                                <td>
-                                    <%= facultys_db[i].roll_number %>
-                                </td>
-                                <td>
-                                    <%= facultys_db[i].name %>
-                                </td>
-                                <td>
-                                    <%= facultys_db[i].department %>
-                                </td>
-                            </tr>
-                            <% } %>
-                    </tbody>
-                </table>
-            </div>
+                            <tbody>
+                                <% for(var i=0; i < facultys_db.length; i++) { %>
+                                    <tr>
+                                        <td>
+                                            <%= facultys_db[i].roll_number %>
+                                        </td>
+                                        <td>
+                                            <%= facultys_db[i].name %>
+                                        </td>
+                                        <td>
+                                            <%= facultys_db[i].department %>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </div>
 
-        </div>
+                </div>
     </div>
 
     <!--Template Ending-->
@@ -260,6 +273,7 @@
     <script src="/js/time.js"></script>
     <script src="/js/TabNav.js"></script>
     <script src="/js/Database.js"></script>
+    <script src="/js/Backup.js"></script>
     </body>
 
     </html>
