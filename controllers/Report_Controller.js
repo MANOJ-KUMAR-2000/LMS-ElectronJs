@@ -26,6 +26,8 @@ const ReportSearch = (req, res) => {
     !(req.body["report_from_date"] == "" || req.body["report_to_date"] == "")
   ) {
     from_to_dates_report = [];
+    from_to_book_id = [];
+    date_roll_number_report = [];
     from = db.all(
       `SELECT * FROM FullReport ORDER BY id`,
       (err, full_report) => {
@@ -39,11 +41,38 @@ const ReportSearch = (req, res) => {
             from_to_dates_report.push(full_report[i]);
           }
         }
-        res.render("report", {
-          export_msg: null,
-          reports: from_to_dates_report,
-          username: req.cookies.nscet.username,
-        });
+        if (!(req.body["report_role_number"] == "")) {
+          for (let j = 0; j < from_to_dates_report.length; j++) {
+            if (
+              req.body["report_role_number"] ==
+              from_to_dates_report[j].roll_number
+            ) {
+              date_roll_number_report.push(from_to_dates_report[j]);
+            }
+          }
+          res.render("report", {
+            export_msg: null,
+            reports: date_roll_number_report,
+            username: req.cookies.nscet.username,
+          });
+        } else if (!(req.body["report_book_id"] == "")) {
+          for (let k = 0; k < from_to_dates_report.length; k++) {
+            if (req.body["report_book_id"] == from_to_dates_report[k].book_id) {
+              from_to_book_id.push(from_to_dates_report[k]);
+            }
+          }
+          res.render("report", {
+            export_msg: null,
+            reports: from_to_book_id,
+            username: req.cookies.nscet.username,
+          });
+        } else {
+          res.render("report", {
+            export_msg: null,
+            reports: from_to_dates_report,
+            username: req.cookies.nscet.username,
+          });
+        }
       }
     );
   } else {
@@ -121,12 +150,13 @@ const ReportPostExport = (req, res) => {
   var year = todayTime.getFullYear();
   var today_date = year + "-" + month + "-" + date;
   if (
-    !(req.body["report_from_date"] == "" && req.body["report_to_date"] == "")
+    !(req.body["report_from_date"] == "" || req.body["report_to_date"] == "")
   ) {
     from_to_dates_report = [];
+    from_to_book_id = [];
+    date_roll_number_report = [];
     from = db.all(`SELECT * FROM FullReport`, (err, full_report) => {
       for (let i = 0; i < full_report.length; i++) {
-        console.log(full_report[i].return_date);
         if (
           new Date(full_report[i].return_date) >=
             new Date(req.body["report_from_date"]) &&
@@ -136,22 +166,71 @@ const ReportPostExport = (req, res) => {
           from_to_dates_report.push(full_report[i]);
         }
       }
-      var xls = json2xls(from_to_dates_report);
-      fs.writeFileSync(
-        `GeneratedFiles/Reports/FullReport${
-          today_date + "-" + todayTime.getHours() + todayTime.getMinutes()
-        }.xlsx`,
-        xls,
-        "binary"
-      );
-      res.render("report", {
-        export_msg: `File Exported To ${path.join(
-          __dirname,
-          "../"
-        )}\\GeneratedFiles\\Reports\\`,
-        reports: from_to_dates_report,
-        username: req.cookies.nscet.username,
-      });
+      if (!(req.body["report_role_number"] == "")) {
+        for (let j = 0; j < from_to_dates_report.length; j++) {
+          if (
+            req.body["report_role_number"] ==
+            from_to_dates_report[j].roll_number
+          ) {
+            date_roll_number_report.push(from_to_dates_report[j]);
+          }
+        }
+        var xls = json2xls(date_roll_number_report);
+        fs.writeFileSync(
+          `GeneratedFiles/Reports/FullReport${
+            today_date + "-" + todayTime.getHours() + todayTime.getMinutes()
+          }.xlsx`,
+          xls,
+          "binary"
+        );
+        res.render("report", {
+          export_msg: `File Exported To ${path.join(
+            __dirname,
+            "../"
+          )}/GeneratedFiles/Reports/`,
+          reports: date_roll_number_report,
+          username: req.cookies.nscet.username,
+        });
+      } else if (!(req.body["report_book_id"] == "")) {
+        for (let k = 0; k < from_to_dates_report.length; k++) {
+          if (req.body["report_book_id"] == from_to_dates_report[k].book_id) {
+            from_to_book_id.push(from_to_dates_report[k]);
+          }
+        }
+        var xls = json2xls(from_to_book_id);
+        fs.writeFileSync(
+          `GeneratedFiles/Reports/FullReport${
+            today_date + "-" + todayTime.getHours() + todayTime.getMinutes()
+          }.xlsx`,
+          xls,
+          "binary"
+        );
+        res.render("report", {
+          export_msg: `File Exported To ${path.join(
+            __dirname,
+            "../"
+          )}/GeneratedFiles/Reports/`,
+          reports: from_to_book_id,
+          username: req.cookies.nscet.username,
+        });
+      } else {
+        var xls = json2xls(from_to_dates_report);
+        fs.writeFileSync(
+          `GeneratedFiles/Reports/FullReport${
+            today_date + "-" + todayTime.getHours() + todayTime.getMinutes()
+          }.xlsx`,
+          xls,
+          "binary"
+        );
+        res.render("report", {
+          export_msg: `File Exported To ${path.join(
+            __dirname,
+            "../"
+          )}/GeneratedFiles/Reports/`,
+          reports: from_to_dates_report,
+          username: req.cookies.nscet.username,
+        });
+      }
     });
   } else {
     if (
