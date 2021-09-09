@@ -87,7 +87,11 @@ const AddBooks = (req, res) => {
     ];
     db.run(db_query, values, (err) => {
       if (err) {
-        //PASS
+        res.send(
+          JSON.stringify({
+            message: "Book ID ALready Exist",
+          })
+        );
       } else {
         db.run(available_query, values, (err) => {
           if (err) {
