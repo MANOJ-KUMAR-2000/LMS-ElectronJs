@@ -156,7 +156,7 @@ function add_faculty_xlsx() {
 
 function add_book() {
   document.getElementById("book_error_message").innerHTML = "";
-
+  var book_id = document.getElementById("book_id").value;
   var title = document.getElementById("book_title").value;
   var author = document.getElementById("book_author").value;
   var author_type = document.getElementById("book_author_type").value;
@@ -173,6 +173,7 @@ function add_book() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        book_id: book_id,
         title: title,
         author: author,
         author_type: author_type,
@@ -185,9 +186,7 @@ function add_book() {
           success_div.id = "success-div";
           success_div.innerHTML =
             "<div><span class='success-msg'>" +
-            "Book Sucessfully Added BookID is : " +
-            responce.bookid +
-            "</span><a onclick='success_noted()'>OK</a></div>";
+            "Book Sucessfully Added</span><a onclick='success_noted()'>OK</a></div>";
           document.body.appendChild(success_div);
           document.getElementById("book_title").value = "";
           document.getElementById("book_author").value = "";
@@ -221,7 +220,7 @@ function add_book_xlsx() {
           var success_div = document.createElement("div");
           success_div.id = "success-div";
           success_div.innerHTML =
-            "<div><span class='success-msg'>Books Successfully Added to Library<br /><p>Location : {App Path}/GeneratedFiles/BookIds</p></span><a onclick='success_noted()'>OK</a></div>";
+            "<div><span class='success-msg'>Books Successfully Added to Library</span><a onclick='success_noted()'>OK</a></div>";
           document.body.appendChild(success_div);
           document.getElementById("book_excel_file").value = "";
         } else {

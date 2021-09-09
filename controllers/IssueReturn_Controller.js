@@ -9,6 +9,7 @@ const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
 });
 
 const IssueReturnGet = (req, res) => {
+  console.log(req.cookies.nscet);
   res.render("issueReturn", { username: req.cookies.nscet.username });
 };
 
