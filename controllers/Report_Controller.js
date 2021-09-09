@@ -23,31 +23,31 @@ const ReportGet = (req, res) => {
 
 const ReportSearch = (req, res) => {
   if (
-    !(req.body["report_from_date"] == "" && req.body["report_to_date"] == "")
+    !(req.body["report_from_date"] == "" || req.body["report_to_date"] == "")
   ) {
     from_to_dates_report = [];
-    from = db.all(`SELECT * FROM FullReport`, (err, full_report) => {
-      for (let i = 0; i < full_report.length; i++) {
-        console.log(full_report[i].return_date);
-        if (
-          new Date(full_report[i].return_date) >=
-            new Date(req.body["report_from_date"]) &&
-          new Date(full_report[i].return_date) <=
-            new Date(req.body["report_to_date"])
-        ) {
-          from_to_dates_report.push(full_report[i]);
+    from = db.all(
+      `SELECT * FROM FullReport ORDER BY id`,
+      (err, full_report) => {
+        for (let i = 0; i < full_report.length; i++) {
+          if (
+            new Date(full_report[i].return_date) >=
+              new Date(req.body["report_from_date"]) &&
+            new Date(full_report[i].return_date) <=
+              new Date(req.body["report_to_date"])
+          ) {
+            from_to_dates_report.push(full_report[i]);
+          }
         }
+        res.render("report", {
+          export_msg: null,
+          reports: from_to_dates_report,
+          username: req.cookies.nscet.username,
+        });
       }
-      res.render("report", {
-        export_msg: null,
-        reports: from_to_dates_report,
-        username: req.cookies.nscet.username,
-      });
-    });
+    );
   } else {
     if (
-      req.body["report_from_date"] == "" &&
-      req.body["report_to_date"] == "" &&
       req.body["report_role"] == "" &&
       req.body["report_department"] == "" &&
       req.body["report_role_number"] == "" &&

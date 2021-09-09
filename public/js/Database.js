@@ -188,6 +188,7 @@ function add_book() {
             "<div><span class='success-msg'>" +
             "Book Sucessfully Added</span><a onclick='success_noted()'>OK</a></div>";
           document.body.appendChild(success_div);
+          document.getElementById("book_id").value = "";
           document.getElementById("book_title").value = "";
           document.getElementById("book_author").value = "";
           document.getElementById("book_author_type").value = "";
