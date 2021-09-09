@@ -42,6 +42,10 @@
                             <div class="solo">
                                 <h3>Add a single book</h3>
                                 <div>
+                                    <input autocomplete="off" name="book_id" type="text" id="book_id" required/>
+                                    <span>&nbsp;Book ID</span>
+                                </div>
+                                <div>
                                     <input autocomplete="off" name="title" type="text" id="book_title" required/>
                                     <span>&nbsp;Title</span>
                                 </div>
@@ -70,7 +74,7 @@
                                     <input type="file" name="book_excel_file" id="book_excel_file" required>
                                     <button onclick="add_book_xlsx()">Add</button>
                                     <p class="usr_msg">The excel column name must be in this format.</p>
-                                    <p class="usr_msg">| title | author_type | author | publisher |</p>
+                                    <p class="usr_msg">| book_id | title | author_type | author | publisher |</p>
                                     <p id="book_xlsx_success_message"></p>
                                     <p id="book_xlsx_error_message" class="error_msg"></p>
                                 </div>

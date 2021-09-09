@@ -118,28 +118,18 @@ const UploadBooks = (req, res) => {
       ) {
         for (let i = 0; i < data.length; i++) {
           result += 1;
-          book_id = req.cookies.nscet.department + result;
           db_query = `INSERT INTO Library_Books (book_id,title,author_type,author,publisher) VALUES (?,?,?,?,?);`;
           available_query = `INSERT INTO Currently_Available (book_id,title,author_type,author,publisher) VALUES (?,?,?,?,?);`;
           values = [
-            book_id,
+            data[i].book_id,
             data[i].title,
             data[i].author_type,
             data[i].author,
             data[i].publisher,
           ];
-          data[i].book_id = book_id;
           db.run(db_query, values);
           db.run(available_query, values);
         }
-        var xls = json2xls(data);
-        fs.writeFileSync(
-          `GeneratedFiles/Book Ids/GeneratedBookIds${
-            today_date + "-" + todayTime.getHours() + todayTime.getMinutes()
-          }.xlsx`,
-          xls,
-          "binary"
-        );
         res.send(
           JSON.stringify({
             message: "Successfully Books Added to Library",
