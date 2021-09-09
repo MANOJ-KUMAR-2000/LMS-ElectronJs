@@ -11,12 +11,14 @@
 
 .report-main-content .fliter-div .filters form div {
     display: flex;
-    width: 25%;
     margin-bottom: 28px;
 }
 
+.filter-search button {
+    margin-left: 32px;
+}
+
 .filter-search {
-    width: 20% !important;
     display: flex;
     justify-content: space-evenly;
 }
@@ -28,6 +30,7 @@
 }
 
 .report-main-content .record-table {
+    overflow: auto;
     height: 64vh;
 }
 

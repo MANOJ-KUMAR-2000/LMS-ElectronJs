@@ -21,10 +21,10 @@ app.use(express.urlencoded({ extended: true }));
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.listen(8888);
+app.listen(52383);
 
 
-app.use("/",HomeRoutes)
+app.use("/", HomeRoutes)
 app.use("/authentication", AuthRoutes);
 app.use("/record", RecordRoutes);
 app.use("/add-view", AddViewRoutes);

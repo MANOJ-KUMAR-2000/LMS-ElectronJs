@@ -2,6 +2,7 @@
     <div class="report-main-content">
         <div class="fliter-div">
             <div class="filters">
+                <!--
                 <form autocomplete="off" method="post">
                     <div>
                         <input type="date" name="report_from_date" value="">
@@ -12,8 +13,8 @@
                         <span>&nbsp;To</span>
                     </div>
                     <div>
-                        <select name="report_role" value="">
-                    <option value="" hidden></option>
+                        <select name="report_role">
+                    <option value="" hidden selected></option>
                     <option value="Faculty">Faculty</option>
                     <option value="Student">Student</option>
                 </select>
@@ -45,7 +46,17 @@
                         <span>&nbsp;Book Id</span>
                     </div>
                     <div class="filter-search">
-                        <!--<button formaction="/reports/getdata">Generate</button>-->
+                        <button formaction="/reports/searchdata">Generate</button>
+                        <button formaction="/reports/exportdata">Export</button>
+                    </div>
+                </form>
+            -->
+
+                <form autocomplete="off" method="post">
+                    <div>
+                        <h1>Full Report</h1>
+                    </div>
+                    <div class="filter-search">
                         <button formaction="/reports/exportdata">Export</button>
                     </div>
                 </form>
@@ -54,70 +65,72 @@
         <% if(export_msg) { %>
             <div id="export-success">
                 <div>
-                    <p><%=export_msg%></p>
+                    <p>
+                        <%=export_msg%>
+                    </p>
                     <br />
                     <a onclick="export_noted()">OK</a>
                 </div>
             </div>
             <% } %>
-        <div class="record-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Roll Number</th>
-                        <th>Role</th>
-                        <th>Department</th>
-                        <th>Batch</th>
-                        <th>Book ID</th>
-                        <th>Book Title</th>
-                        <th>Issued Date</th>
-                        <th>Return Date</th>
-                        <th>Is Delay</th>
-                    </tr>
-                </thead>
+                <div class="record-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Roll Number</th>
+                                <th>Role</th>
+                                <th>Department</th>
+                                <th>Batch</th>
+                                <th>Book ID</th>
+                                <th>Book Title</th>
+                                <th>Issued Date</th>
+                                <th>Return Date</th>
+                                <th>Is Delay</th>
+                            </tr>
+                        </thead>
 
-                <tbody>
-                    <% for(var i=0; i < reports.length; i++) { %>
-                        <tr>
-                            <td>
-                                <%= reports[i].id %>
-                            </td>
-                            <td>
-                                <%= reports[i].roll_number %>
-                            </td>
-                            <td>
-                                <%= reports[i].role %>
-                            </td>
-                            <td>
-                                <%= reports[i].department %>
-                            </td>
-                            <td>
-                                <%= reports[i].batch %>
-                            </td>
-                            <td>
-                                <%= reports[i].book_id %>
-                            </td>
-                            <td>
-                                <%= reports[i].book_title %>
-                            </td>
-                            <td>
-                                <%= reports[i].issued_date %>
-                            </td>
-                            <td>
-                                <%= reports[i].return_date %>
-                            </td>
-                            <td>
-                                <%= reports[i].is_delayed %>
-                            </td>
-                        </tr>
+                        <tbody>
+                            <% for(var i=0; i < reports.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= reports[i].id %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].roll_number %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].role %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].department %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].batch %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].book_id %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].book_title %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].issued_date %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].return_date %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].is_delayed %>
+                                    </td>
+                                </tr>
+                                <% } %>
+                        </tbody>
+                    </table>
+                    <% if(reports.length == 0) { %>
+                        <p id='no-record-found-p'>No Record Found</p>
                         <% } %>
-                </tbody>
-            </table>
-            <% if(reports.length == 0) { %>
-                <p id='no-record-found-p'>No Record Found</p>
-                <% } %>
-        </div>
+                </div>
     </div>
 
     <!--Template Ending-->
