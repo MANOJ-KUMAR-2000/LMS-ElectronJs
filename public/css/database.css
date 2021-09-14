@@ -1,168 +1,195 @@
 .database-main-content {
-    padding: 0px 16px;
+  padding: 0px 16px;
 }
 
 .database-main-content .utils button a {
-    color: tomato;
+  color: tomato;
 }
 
-.database-main-content h2 {
-    color: rgb(27, 27, 27);
-    font-size: 25px;
-    font-weight: 500;
+.database-main-content h2,
+.issue-return-main-content h2 {
+  color: rgb(27, 27, 27);
+  text-transform: uppercase;
+  font-size: 25px;
+  font-weight: 500;
 }
 
 .primary_tab {
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid rgb(0, 48, 96);
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgb(0, 48, 96);
 }
-
 
 /* Style the buttons that are used to open the tab content */
 
 .primary_tab button {
-    font-size: 18px;
-    margin-right: 16px;
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 8px 16px;
-    transition: 0.3s;
+  font-size: 18px;
+  margin-right: 16px;
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: 0.3s;
 }
-
 
 /* Change background color of buttons on hover */
 
 .primary_tab button:hover {
-    background-color: rgb(182, 182, 182);
+  background-color: rgb(182, 182, 182);
 }
-
 
 /* Create an active/current tablink class */
 
 .primary_tab button.active {
-    background-color: rgb(0, 48, 96);
-    color: white;
+  background-color: rgb(0, 48, 96);
+  color: white;
 }
-
 
 /* Style the tab content */
 
 .primary_tabcontent,
 .secondry1_tabcontent,
 .secondry2_tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid rgb(0, 48, 96);
-    border-top: none;
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid rgb(0, 48, 96);
+  border-top: none;
 }
 
 .primary_tabcontent .secondry1_tab button,
 .secondry2_tab button {
-    font-size: 16px;
-    margin-left: 12px;
-    background-color: white;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 8px 16px;
-    transition: 0.3s;
-    box-shadow: 0px 2px 3px 1px rgba(27, 27, 27, 0.3);
+  font-size: 16px;
+  margin-left: 12px;
+  background-color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: 0.3s;
+  box-shadow: 0px 2px 3px 1px rgba(27, 27, 27, 0.3);
 }
 
 .secondry1_tab button.active {
-    box-shadow: 0px -2px 6px 2px rgba(27, 27, 27, 0.3) inset;
+  box-shadow: 0px -2px 6px 2px rgba(27, 27, 27, 0.3) inset;
 }
 
 .secondry2_tab button.active {
-    box-shadow: 0px -2px 6px 2px rgba(27, 27, 27, 0.3) inset;
+  box-shadow: 0px -2px 6px 2px rgba(27, 27, 27, 0.3) inset;
 }
-
 
 /*Aboue are Tab nav styles*/
 
 .database-main-content .primary_tabcontent .secondry1_tabcontent .add_book,
 .add_student,
 .add_faculty {
-    display: flex;
+  display: flex;
 }
 
 .database-main-content .primary_tabcontent .secondry1_tabcontent .solo {
-    width: 60%;
+  width: 60%;
 }
 
 .database-main-content .primary_tabcontent .secondry1_tabcontent .solo div {
-    display: flex;
-    margin: 32px 0;
+  display: flex;
+  margin: 32px 0;
 }
 
 .database-main-content .primary_tabcontent .secondry1_tabcontent .solo input,
 .database-main-content .primary_tabcontent .secondry1_tabcontent .solo select {
-    width: 50%;
-    background-color: rgba(255, 255, 255, 0.151);
-    border-radius: 2px;
-    border: 2px solid rgb(0, 48, 96);
-    outline-width: 3px;
-    outline-color: tomato;
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.151);
+  border-radius: 2px;
+  border: 2px solid rgb(0, 48, 96);
+  outline-width: 3px;
+  outline-color: tomato;
 }
 
-.database-main-content .primary_tabcontent .secondry1_tabcontent .solo div span {
-    opacity: 0.5;
-    position: absolute;
-    transition: 0.5s linear;
+.database-main-content
+  .primary_tabcontent
+  .secondry1_tabcontent
+  .solo
+  div
+  span {
+  opacity: 0.5;
+  position: absolute;
+  transition: 0.5s linear;
 }
 
-.database-main-content .primary_tabcontent .secondry1_tabcontent .solo div:focus-within span,
-.database-main-content .primary_tabcontent .secondry1_tabcontent .solo div input:valid~span {
-    color: rgb(8, 44, 80);
-    opacity: 1;
-    transform: translateX(-6px) translateY(-23px);
-    font-size: 18px;
-    font-weight: 500;
+.database-main-content
+  .primary_tabcontent
+  .secondry1_tabcontent
+  .solo
+  div:focus-within
+  span,
+.database-main-content
+  .primary_tabcontent
+  .secondry1_tabcontent
+  .solo
+  div
+  input:valid
+  ~ span {
+  color: rgb(8, 44, 80);
+  opacity: 1;
+  transform: translateX(-6px) translateY(-23px);
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .database-main-content .primary_tabcontent .secondry1_tabcontent .multi button {
-    border: none;
-    background-color: tomato;
-    color: whitesmoke;
-    padding: 4px 20px;
-    border-radius: 2px;
-    box-shadow: 0px 0px 3px 1px rgba(27, 27, 27, 0.3);
+  border: none;
+  background-color: tomato;
+  color: whitesmoke;
+  padding: 4px 20px;
+  border-radius: 2px;
+  box-shadow: 0px 0px 3px 1px rgba(27, 27, 27, 0.3);
 }
 
 .database-main-content .primary_tabcontent .secondry1_tabcontent .solo button {
-    border: none;
-    background-color: tomato;
-    color: whitesmoke;
-    padding: 4px 20px;
-    border-radius: 2px;
-    box-shadow: 0px 0px 3px 1px rgba(27, 27, 27, 0.3);
+  border: none;
+  background-color: tomato;
+  color: whitesmoke;
+  padding: 4px 20px;
+  border-radius: 2px;
+  box-shadow: 0px 0px 3px 1px rgba(27, 27, 27, 0.3);
 }
 
-.database-main-content .primary_tabcontent .secondry1_tabcontent .solo div select:valid~span {
-    font-size: 18px;
-    color: rgb(8, 44, 80);
-    opacity: 1;
-    transform: translateX(-6px) translateY(-23px);
-    font-weight: 500;
+.database-main-content
+  .primary_tabcontent
+  .secondry1_tabcontent
+  .solo
+  div
+  select:valid
+  ~ span {
+  font-size: 18px;
+  color: rgb(8, 44, 80);
+  opacity: 1;
+  transform: translateX(-6px) translateY(-23px);
+  font-weight: 500;
 }
 
 .database-main-content .primary_tabcontent .secondry1_tabcontent .multi {
-    width: 40%;
+  width: 40%;
 }
 
 .secondry2_tabcontent {
-    height: 58vh;
-    overflow: auto;
+  height: 58vh;
+  overflow: auto;
 }
 
 .database-main-content h3 {
-    font-size: 20px;
-    font-weight: 600;
-    text-transform: capitalize;
-    color: rgb(27, 27, 27);
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: rgb(27, 27, 27);
+}
+
+#database-bg {
+  position: absolute;
+  width: 35%;
+  opacity: 0.5;
+  top: 28%;
+  left: 25%;
 }

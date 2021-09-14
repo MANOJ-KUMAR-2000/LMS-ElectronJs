@@ -60,6 +60,7 @@ const IssueBook = (req, res) => {
                       book_titles[i].title,
                       result.department,
                       result.batch,
+                      result.name,
                     ];
                   } else {
                     value = [
@@ -70,9 +71,11 @@ const IssueBook = (req, res) => {
                       req.body["roll_number"],
                       book_titles[i].title,
                       result.department,
+                      "NULL",
+                      result.name,
                     ];
                   }
-                  add_query = `INSERT INTO Book_Issued (role,book_id,date,validation_date,roll_number,book_title,department,batch) VALUES (?,?,?,?,?,?,?,?);`;
+                  add_query = `INSERT INTO Book_Issued (role,book_id,date,validation_date,roll_number,book_title,department,batch,name) VALUES (?,?,?,?,?,?,?,?,?);`;
                   remove_query = `DELETE FROM Currently_Available WHERE book_id = ?`;
                   db.run(add_query, value);
                   db.run(remove_query, req.body["book_ids"][i]);
