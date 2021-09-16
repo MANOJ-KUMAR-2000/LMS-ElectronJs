@@ -36,14 +36,15 @@ const UploadStudents = (req, res) => {
       for (let i = 0; i < data.length; i++) {
         query = `INSERT INTO Student_DB (roll_number,name,batch,department) VALUES (?,?,?,?);`;
         values = [
-          data[i].rollno,
+          data[i].rollno.toString(),
           data[i].name,
           data[i].batch,
           data[i].department,
         ];
+        console.log(values);
         db.run(query, values, (err) => {
           if (err) {
-            //PASS
+            console.log("Running");
           }
         });
       }
@@ -75,7 +76,7 @@ const UploadFacultys = (req, res) => {
         values = [data[i].rollno, data[i].name, data[i].department];
         db.run(query, values, (err) => {
           if (err) {
-            //PASS
+            console.log(err);
           }
         });
       }

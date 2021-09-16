@@ -11,6 +11,10 @@ const db = new sqlite3.Database("./database/Master_DB.db", (err) => {
   }
 });
 
+const Refresh = (req, res) => {
+  res.redirect("/add-view/all");
+};
+
 const All = (req, res) => {
   db.all(`SELECT * FROM Student_DB ORDER BY name`, (err, studnets) => {
     db.all(`SELECT * FROM Faculty_DB ORDER BY name`, (err, facultys) => {
@@ -137,4 +141,5 @@ module.exports = {
   AddFacultys,
   AddBooks,
   All,
+  Refresh,
 };
