@@ -21,7 +21,11 @@ app.use(express.urlencoded({ extended: true }));
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.listen(52383);
+app.listen(52383, () => {
+    //Server Running
+}).on('error', function(err) {
+    //PASS
+})
 
 
 app.use("/", HomeRoutes)

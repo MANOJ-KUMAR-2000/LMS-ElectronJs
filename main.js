@@ -3,9 +3,9 @@ const server = require("./app.js");
 
 let mainWindow;
 
-function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-}
+const gotTheLock = app.requestSingleInstanceLock()
+
+function sleep(ms) { return new Promise((resolve) => setTimeout(resolve, ms)); }
 
 async function createWindow() {
     await sleep(1000);
@@ -28,8 +28,19 @@ async function createWindow() {
     });
 }
 
-app.on("ready", createWindow);
 
+if (!gotTheLock) {
+    app.quit()
+} else {
+    app.on('second-instance', (event, commandLine, workingDirectory) => {
+        if (mainWindow) {
+            if (mainWindow.isMinimized()) mainWindow.restore()
+            mainWindow.focus()
+        }
+    })
+
+    app.on("ready", createWindow);
+}
 app.on("resize", function(e, x, y) {
     mainWindow.setSize(x, y);
 });

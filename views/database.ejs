@@ -55,8 +55,8 @@
                                 <div>
                                     <select name="author_type" id="book_author_type" required>
                                 <option value="" hidden> </option>
-                                <option value="Local Author">Local Author</option>
-                                <option value="Foreign Author">Foreign Author</option>
+                                <option value="Local">Local Author</option>
+                                <option value="Foreign">Foreign Author</option>
                             </select>
                                     <span>&nbsp;Author Type</span>
                                 </div>
@@ -186,25 +186,33 @@
                             </thead>
 
                             <tbody>
-                                <% for(var i=0; i < books_db.length; i++) { %>
-                                    <tr>
-                                        <td>
-                                            <%= books_db[i].book_id %>
-                                        </td>
-                                        <td>
-                                            <%= books_db[i].title %>
-                                        </td>
-                                        <td>
-                                            <%= books_db[i].author_type %>
-                                        </td>
-                                        <td>
-                                            <%= books_db[i].author %>
-                                        </td>
-                                        <td>
-                                            <%= books_db[i].publisher %>
-                                        </td>
-                                    </tr>
-                                    <% } %>
+                                <% if(!(books_db == undefined)){ %>
+                                    <% if(books_db.length == 0){ %>
+                                        <p id='no-record-found-p'>No Books Found</p>
+                                        <% } else{ %>
+                                            <% for(var i=0; i < books_db.length; i++) { %>
+                                                <tr>
+                                                    <td>
+                                                        <%= books_db[i].book_id %>
+                                                    </td>
+                                                    <td>
+                                                        <%= books_db[i].title %>
+                                                    </td>
+                                                    <td>
+                                                        <%= books_db[i].author_type %>
+                                                    </td>
+                                                    <td>
+                                                        <%= books_db[i].author %>
+                                                    </td>
+                                                    <td>
+                                                        <%= books_db[i].publisher %>
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                                    <% } %>
+                                                        <% } else{ %>
+                                                            <p id='no-record-found-p'>Background Process Running Please Refresh</p>
+                                                            <% } %>
                             </tbody>
                         </table>
                     </div>
@@ -220,22 +228,32 @@
                             </thead>
 
                             <tbody>
-                                <% for(var i=0; i < students_db.length; i++) { %>
-                                    <tr>
-                                        <td>
-                                            <%= students_db[i].roll_number %>
-                                        </td>
-                                        <td>
-                                            <%= students_db[i].name %>
-                                        </td>
-                                        <td>
-                                            <%= students_db[i].batch %>
-                                        </td>
-                                        <td>
-                                            <%= students_db[i].department %>
-                                        </td>
-                                    </tr>
-                                    <% } %>
+                                <% if(!(students_db == undefined)){ %>
+                                    <% if(students_db.length == 0){ %>
+                                        <p id='no-record-found-p'>No Students Found</p>
+                                        <% } else{ %>
+                                            <% for(var i=0; i < students_db.length; i++) { %>
+                                                <tr>
+                                                    <td>
+                                                        <%= students_db[i].roll_number %>
+                                                    </td>
+                                                    <td>
+                                                        <%= students_db[i].name %>
+                                                    </td>
+                                                    <td>
+                                                        <%= students_db[i].batch %>
+                                                    </td>
+                                                    <td>
+                                                        <%= students_db[i].department %>
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                                    <% } %>
+
+                                                        <% } else{ %>
+                                                            <p id='no-record-found-p'>Background Process Running Please Refresh</p>
+                                                            <% } %>
+
                             </tbody>
                         </table>
                     </div>
@@ -250,19 +268,28 @@
                             </thead>
 
                             <tbody>
-                                <% for(var i=0; i < facultys_db.length; i++) { %>
-                                    <tr>
-                                        <td>
-                                            <%= facultys_db[i].roll_number %>
-                                        </td>
-                                        <td>
-                                            <%= facultys_db[i].name %>
-                                        </td>
-                                        <td>
-                                            <%= facultys_db[i].department %>
-                                        </td>
-                                    </tr>
-                                    <% } %>
+                                <% if(!(facultys_db == undefined)){ %>
+                                    <% if(facultys_db.length == 0){ %>
+                                        <p id='no-record-found-p'>No Facultys Found</p>
+                                        <% } else{ %>
+                                            <% for(var i=0; i < facultys_db.length; i++) { %>
+                                                <tr>
+                                                    <td>
+                                                        <%= facultys_db[i].roll_number %>
+                                                    </td>
+                                                    <td>
+                                                        <%= facultys_db[i].name %>
+                                                    </td>
+                                                    <td>
+                                                        <%= facultys_db[i].department %>
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                                    <% } %>
+                                                        <% } else{ %>
+                                                            <p id='no-record-found-p'>Background Process Running Please Refresh</p>
+                                                            <% } %>
+
                             </tbody>
                         </table>
                     </div>
