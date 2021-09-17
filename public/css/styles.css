@@ -1,144 +1,145 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 * {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
 }
 
 body {
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  overflow-x: hidden;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+    width: 5px;
+    height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  border-radius: 16px;
+    border-radius: 16px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: tomato;
-  border-radius: 10px;
+    background: tomato;
+    border-radius: 36px;
 }
 
 img,
 a {
-  -webkit-user-drag: none;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 a {
-  text-decoration: none;
-  cursor: pointer;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 button {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 a:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
-  overflow: hidden;
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
 }
 
 th {
-  text-transform: uppercase;
-  font-weight: 500;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 th,
 td {
-  padding: 15px;
-  background-color: rgba(255, 255, 255, 0.2);
-  color: rgb(27, 27, 27);
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: rgb(27, 27, 27);
 }
 
 th {
-  font-size: 17px;
-  text-align: left;
+    font-size: 17px;
+    text-align: left;
 }
 
 thead th {
-  background-color: rgb(255, 126, 103);
+    background-color: rgb(255, 126, 103);
 }
 
 tbody tr:hover {
-  background-color: rgba(255, 99, 71, 0.1);
+    background-color: rgba(255, 99, 71, 0.1);
 }
 
 tbody td {
-  position: relative;
+    position: relative;
 }
 
 tbody td:hover:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -9999px;
-  bottom: -9999px;
-  background-color: rgba(255, 99, 71, 0.1);
-  z-index: -1;
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -9999px;
+    bottom: -9999px;
+    background-color: rgba(255, 99, 71, 0.1);
+    z-index: -1;
 }
 
 .usr_msg {
-  color: rgba(27, 27, 27, 0.5);
-  font-weight: 500;
+    color: rgba(27, 27, 27, 0.5);
+    font-weight: 500;
 }
 
 .error_msg {
-  color: rgba(255, 0, 0, 0.75);
+    color: rgba(255, 0, 0, 0.75);
 }
 
 #success-div {
-  position: absolute;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.1);
-  color: rgb(27, 27, 27);
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: rgb(27, 27, 27);
 }
 
 #success-div div {
-  border-radius: 4px;
-  background-color: white;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  margin: 25% 35%;
-  align-items: center;
-  box-shadow: 0px 8px 16px 6px rgba(27, 27, 27, 0.5);
+    border-radius: 4px;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 25% 35%;
+    align-items: center;
+    box-shadow: 0px 8px 16px 6px rgba(27, 27, 27, 0.5);
 }
 
 #success-div a {
-  width: 25%;
-  cursor: pointer;
-  font-size: 20px;
-  padding: 4px 10px;
-  color: white;
-  background-color: green;
-  margin-bottom: 16px;
-  border-radius: 22px;
-  box-shadow: 0 3px 4px 2px rgba(27, 27, 27, 0.25);
+    width: 25%;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 4px 10px;
+    color: white;
+    background-color: green;
+    margin-bottom: 16px;
+    border-radius: 22px;
+    box-shadow: 0 3px 4px 2px rgba(27, 27, 27, 0.25);
 }
 
 table,
 th,
 td {
-  border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.3);
 }
