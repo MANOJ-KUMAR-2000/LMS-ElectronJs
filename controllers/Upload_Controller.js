@@ -28,7 +28,6 @@ function ExtractData(workbook) {
 const UploadStudents = (req, res) => {
     var workbook = XLSX.read(req.files["file"].data);
     const data = ExtractData(workbook);
-    console.log(JSON.stringify(Object.keys(data[0])))
     if (
         JSON.stringify(Object.keys(data[0])) ==
         JSON.stringify(["rollno", "name", "batch", "department"])
@@ -37,11 +36,13 @@ const UploadStudents = (req, res) => {
             var db_students_prepare = db.prepare("INSERT INTO Student_DB (roll_number,name,batch,department) VALUES (?,?,?,?)")
 
             for (let i = 0; i < data.length; i++) {
-                db_students_prepare.run(data[i].rollno.toString(), data[i].name, data[i].batch, data[i].department, (err) => {
-                    if (err) {
-                        //PASS
-                    }
-                });
+                if (data[i].rollno) {
+                    db_students_prepare.run(data[i].rollno.toString(), data[i].name, data[i].batch, data[i].department, (err) => {
+                        if (err) {
+                            //PASS
+                        }
+                    });
+                }
             }
             db_students_prepare.finalize();
             res.send(
@@ -49,7 +50,6 @@ const UploadStudents = (req, res) => {
                     message: "Successfully Students Added to Library",
                 })
             );
-
         });
     } else {
         res.send(
