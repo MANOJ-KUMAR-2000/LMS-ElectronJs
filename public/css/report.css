@@ -1,92 +1,96 @@
 .report-main-content .fliter-div .filters {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 26px;
 }
 
 .report-main-content .fliter-div .filters form {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .report-main-content .fliter-div .filters form div {
-  width: 25%;
-  display: flex;
-  margin-bottom: 28px;
+    width: 25%;
+    display: flex;
+    margin-bottom: 28px;
 }
 
 .filter-search {
-  display: flex;
+    display: flex;
 }
 
 .report-main-content .fliter-div .filters form div span {
-  position: absolute;
-  opacity: 0.5;
-  transition: 0.5s;
+    position: absolute;
+    opacity: 0.5;
+    transition: 0.5s;
 }
 
 .report-main-content .record-table {
-  overflow: auto;
-  height: 64vh;
+    overflow: auto;
+    height: 64vh;
 }
 
 .report-main-content input,
 .report-main-content select {
-  border: 2px solid rgb(0, 48, 96);
-  outline-width: 3px;
-  outline-color: tomato;
-  width: 80%;
+    border: 2px solid rgb(0, 48, 96);
+    outline-width: 3px;
+    outline-color: tomato;
+    width: 80%;
 }
 
 .report-main-content button {
-  margin-left: 22px;
-  padding: 4px 18px;
-  color: white;
-  background-color: tomato;
-  border: none;
-  box-shadow: 0px 2px 4px 1px rgba(27, 27, 27, 0.3);
-  border-radius: 28px;
+    margin-left: 22px;
+    padding: 4px 18px;
+    color: white;
+    background-color: tomato;
+    border: none;
+    box-shadow: 0px 2px 4px 1px rgba(27, 27, 27, 0.3);
+    border-radius: 28px;
 }
 
 .report-main-content .fliter-div .filters form div:focus-within span,
-.report-main-content .fliter-div .filters form div input:valid ~ span {
-  color: rgb(8, 44, 80);
-  opacity: 1;
-  transform: translateX(-6px) translateY(-23px);
-  font-size: 18px;
-  font-weight: 500;
+.report-main-content .fliter-div .filters form div input:valid~span {
+    color: rgb(8, 44, 80);
+    opacity: 1;
+    transform: translateX(-6px) translateY(-23px);
+    font-size: 18px;
+    font-weight: 500;
 }
 
-.report-main-content .fliter-div .filters form div select:valid ~ span {
-  font-size: 18px;
-  color: rgb(8, 44, 80);
-  opacity: 1;
-  transform: translateX(-6px) translateY(-23px);
-  font-weight: 500;
+.report-main-content .fliter-div .filters form div select:valid~span {
+    font-size: 18px;
+    color: rgb(8, 44, 80);
+    opacity: 1;
+    transform: translateX(-6px) translateY(-23px);
+    font-weight: 500;
 }
 
 #export-success div a {
-  padding: 6px 25px;
-  border-radius: 20px;
-  color: white;
-  background-color: green;
+    padding: 6px 25px;
+    border-radius: 20px;
+    color: white;
+    background-color: green;
 }
 
 #export-success div {
-  text-align: center;
-  background-color: white;
-  width: 30%;
-  margin: 20% 35%;
-  padding: 20px;
-  box-shadow: 2px 2px 10px 1px black;
+    text-align: center;
+    background-color: white;
+    width: 30%;
+    margin: 20% 35%;
+    padding: 20px;
+    box-shadow: 2px 2px 10px 1px black;
 }
 
 #export-success {
-  z-index: 2;
-  width: 100vw;
-  left: 0;
-  top: 0;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
-  position: absolute;
+    z-index: 2;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+}
+
+#export-success p {
+    word-wrap: break-word;
 }
