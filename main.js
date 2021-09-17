@@ -16,6 +16,10 @@ async function createWindow() {
         webPreferences: {
             nodeIntegration: true,
         },
+        minWidth: 1280,
+        minHeight: 720,
+        autoHideMenuBar: true,
+        center: true,
     });
 
     mainWindow.loadURL("http://localhost:52383/authentication/login");
