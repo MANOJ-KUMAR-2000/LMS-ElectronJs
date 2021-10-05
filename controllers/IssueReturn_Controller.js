@@ -20,8 +20,8 @@ const IssueBook = (req, res) => {
   var vali_date = todayTime.getDate() + 14;
   var year = todayTime.getFullYear();
 
-  var date = year + "-" + month + "-" + today_date;
-  var untill_date = year + "-" + month + "-" + vali_date;
+  var date = today_date + "-" + month + "-" + year;
+  var untill_date = vali_date + "-" + month + "-" + year;
   var time = todayTime.toLocaleString("en-US", {
     hour: "numeric",
     minute: "numeric",
@@ -213,13 +213,13 @@ const ReturnBook = (req, res) => {
               book.publisher,
             ];
             db.run(insert_available_query, insert_available_value, (err) => {
-              full_report_insert_query = `INSERT INTO FullReport (roll_number,role,book_id,validation_date,is_delayed,book_title,department,batch,issued_date,return_date) VALUES (?,?,?,?,?,?,?,?,?,?)`;
+              full_report_insert_query = `INSERT INTO FullReport (roll_number,role,book_id,validation_date,is_delayed,book_title,department,batch,issued_date,return_date,date_verifier) VALUES (?,?,?,?,?,?,?,?,?,?,date(?))`;
               var todayTime = new Date();
 
               var month = todayTime.getMonth() + 1;
               var date = todayTime.getDate();
               var year = todayTime.getFullYear();
-              var today_date = year + "-" + month + "-" + date;
+              var today_date = date + "-" + month + "-" + year;
               var today_time = todayTime.toLocaleString("en-US", {
                 hour: "numeric",
                 minute: "numeric",
@@ -233,16 +233,16 @@ const ReturnBook = (req, res) => {
               to_compare_validation_date = issued_info_date.split("-");
               to_compare_returning_date = today_date.split("-");
               if (
-                parseInt(to_compare_validation_date[0]) >=
-                parseInt(to_compare_returning_date[0])
+                parseInt(to_compare_validation_date[2]) >=
+                parseInt(to_compare_returning_date[2])
               ) {
                 if (
                   parseInt(to_compare_validation_date[1]) >=
                   parseInt(to_compare_returning_date[1])
                 ) {
                   if (
-                    parseInt(to_compare_validation_date[2]) >=
-                    parseInt(to_compare_returning_date[2])
+                    parseInt(to_compare_validation_date[0]) >=
+                    parseInt(to_compare_returning_date[0])
                   ) {
                     is_delayed = "On Time";
                   } else {
@@ -265,6 +265,7 @@ const ReturnBook = (req, res) => {
                 issue_book_detail.batch,
                 issue_book_detail.date,
                 today,
+                todayTime.toISOString().split('T')[0]
               ];
               db.run(full_report_insert_query, full_value, (err) => {
                 db.run(remove_from_issued_query, [req.body["return_books"][i]]);
