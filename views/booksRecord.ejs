@@ -6,6 +6,10 @@
             <div class="book-record-filters">
                 <form autocomplete="off" action="/record/books" method="post">
                     <div>
+                        <input type="text" name="book_id">
+                        <span>&nbsp;Book Id</span>
+                    </div>
+                    <div>
                         <input type="text" name="title">
                         <span>&nbsp;Title</span>
                     </div>
@@ -16,9 +20,9 @@
                     <div>
                         <select id="" name='author_type'>
                             <option value="" hidden></option>
-                    <option value="Local">Local Author</option>
-                    <option value="Foreign">Foreign Author</option>
-                </select>
+                            <option value="Local">Local Author</option>
+                            <option value="Foreign">Foreign Author</option>
+                        </select>
                         <span>&nbsp;Author Type</span>
                     </div>
                     <div>

@@ -6,6 +6,10 @@
             <div class="student-record-filters">
                 <form autocomplete="off" action="/record/students" method="post">
                     <div>
+                        <input type="text" name="book_id" id="search_book" value=''>
+                        <span>&nbsp;Book Id</span>
+                    </div>
+                    <div>
                         <input type="text" name="search_roll_number" value="">
                         <span>&nbsp;Register Number</span>
                     </div>
@@ -25,13 +29,6 @@
                         <input type="text" name="search_batch" id="search_batch" value=''>
                         <span>&nbsp;Batch</span>
                     </div>
-
-                    <!--
-                    <div>
-                        <input type="text" name="search_batch" value=" ">
-                        <span>&nbsp;Batch</span>
-                    </div>
-                    -->
                     <div><button type="submit">Search</button></div>
 
                 </form>
