@@ -16,6 +16,7 @@
                     <div>
                         <select name="search_department" id="search_department">
                             <option value=" " hidden selected></option>
+                            <option value="SH">Science &amp; Humanities</option>
                             <option value="CSE"> Computer Science &amp; Engineering</option>
                             <option value="MECH">Mechanical Engineering</option>
                             <option value="ECE">Electronics &amp; Communications Engineering</option>
@@ -74,7 +75,7 @@
                 </table>
                 <% if(facultys.length == 0) { %>
                     <p id='no-record-found-p'>No Record Found</p>
-                <% } %>
+                    <% } %>
             </div>
     </div>
 

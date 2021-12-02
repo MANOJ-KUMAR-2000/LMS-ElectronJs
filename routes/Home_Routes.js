@@ -3,6 +3,9 @@ const express = require("express");
 const routes = express.Router();
 
 routes.get("/home", (req, res) => {
+    if (req.cookies.nscet.department == 'SH') {
+        res.render("home", { username: req.cookies.nscet.username, dept_name: "Science & Humanities" });
+    }
     if (req.cookies.nscet.department == 'CSE') {
         res.render("home", { username: req.cookies.nscet.username, dept_name: "Computer Science & Engineering" });
     }
